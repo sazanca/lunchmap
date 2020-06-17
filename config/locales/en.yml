@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  shops: "Shops"
+  category: "Category"
+  name: "Name"
+  address: "Address"
