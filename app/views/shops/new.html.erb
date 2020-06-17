@@ -1,12 +1,15 @@
 <h1>New Shop</h1>
-<div id='map'></div>
+<%# <div id='map'></div> %>
 
 <input id="address" type="textbox" placeholder="場所を入力してください">
 <input type="button" value="表示" onclick="codeAddress()">
 <div id="display">ランチ場所</div>
 
+<%= content_tag(:iframe, 'map', src:'https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck=' + @shop.address, width: 800, height: 400, frameborder: 0) %>
+                                    
+<br>
 
-<style>
+<%# <style>
 #map { height: 600px;width: 600px;}
 
 </style>
@@ -31,9 +34,9 @@ function initMap(){
 }
 
 function codeAddress(){
-  let inputAddress = document.getElementById('address').value;
+  let inputAddress = document.getElementById('map').value;
 
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+  geocoder.geocode( { 'map': inputAddress}, function(results, status) {
     if (status == 'OK') {
       map.setCenter(results[0].geometry.location);
       let marker = new google.maps.Marker({
@@ -49,7 +52,7 @@ function codeAddress(){
 }
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck&callback=initMap" async defer></script> %>
 
 
 <%= render 'form', shop: @shop %>
