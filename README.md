@@ -1,24 +1,61 @@
-# README
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|password|string|null: false|
+|username|string|null: false|
+### Association
+- has_many :posts
+- has_many :comments
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## shopsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|text|null: false|
+|menu|text|null: false|
+|price|string|null: false|
+|time|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- has_many :comments
+- has_many :shops_tags
+- has_many  :tags,  through:  :shops_tags
 
-Things you may want to cover:
+## tagsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+### Association
+- has_many :shops_tags
+- has_many  :posts,  through:  :shops_tags
 
-* Ruby version
+## shops_tagsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|shop_id|integer|null: false, foreign_key: true|
+|tag_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :post
+- belongs_to :tag
 
-* System dependencies
+## mapsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|integer|null: false, foreign_key: true|
+|address|----|-------|
+|let|----|-------|
+|ing|----|-------|
+|type|----|-------|
+|shop_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :post
+- belongs_to :tag
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :post
+- belongs_to :user
