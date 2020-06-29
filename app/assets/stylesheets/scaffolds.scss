@@ -1,7 +1,8 @@
 body {
   background-color: #fff;
   color: #333;
-  margin: 33px; }
+  margin: 33px;
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -63,3 +64,11 @@ div.actions {
 
 label {
   display: block; }
+
+#map {
+  height: 400px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  width: 80%
+}
