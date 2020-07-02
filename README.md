@@ -2,9 +2,9 @@
 |Column|Type|Options|
 |------|----|-------|
 |password|string|null: false|
-|username|string|null: false|
+|nickname|string|null: false|
 ### Association
-- has_many :posts
+- has_many :shops
 - has_many :comments
 
 ## shopsテーブル
@@ -27,7 +27,7 @@
 |text|text|null: false|
 ### Association
 - has_many :shops_tags
-- has_many  :posts,  through:  :shops_tags
+- has_many  :shops ,  through:  :shops_tags
 
 ## shops_tagsテーブル
 |Column|Type|Options|
@@ -41,11 +41,8 @@
 ## mapsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false, foreign_key: true|
-|address|----|-------|
-|let|----|-------|
-|ing|----|-------|
-|type|----|-------|
+|latitude|float|-------|
+|longitude|float|-------|
 |shop_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :post
