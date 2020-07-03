@@ -29,6 +29,10 @@ Description
   <dd>仕事以外に会話をした事で仕事として対応するだけでなく、一人の人として対応するようになり、以前よりやり取りがし易くなった</dd>
   <dd>同じ場所で働く事の1番の共通点。ランチを通して社内コミュニケーションのきっかけを作りたい。</dd>
 </dl>
+[![Image from Gyazo](https://i.gyazo.com/7eac64ec33c141b7b6fbbbd793199d6e.png)](https://gyazo.com/7eac64ec33c141b7b6fbbbd793199d6e)
+
+[![Image from Gyazo](https://i.gyazo.com/2a824e2a7ab9f629d0609934d8d89ab3.png)](https://gyazo.com/2a824e2a7ab9f629d0609934d8d89ab3)
+
 Usage
 社員番号でログイン
 お店情報登録
