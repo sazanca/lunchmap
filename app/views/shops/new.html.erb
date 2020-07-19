@@ -40,7 +40,6 @@ function codeAddress(){
           map: map,
           position: results[0].geometry.location
       });
-
       display.textContent = "検索結果：" + results[ 0 ].geometry.location
     } else {
       alert('該当する結果がありませんでした：' + status);

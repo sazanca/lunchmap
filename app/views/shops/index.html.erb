@@ -1,43 +1,57 @@
-
-<h1>ランチマップ</h1>
-<p>ランチ探しを手伝います</p>
-<p><%= link_to 'お店一覧', shops_path %><p>
-<p id="notice"><%= notice %></p>
-
-<h1>お店一覧</h1>
-
-<%= form_tag('/shops', method: 'get') do %>
-<%= label_tag(:name_key, 'Search name:') %>
-<%= text_field_tag(:name_key) %>
-<%= submit_tag('Search') %> <%= link_to '検索終了', shops_path %>
-<% end %>
-
-<br>
-
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @shops.each do |shop| %>
-      <tr>
-        <td><%= shop.category.name %></td>
-        <td><%= shop.name %></td>
-        <td><%= shop.address %></td>
-        <td><%= link_to '詳細', shop %></td>
-        <td><%= link_to '編集', edit_shop_path(shop) %></td>
-        <td><%= link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="header">
+  <h1 class="header-title">ランチマップ</h1>
+  <div class="header-search">
+    <%= form_tag('/shops', method: 'get') do %>
+    <%= label_tag(:name_key, '店名:') %>
+    <%= text_field_tag(:name_key) %>
+    <%= submit_tag('Search') %> <%= link_to '検索終了', shops_path %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="header-list">
+    <div class="header-list-box">
+      ログイン
+    </div>
+  </div>  
+</div>
+<div class="main-contents">
+  <p>今日はどこ行く？</p>
+  <p>誘える人かな？</p>
+  <p><%= link_to 'お店一覧', shops_path %><p>
+  <p id="notice"><%= notice %></p>
+  <br>
 
-<br>
+  <div class="main-contents-lists">
+    <div class="main-contents-list-new">
+      新規投稿一覧５item
+    <div>
+    <div class="main-contents-list-price">
+      値段
+    <div>
+    <div class="main-contents-list-time">
+      店までの距離
+    <div>
+  </div>
+  
 
-<%= link_to '新規投稿', new_shop_path %> <%= link_to 'お店一覧へ', categories_path %>
+    <tbody>
+      <% @shops.each do |shop| %>
+        <tr>
+          <td><%= shop.name %></td>
+          <td><%= shop.address %></td>
+          <td><%= link_to '詳細', shop %></td>
+          <td><%= link_to '編集', edit_shop_path(shop) %></td>
+          <td><%= link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  
+
+  <br>
+
+  <%= link_to '新規投稿', new_shop_path %> <%= link_to 'お店一覧へ', categories_path %>
+</div>  
+<footer>
+  <div class="footer-log">
+    <small>©︎ 2020 ASSE</small>
+  </div>
+</footer>
