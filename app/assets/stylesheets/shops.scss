@@ -1,24 +1,49 @@
+
 .header {
   background-color: yellow;
-  height: 32px;
-  width: 100vw;
-  padding: 3em;
   display: flex;
 }
 .header-title {
-  
+  border: solid 1px;
   
 } 
 .header-search {
-  
+  border: solid 1px;
   
 } 
 .header-list {
-  
+  border: solid 1px;
   
 } 
+.main {
+  padding: 30px 250px 0;
+  border: solid 1px gray;
+  background-image: url(lunch01.jpg);
+  background-size: cover;
+  background-position: center;
+  // filter: blur(5px);
+  // top: -5px;
+  // left: -5px;
+  // right: -5px;
+  // bottom: -5px;
+  z-index: 0;
+  position: relative;
+}
+.main::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+  background: inherit;
+  filter: blur(5px);
+  z-index: -1;
+}
+
 .main-contents {
   margin: 0 auto;
+  border: solid 1px;
 }
 
 .footer-log {

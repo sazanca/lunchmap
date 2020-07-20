@@ -13,41 +13,39 @@
     </div>
   </div>  
 </div>
-<div class="main-contents">
-  <p>今日はどこ行く？</p>
-  <p>誘える人かな？</p>
-  <p><%= link_to 'お店一覧', shops_path %><p>
-  <p id="notice"><%= notice %></p>
-  <br>
-
+<div class="main"> 
+  <div class="main-contens">
+    <p>今日はどこ行く？</p>
+    <p>誘える人かな？</p>
+    <p><%= link_to 'お店一覧', shops_path %><p>
+    <p id="notice"><%= notice %></p>
+    <br>
+  </div>
   <div class="main-contents-lists">
     <div class="main-contents-list-new">
       新規投稿一覧５item
-    <div>
+    </div>
     <div class="main-contents-list-price">
       値段
-    <div>
+    </div>
     <div class="main-contents-list-time">
       店までの距離
-    <div>
+    </div> 
   </div>
   
 
-    <tbody>
-      <% @shops.each do |shop| %>
-        <tr>
-          <td><%= shop.name %></td>
-          <td><%= shop.address %></td>
-          <td><%= link_to '詳細', shop %></td>
-          <td><%= link_to '編集', edit_shop_path(shop) %></td>
-          <td><%= link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  
-
+  <tbody>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= shop.name %></td>
+        <td><%= shop.address %></td>
+        <td><%= link_to '詳細', shop %></td>
+        <td><%= link_to '編集', edit_shop_path(shop) %></td>
+        <td><%= link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
   <br>
-
   <%= link_to '新規投稿', new_shop_path %> <%= link_to 'お店一覧へ', categories_path %>
 </div>  
 <footer>
