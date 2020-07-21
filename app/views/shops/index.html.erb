@@ -15,25 +15,37 @@
 </div>
 <div class="main"> 
   <div class="main-contens">
-    <p>今日はどこ行く？</p>
-    <p>誘える人かな？</p>
+    <section calss="main-contens-copy">
+      <p class="main-copy">今日はどこ行く？</p>
+      <p class="main-text">誘える人かな？</p>
+    </section>  
     <p><%= link_to 'お店一覧', shops_path %><p>
     <p id="notice"><%= notice %></p>
     <br>
   </div>
   <div class="main-contents-lists">
-    <div class="main-contents-list-new">
-      新規投稿一覧５item
+    <div class="main-contents-lists-raw">
+      <div class="main-content-lists-new">
+        <h3 class="subject">新規投稿一覧</h3>
+          <% @shops.each do |shop| %>
+            <tr>
+              <td><%= shop.name %></td>
+              <td><%= shop.address %></td>
+            </tr>
+          <% end %>  
+      </div>
     </div>
-    <div class="main-contents-list-price">
-      値段
+    <div class="main-contents-lists-raw">
+      <div class="main-contents-list-price">
+        <h3 class="subject">値段</h3>
+      </div>
+    </div>  
+    <div class="main-contents-lists-raw">
+      <div class="main-contents-list-time">
+        <h3 class="subject">店までの距離</h3>
+      </div> 
     </div>
-    <div class="main-contents-list-time">
-      店までの距離
-    </div> 
   </div>
-  
-
   <tbody>
     <% @shops.each do |shop| %>
       <tr>
