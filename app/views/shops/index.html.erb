@@ -48,7 +48,7 @@
             <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
           </figure>
           <div class='productList--body'>
-             <% @shops.each do |shop| %>
+            <% @shops.each do |shop| %>
               <div class="content_lists-box">
                 <li>オススメ一言</li>
                 <li><%= shop.name %></li>
@@ -75,7 +75,7 @@
             <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
           </figure>
           <div class='productList--body'>
-            <h3 class='name'>product2</h3>
+            <h3 class='name'>店名2</h3>
             <div class='details'>
               <ul>
                 <li>20000円</li>
@@ -92,7 +92,7 @@
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png" />
             </figure>
             <div class='productList--body'>
-              <h3 class='name'>product1</h3>
+              <h3 class='name'>店名3</h3>
               <div class='details'>
                 <ul>
                   <li>10000円</li>
@@ -109,7 +109,7 @@
   <section class='pickupContainer'>
     <div class='productBox'>
       <div class='productHead'>
-        <a href="#"><h3 class='title'>店までの距離</h3> </a>
+        <h2 class='title'>店までの距離</h2>
       </div>
       <div class='productLists'>
         <div class='productList'>
@@ -118,10 +118,11 @@
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
             </figure>
             <div class='productList--body'>
-              <h3 class='name'>product3</h3>
+              <h3 class='name'>店名1</h3>
               <div class='details'>
                 <ul>
-                  <li>30000円</li>
+                  <li>15分</li>
+                  <li>900円</li>
                   <li>
                   <i class="fa fa-star likeIcon"></i> 0
                   </li>
@@ -137,10 +138,11 @@
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
             </figure>
             <div class='productList--body'>
-              <h3 class='name'>product2</h3>
+              <h3 class='name'>店名2</h3>
               <div class='details'>
                 <ul>
-                  <li>20000円</li>
+                  <li>10分</li>
+                  <li>750円</li>
                   <li>
                     <i class="fa fa-star likeIcon"></i>0
                   </li>
@@ -159,7 +161,8 @@
               <h3 class='name'>product1</h3>
               <div class='details'>
                 <ul>
-                  <li>10000円</li>
+                  <li>15分</li>
+                  <li>1000円</li>
                   <li>
                   <i class="fa fa-star likeIcon"></i> 1
                   </li>
@@ -172,10 +175,10 @@
       </div>
     </div>
   </section>
-    <section class='pickupContainer'>
+  <section class='pickupContainer'>
     <div class='productBox'>
       <div class='productHead'>
-        <a href="#"><h3 class='title'>値段</h3> </a>
+        <h2 class='title'>値段</h2>
       </div>
       <div class='productLists'>
         <div class='productList'>
@@ -184,10 +187,10 @@
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
             </figure>
             <div class='productList--body'>
-              <h3 class='name'>product3</h3>
+              <h3 class='name'>店名1</h3>
               <div class='details'>
                 <ul>
-                  <li>30000円</li>
+                  <li>700円</li>
                   <li>
                   <i class="fa fa-star likeIcon"></i> 0
                   </li>
@@ -203,10 +206,10 @@
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
             </figure>
             <div class='productList--body'>
-              <h3 class='name'>product2</h3>
+              <h3 class='name'>店名２</h3>
               <div class='details'>
                 <ul>
-                  <li>20000円</li>
+                  <li>1000円</li>
                   <li>
                     <i class="fa fa-star likeIcon"></i>0
                   </li>
@@ -222,10 +225,10 @@
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png" />
             </figure>
             <div class='productList--body'>
-              <h3 class='name'>product1</h3>
+              <h3 class='name'>店名3</h3>
               <div class='details'>
                 <ul>
-                  <li>10000円</li>
+                  <li>1000円</li>
                   <li>
                   <i class="fa fa-star likeIcon"></i> 1
                   </li>
@@ -238,8 +241,79 @@
       </div>
     </div>
   </section>
+  <section class='pickupContainer'>
+    <div class='productBox'>
+      <div class='productHead'>
+      <h2 class='title'>オススメ</h2>
+      </div>
+      <div class='productLists'>
+        <div class='productList'>
+          <a href="/products/3">
+            <figure class='productList--img'>
+              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
+            </figure>
+            <div class='productList--body'>
+              <h3 class='name'>店名1</h3>
+              <div class='details'>
+                <ul>
+                  <li>700円</li>
+                  <li>
+                  <i class="fa fa-star likeIcon"></i> 0
+                  </li>
+                </ul>
+                <p>(税込)</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class='productList'>
+          <a href="/products/2">
+            <figure class='productList--img'>
+              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
+            </figure>
+            <div class='productList--body'>
+              <h3 class='name'>店名２</h3>
+              <div class='details'>
+                <ul>
+                  <li>1000円</li>
+                  <li>
+                    <i class="fa fa-star likeIcon"></i>0
+                  </li>
+                </ul>
+                <p>(税込)</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class='productList'>
+          <a href="/products/1">
+            <figure class='productList--img'>
+              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png" />
+            </figure>
+            <div class='productList--body'>
+              <h3 class='name'>店名3</h3>
+              <div class='details'>
+                <ul>
+                  <li>1000円</li>
+                  <li>
+                  <i class="fa fa-star likeIcon"></i> 1
+                  </li>
+                </ul>
+                <p>(税込)</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 <footer>
+  <div class="attention">
+    <%= link_to '利用規約', '#' %>
+  </div>
   <div class="footer-log">
     <small>©︎ 2020 ASSE</small>
   </div>
+
 </footer>
