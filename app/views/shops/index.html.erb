@@ -1,29 +1,18 @@
 <div class="header">
-  <h1 class="header-title">ランチマップ</h1>
-  <div class="header-search">
-    <%= form_tag('/shops', method: 'get') do %>
-    <%= label_tag(:name_key, '店名:') %>
-    <%= text_field_tag(:name_key) %>
-    <%= submit_tag('Search') %> <%= link_to '検索終了', shops_path %>
-    <% end %>
-  </div>
-  <div class="header-list">
-    <tbody>
-      <% @shops.each do |shop| %>
-        <tr>
-          <td><%= shop.name %></td>
-          <td><%= shop.address %></td>
-          <td><%= link_to '詳細', shop %></td>
-          <td><%= link_to '編集', edit_shop_path(shop) %></td>
-          <td><%= link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+  <div class="headerinline">
+    <h1 class="header-title">ランチマップ</h1>
+    <div class="header-search">
+      <%= form_tag('/shops', method: 'get') do %>
+      <%= label_tag(:name_key, '店名:') %>
+      <%= text_field_tag(:name_key) %>
+      <%= submit_tag('Search') %> <%= link_to '検索終了', shops_path %>
       <% end %>
-    </tbody>
-    <br>
-  <%= link_to '新規投稿', new_shop_path %> <%= link_to 'お店一覧へ', categories_path %>
-</div>  
-    <div class="header-list-box">
-      ログイン
+    </div>
+    <div class="header-list">
+      <div class="header-list-box">
+        <%= link_to '新規投稿', new_shop_path %> <%= link_to 'お店一覧へ', categories_path %> 
+        ログイン
+      </div>
     </div>
   </div> 
 </div>
@@ -31,14 +20,22 @@
   <div calss="fv-section">
     <p class="main-copy">何食べよう？</p>
     <p class="main-text">誘える人かな？</p>
-    <p><%= link_to 'お店一覧', shops_path %><p>
     <p id="notice"><%= notice %></p>
+    <tbody>
+      <% @shops.each do |shop| %>
+        <tr>
+          <td><%= link_to '詳細', shop %></td>
+          <td><%= link_to '編集', edit_shop_path(shop) %></td>
+          <td><%= link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
     <br>
   </div>
   <section class='pickupContainer'>
     <%# <h2 class='head'></h2> %>
     <div class='productBox'>
-      <div class='productHead'>
+      <div class='producBoxt-Head'>
         <h2 class='title'>新規投稿</h2>
       </div>
       <div class='productLists'>
@@ -49,23 +46,17 @@
           </figure>
           <div class='productList--body'>
             <% @shops.each do |shop| %>
-              <div class="content_lists-box">
-                <li>オススメ一言</li>
-                <li><%= shop.name %></li>
-                <li><%= shop.address %></li>
-                <li>値段</li>
+              <h3 class='name'><%= shop.name %></h3>
+              <div class='details'>
+                <ul>
+                  <li>オススメ一言</li>
+                  <li><%= shop.address %></li>
+                  <li>500円</li>
+                  <li><i class="fa fa-star likeIcon"></i></li>
+                </ul>  
+                <p>(税込)</p>
               </div>
             <% end %>  
-            <h3 class='name'>店名１</h3>
-            <div class='details'>
-              <ul>
-                <li>場所</li>
-                <li>ジャンル</li>
-                <li>500円</li>
-                <li><i class="fa fa-star likeIcon"></i></li>
-              </ul>
-              <p>(税込)</p>
-            </div>
           </div>
           </a>
         </div>
@@ -243,8 +234,8 @@
   </section>
   <section class='pickupContainer'>
     <div class='productBox'>
-      <div class='productHead'>
-      <h2 class='title'>オススメ</h2>
+      <div class='productBox-Head'>
+        <h2 class='title'>オススメ</h2>
       </div>
       <div class='productLists'>
         <div class='productList'>
