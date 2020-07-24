@@ -25,3 +25,39 @@
   text-align: center;
 }
 
+.spnewMain {
+  display: flex;
+  justify-content: center;
+}
+
+.format_content {
+  background-color: wheat;
+}
+
+.spnewMain_contents__content {
+  display: flex;
+}
+
+.spnewMain__content__form {
+  margin: 30px;
+}
+
+.spnewMain__content__file__up {
+  justify-content: right;
+}
+
+.spnewMain__content__file {
+  display: flex;
+}
+
+input {
+  height: 30px;
+}
+select {
+  height: 30px;
+
+}
+
+.back {
+  text-align: center;
+}
