@@ -1,15 +1,16 @@
-<div class="spnew">
-  <div class="header">
-    <div class="headerinline">
-      <h1 class="header-title">ランチマップ</h1>
-      <div class="header-list-box"> 
-        ログアウト
-      </div>
+<div class="header">
+  <div class="headerinline">
+    <h1 class="header-title">ランチマップ</h1>
+    <div class="header-list-box"> 
+      ログアウト
     </div>
   </div>
+</div>
+<div class="spnew">
   <div class="spnewMain">
     <div class="format_content">
-    <div class="format-title">お店登録</div>
+    <h2 class="format-title">お店情報修正</h2>
+    <%# 入力されたものを再選択させる %>
       <%= form_with(model: @shop, local: true) do |form| %>
         <div class="spnewMain_contents">
           <div id='map'></div>
@@ -19,7 +20,7 @@
                   <div class="spnewMain__content__file__up">
                     <div class="h3.sell__main__content__file__up__head">
                       場所選択
-                      <style>#map { height: 50px; width: 50px;}</style>
+                      <style>#map { height: 300px; width: 600px;}</style>
                       <script>
                         let map
                         let geocoder
@@ -105,14 +106,23 @@
             </div>
           </div>  
         </div>
-        <div class="actions">
+        <%# <div class="actions">
           <%= form.submit %>
-        </div>
+        <%# </div> %>
       <% end %>
     </div>
     <div class="back">
-      <%= link_to 'Back', shops_path %>
-      <%= link_to 'Show', @shop %>
+      <%= link_to '戻る', shops_path %>
+      <%= link_to '一覧へ', @shop %>
     </div>   
   </div>
 </div>
+<footer>
+  <div class="attention">
+    <%= link_to '利用規約', '#' %>
+  </div>
+  <p>本アプリは社内用です。投稿内容及アカウント情報を外部へ流出が発覚した際には個人情報保護法並びに会社との規約違反となります。</p>
+  <div class="footer-log">
+    <small>©︎ 2020 ASSE</small>
+  </div>
+</footer>

@@ -1,39 +1,23 @@
 .header {
-  height: 32px;
   width: 100vw;
-  padding: 3em;
-  display: flex;
+}
+
+a:hover {
+  color: green($color: #000000);
 }
 
 .headerinline {
   display: flex;
   justify-content: space-between;
-  margin: 32px;
+  margin: 48px;
   height: 90px;
   font-size: 18px;
 }
-//デザインとして残すか//
-// .fv-section {
-//   padding: 30px 250px 0;
-//   border: solid 1px gray;
-//   background-image: url(lunch01.jpg);
-//   background-size: cover;
-//   background-position: center;
-//   z-index: 0;
-//   position: relative;
-// }
 
-// .fv-section::before {
-//   content: '';
-//   position: absolute;
-//   top: -5px;
-//   bottom: -5px;
-//   left: -5px;
-//   right: -5px;
-//   background: inherit;
-//   filter: blur(5px);
-//   z-index: -1;
-// }
+.fv-section {
+  padding: 30px 250px 0;
+  position: relative;
+}
 
 .main-contents {
   margin: 0 auto;
@@ -101,16 +85,30 @@
 }
 
 .spnewMain {
-  display: flex;
+  display: flex; 
   justify-content: center;
 }
 
+.format {
+  filter:drop-shadow(3px 3px 3px rgba(100,100,100,0.6));   
+}
+
+.format-title {
+  text-align: center;
+  padding: 20px;
+}
 .format_content {
   background-color: wheat;
+  border-radius: 25px 25px;
+  font-size: 18px;
 }
 
 .spnewMain_contents__content {
   display: flex;
+}
+
+.spnewMain_contents__content__head {
+  margin: 30px;
 }
 
 .spnewMain__content__form {
@@ -134,6 +132,11 @@ select {
 
 }
 
+.actions {
+  text-align: center;
+}
+
 .back {
+  display: block;
   text-align: center;
 }
