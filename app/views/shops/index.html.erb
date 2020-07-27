@@ -14,23 +14,34 @@
         ログイン
       </div>
     </div>
-  </div> 
+  </div>
+  <p>#タグ検索or#タグ表示</p>
+  <p id="notice"><%= notice %></p>
+  <tbody>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= link_to '詳細', shop %></td>
+        <td><%= link_to '編集', edit_shop_path(shop) %></td>
+        <td><%= link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </div>
-<div class="main"> 
+<div class="main">
   <div class="fv-section">
-    <p class="main-copy">何食べよう？</p>
-    <p class="main-text">誘える人かな？</p>
-    <p id="notice"><%= notice %></p>
-    <tbody>
-      <% @shops.each do |shop| %>
-        <tr>
-          <td><%= link_to '詳細', shop %></td>
-          <td><%= link_to '編集', edit_shop_path(shop) %></td>
-          <td><%= link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-    <br>
+    <p>
+      いつも同じ店になる
+    </p>
+    <p>  
+      気になっているけど入りづらい
+    </p>
+    <p>
+      時間までに戻ってこれるか不安
+    </p>
+    <p>
+      一緒に行く人がいたらいいな
+    </p>
+    <p class="main-copy">地図にランチ情報を埋めて会社オリジナルのランチマップを作りませんか？</p>
   </div>
   <section class='pickupContainer'>
     <%# <h2 class='head'></h2> %>
@@ -49,12 +60,11 @@
               <h3 class='name'><%= shop.name %></h3>
               <div class='details'>
                 <ul>
-                  <li>オススメ一言</li>
-                  <li><%= shop.address %></li>
                   <li>500円</li>
-                  <li><i class="fa fa-star likeIcon"></i></li>
-                </ul>  
+                  <li><%= shop.address %></li>                  
+                </ul> 
                 <p>(税込)</p>
+                <i class="fa fa-star likeIcon">☆
               </div>
             <% end %>  
           </div>
@@ -115,7 +125,7 @@
                   <li>15分</li>
                   <li>900円</li>
                   <li>
-                  <i class="fa fa-star likeIcon"></i> 0
+                  <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>
@@ -135,7 +145,7 @@
                   <li>10分</li>
                   <li>750円</li>
                   <li>
-                    <i class="fa fa-star likeIcon"></i>0
+                    <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>
@@ -155,7 +165,7 @@
                   <li>15分</li>
                   <li>1000円</li>
                   <li>
-                  <i class="fa fa-star likeIcon"></i> 1
+                  <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>
@@ -183,7 +193,7 @@
                 <ul>
                   <li>700円</li>
                   <li>
-                  <i class="fa fa-star likeIcon"></i> 0
+                  <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>
@@ -202,7 +212,7 @@
                 <ul>
                   <li>1000円</li>
                   <li>
-                    <i class="fa fa-star likeIcon"></i>0
+                    <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>
@@ -221,7 +231,7 @@
                 <ul>
                   <li>1000円</li>
                   <li>
-                  <i class="fa fa-star likeIcon"></i> 1
+                  <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>
@@ -249,7 +259,7 @@
                 <ul>
                   <li>700円</li>
                   <li>
-                  <i class="fa fa-star likeIcon"></i> 0
+                  <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>
@@ -268,7 +278,7 @@
                 <ul>
                   <li>1000円</li>
                   <li>
-                    <i class="fa fa-star likeIcon"></i>0
+                    <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>
@@ -287,7 +297,7 @@
                 <ul>
                   <li>1000円</li>
                   <li>
-                  <i class="fa fa-star likeIcon"></i> 1
+                  <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>

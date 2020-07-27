@@ -94,22 +94,30 @@
                         <option value="２">801円〜1080円</option>
                         <option value="３">1081円〜1300円</option>
                       </select>
+                      <br>#タグ、#コスパ良し、#ワンコイン
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <p>コメントエリア</p>
         </div>
-        <%# <div class="actions">
-          <%= form.submit %>
-        <%# </div> %> 
       <% end %>
     </div>
+    <div class="commentBox">
+      <form>
+        <p>コメントエリア</p>
+        <textarea placeholder="（任意、1000文字まで)&#13;ランチに誘うのに使ってください" rows="10" cols="70"></textarea>
+        <div class="subBtn">
+          <input type="submit" value="コメントを送信する">
+        </div>
+      </form>
+    </div>
     <div class="back">
-      <%= link_to '編集', edit_shop_path(@shop) %> |
-      <%= link_to '戻る', shops_path %>
+      <div class="backBox">
+        <%= link_to '編集', edit_shop_path(@shop), class:"editBtn" %> |
+        <%= link_to '戻る', shops_path, class:"backBtn" %>
+      </div>  
     </div>   
   </div>
 </div>

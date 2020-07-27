@@ -6,6 +6,14 @@ a:hover {
   color: green($color: #000000);
 }
 
+a {
+  text-decoration: none;
+  color: salmon;
+  font-size: 24px;
+  // border: solid 2px ;
+  padding: 5px 12px;
+}
+
 .headerinline {
   display: flex;
   justify-content: space-between;
@@ -28,16 +36,20 @@ a:hover {
   background-color: #f8f8f8;
   height: 100%;
 }
+
 .productBox {
   margin: 0;
   padding: 0;
 }
+
 .productBox-Head{
   text-align: center;
 }
+
 .title {
   text-align: center;
 }
+
 .productLists {
   width: 880px;
   margin: 26px auto;
@@ -62,8 +74,8 @@ a:hover {
 
 .productList--body {
   background-color: white;
-    color: #333;
-    padding: 16px;
+  color: #333;
+  padding: 16px;
 }
 
 .details {
@@ -71,13 +83,16 @@ a:hover {
 }
 
 .details ul {
-  display: flex;
+  display: list-item;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .details li{
   list-style: none;
+  float: left;
+  width: 100%-50%;
 }
 
 .footer-log {
@@ -97,6 +112,7 @@ a:hover {
   text-align: center;
   padding: 20px;
 }
+
 .format_content {
   background-color: wheat;
   border-radius: 25px 25px;
@@ -127,16 +143,33 @@ input {
   height: 30px;
 }
 
+.commentBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
 select {
   height: 30px;
-
 }
 
 .actions {
   text-align: center;
 }
 
+.editBtn {
+  background: #FFFF99;
+  font-weight: bold;
+}
+
+.backBox {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 650px;
+  background-color: beige;
+}  
+
 .back {
-  display: block;
   text-align: center;
+  height: 60px;
 }
