@@ -10,7 +10,6 @@ a {
   text-decoration: none;
   color: salmon;
   font-size: 24px;
-  // border: solid 2px ;
   padding: 5px 12px;
 }
 
@@ -83,16 +82,13 @@ a {
 }
 
 .details ul {
-  display: list-item;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
 .details li{
   list-style: none;
-  float: left;
-  width: 100%-50%;
 }
 
 .footer-log {

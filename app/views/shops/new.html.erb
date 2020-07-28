@@ -31,7 +31,7 @@
 
                               map = new google.maps.Map(document.getElementById('map'), {
                                 center: {lat: 35.681236, lng:139.767125},
-                                zoom: 15,
+                                zoom: 18,
                               });
 
                               marker = new google.maps.Marker({
@@ -86,11 +86,25 @@
                           </select>
                         </div>
                         <div class="spnewMain__content__form">
+                          <%= form.label :ジャンル %>
+                          <select class="form-box">
+                            <option hidden>何料理？</option>
+                            <option value="0">和食</option>
+                            <option value="1">アジア料理</option>
+                            <option value="２">ヨーロッパ料理</option>
+                            <option value="３">肉料理</option>
+                            <option value="4">カフェ・スイーツ</option>
+                            <option value="5">ファミレス・ファーストフード</option>
+                            <option value="6">ビュッフェ・バイキング</option>
+                            <option value="7">その他</option>
+                          </select>
+                        </div>
+                        <div class="spnewMain__content__form">
                           <%= form.label :値段 %>
                           <span class="form-require">必須</span>
                           <select class="form-box">
                             <option hidden>平均価格を選択</option>
-                            <option value="0">500円</option>
+                            <option value="0">~500円</option>
                             <option value="1">501円~800円</option>
                             <option value="２">801円〜1080円</option>
                             <option value="３">1081円〜1300円</option>
