@@ -77,17 +77,17 @@
                         <div class="spnewMain__content__form">
                           <%= form.label :所要時間 %>
                           <span class="form-require">必須</span>
-                          <select class="form-box">
-                            <option hidden>片道時間を選択</option>
+                          <%= form.select :arrivaltime,[['5分',0],['10分',1],['15分',2],['20分',4]],{class:"form-box"}%>
+                            <%# <option hidden>片道時間を選択</option>
                             <option value="0">5分</option>
                             <option value="1">10分</option>
                             <option value="２">15分</option>
-                            <option value="３">20分</option>
+                            <option value="３">20分</option> %>
                           </select>
                         </div>
                         <div class="spnewMain__content__form">
                           <%= form.label :ジャンル %>
-                          <select class="form-box">
+                          <select :ganre,class="form-box">
                             <option hidden>何料理？</option>
                             <option value="0">和食</option>
                             <option value="1">アジア料理</option>

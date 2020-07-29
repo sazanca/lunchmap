@@ -37,11 +37,10 @@ a {
 }
 
 .productBox {
-  margin: 0;
-  padding: 0;
+  display: flex;
 }
 
-.productBox-Head{
+.productHead{
   text-align: center;
 }
 
