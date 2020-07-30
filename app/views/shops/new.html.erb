@@ -77,9 +77,9 @@
                         <div class="spnewMain__content__form">
                           <%= form.label :所要時間 %>
                           <span class="form-require">必須</span>
-                          <%= form.select :arrivaltime,[['5分',0],['10分',1],['15分',2],['20分',4]],{class:"form-box"}%>
+                          <%= form.select :arrivaltime,[['5分',0],['10分',1],['15分',2],['20分',3]],{prompt:'片道時間を選択'},{class:"form-box"}%>
                             <%# <option hidden>片道時間を選択</option>
-                            <option value="0">5分</option>
+                            <%# <option value="0">5分</option>
                             <option value="1">10分</option>
                             <option value="２">15分</option>
                             <option value="３">20分</option> %>
@@ -87,27 +87,15 @@
                         </div>
                         <div class="spnewMain__content__form">
                           <%= form.label :ジャンル %>
-                          <select :ganre,class="form-box">
-                            <option hidden>何料理？</option>
-                            <option value="0">和食</option>
-                            <option value="1">アジア料理</option>
-                            <option value="２">ヨーロッパ料理</option>
-                            <option value="３">肉料理</option>
-                            <option value="4">カフェ・スイーツ</option>
-                            <option value="5">ファミレス・ファーストフード</option>
-                            <option value="6">ビュッフェ・バイキング</option>
-                            <option value="7">その他</option>
+                          <span class="form-require">必須</span> 
+                          <%= form.select :ganre,[['和食',1],['アジア料理',2],['ヨーロッパ料理',3],['肉料理',4],['カフェ・スイーツ',5],['ファミレス・ファーストフード',6],['ビュッフェ・バイキング',7],['その他',8]],{prompt:'何料理？'},{class:"form-box"} %>
+                          <%# prompt以外の要素を調べる %>
                           </select>
                         </div>
                         <div class="spnewMain__content__form">
                           <%= form.label :値段 %>
                           <span class="form-require">必須</span>
-                          <select class="form-box">
-                            <option hidden>平均価格を選択</option>
-                            <option value="0">~500円</option>
-                            <option value="1">501円~800円</option>
-                            <option value="２">801円〜1080円</option>
-                            <option value="３">1081円〜1300円</option>
+                          <%= form.collection_select :price, Price.all,:id, :value, prompt:'平均価格を入力してくださ', {class:"form-box"}%>
                           </select>
                         </div>
                         #タグ要素、シーン(一人で軽く、コスパ良し、インスタ映え、ゆっくりできる)

@@ -1,3 +1,5 @@
 class Shop < ApplicationRecord
-  belongs_to :map
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  # belongs_to :map
+  belongs_to_active_hash :price
 end

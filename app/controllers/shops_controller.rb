@@ -45,6 +45,7 @@ class ShopsController < ApplicationController
   # PATCH/PUT /shops/1.json
   def update
     respond_to do |format|
+      shop = Shop.find(params[:id])
       if @shop.update(shop_params)
         format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
         format.json { render :show, status: :ok, location: @shop }
@@ -73,6 +74,6 @@ class ShopsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shop_params
-      params.require(:shop).permit(:name, :address, :arrivaltime, :genre, :price)
+      params.require(:shop).permit(:name, :address, :arrivaltime, :ganre, :price)
     end
 end

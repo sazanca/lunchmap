@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_034810) do
     t.string "name"
     t.string "address"
     t.string "arrivaltime"
-    t.string "genre"
+    t.string "ganre"
     t.string "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
