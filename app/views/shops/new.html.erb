@@ -95,7 +95,7 @@
                         <div class="spnewMain__content__form">
                           <%= form.label :値段 %>
                           <span class="form-require">必須</span>
-                          <%= form.collection_select :price, Price.all,:id, :value, prompt:'平均価格を入力してくださ', {class:"form-box"}%>
+                          <%= form.collection_select :price, Price.all, :id, :value, class:"form-box" %>
                           </select>
                         </div>
                         #タグ要素、シーン(一人で軽く、コスパ良し、インスタ映え、ゆっくりできる)

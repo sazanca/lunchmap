@@ -105,13 +105,17 @@
       <% end %>
     </div>
     <div class="commentBox">
-      <form>
-        <p>コメントエリア</p>
-        <textarea placeholder="（任意、1000文字まで)&#13;ランチに誘うのに使ってください" rows="10" cols="70"></textarea>
-        <div class="subBtn">
-          <input type="submit" value="コメントを送信する">
-        </div>
-      </form>
+      <%# <% if current_user %> %>
+      <%= form_with(model: [@shop, @comment,], local: true) do |form| %>
+        <div class="commentBox_area">
+          <%# <%= form.label :コメントエリア %> %>
+        <%= form.text_area :text, placeholder:"（任意、1000文字まで)&#13;ランチに誘うのに使ってください",row:"10" %>
+        <%= form.submit 'コメントを送信する' %>
+          </div>  
+      <% end %>
+      <%# <% else %> %>
+        <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+      <%# <% end %> %>
     </div>
     <div class="back">
       <div class="backBox">

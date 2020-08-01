@@ -14,6 +14,9 @@ class ShopsController < ApplicationController
   # GET /shops/1
   # GET /shops/1.json
   def show
+    @shop = Shop.find(params[:id])
+    @comment = Comment.new
+    @comment = @shop.comments.includes(:user)
   end
 
   # GET /shops/new

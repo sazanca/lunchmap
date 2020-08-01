@@ -4,6 +4,7 @@ class Price < ActiveHash::Base
     { id: 2, value: '750'},
     { id: 3, value: '900'},
     { id: 4, value: '1200'},
-    { id: 5, value: '1500'}
+    { id: 5, value: '1500'},
+    { id: 6, value: '1800'}
   ]
 end

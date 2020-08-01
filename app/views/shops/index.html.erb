@@ -1,6 +1,6 @@
 <div class="header">
   <div class="headerinline">
-    <h1 class="header-title">ランチマップ</h1>
+    <h1 class="header-title"><%= link_to 'ランチマップ', shops_path %></h1>
     <div class="header-search">
       <%= form_tag('/shops', method: 'get') do %>
       <%= label_tag(:name_key, '店名:') %>
@@ -10,21 +10,29 @@
     </div>
     <div class="header-list">
       <div class="header-list-box">
+        <div class="header-list-box__user">
+          <%= link_to 'ログイン', new_user_session_path, class:"header-list-box__user_log" %>
+          <%= link_to '新規登録', new_user_registration_path, class:"header-list-box__user_new" %>
+        </div>
+        <div class="header-list-box__">
+          <%= link_to 'ログイン', new_user_session_path, class:"header-list-box__user_log" %>
+          <%= link_to '新規登録', new_user_registration_path, class:"header-list-box__user_new" %>
+        </div>
+
         <%= link_to '新規投稿', new_shop_path %> <%= link_to 'お店一覧へ', categories_path %> 
-        ログイン
       </div>
     </div>
   </div>
   <p>#タグ検索or#タグ表示</p>
   <p id="notice"><%= notice %></p>
-  <%# <tbody>
+  <tbody>
     <% @shops.each do |shop| %>
-      <%# <tr>
-        <td><%= link_to '詳細', shop %></td>
-        <%# <td><%= link_to '編集', edit_shop_path(shop) %></td> %>
-        <%# <td><%= link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td> %>
-      </tr> %>
-    <%# <% end %> 
+      <tr>
+        <td><% link_to '詳細', shop %></td>
+        <td><% link_to '編集', edit_shop_path(shop) %></td> 
+        <td><% link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
   </tbody>
 </div>
 <div class="main">
@@ -44,20 +52,21 @@
     <p class="main-copy">地図にランチ情報を埋めて会社オリジナルのランチマップを作りませんか？</p>
   </div>
   <section class='pickupContainer'>
-    <%# <h2 class='head'></h2> %>
+    <h2 class='head'></h2>
     <div class='productBox'>
-    
       <div class='producBoxt-Head'>
         <h2 class='title'>新規投稿</h2>
       </div>
       <% @shops.each do |shop| %>
         <div class='productLists'>
           <div class='productList'>
-            <a href="/products/3"> </a>
+          
+            <%# <a href="/products/3"> </a> %>
             <figure class='productList--img'>
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
             </figure>
             <div class='productList--body'>
+              <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
               <h3 class='name'><%= shop.name %></h3>
               <div class='details'>
                 <ul>
@@ -72,20 +81,20 @@
       <% end %>  
         <div class='productList'>
           <a href="/products/2">
-          <figure class='productList--img'>
-            <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
-          </figure>
-          <div class='productList--body'>
-            <h3 class='name'></h3>
-            <div class='details'>
-              <ul>
-                <li>20000円</li>
-                <li></li>
-                <li><i class="fa fa-star likeIcon"></i></li>☆
-              </ul>
-              <p>(税込)</p>
+            <figure class='productList--img'>
+              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
+            </figure>
+            <div class='productList--body'>
+              <h3 class='name'></h3>
+              <div class='details'>
+                <ul>
+                  <li>20000円</li>
+                  <li></li>
+                  <li><i class="fa fa-star likeIcon"></i></li>☆
+                </ul>
+                <p>(税込)</p>
+              </div>
             </div>
-          </div>
           </a>
         </div>
         <div class='productList'>
