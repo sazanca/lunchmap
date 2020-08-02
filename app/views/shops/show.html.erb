@@ -105,17 +105,26 @@
       <% end %>
     </div>
     <div class="commentBox">
-      <%# <% if current_user %> %>
-      <%= form_with(model: [@shop, @comment,], local: true) do |form| %>
-        <div class="commentBox_area">
-          <%# <%= form.label :コメントエリア %> %>
-        <%= form.text_area :text, placeholder:"（任意、1000文字まで)&#13;ランチに誘うのに使ってください",row:"10" %>
-        <%= form.submit 'コメントを送信する' %>
-          </div>  
-      <% end %>
-      <%# <% else %> %>
+      <% if current_user %>
+        <%= form_with(model: [@shop, @comment], local: true) do |form| %>
+          <%= form.label :コメントエリア %>
+          <%= form.text_area :text, placeholder:"（任意、1000文字まで)&#13;ランチに誘うのに使ってください",row:"10" %>
+          <%= form.submit 'コメントを送信する' %>
+        <% end %>
+      <% else %>
         <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
-      <%# <% end %> %>
+      <% end %>
+      <div class="commentBox_area">
+        <h4>＜コメント一覧＞</h4>
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <p>
+              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+              <%= comment.text %>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="back">
       <div class="backBox">

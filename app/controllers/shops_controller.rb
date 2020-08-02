@@ -16,7 +16,7 @@ class ShopsController < ApplicationController
   def show
     @shop = Shop.find(params[:id])
     @comment = Comment.new
-    @comment = @shop.comments.includes(:user)
+    @comments = @shop.comments.includes(:user)
   end
 
   # GET /shops/new
