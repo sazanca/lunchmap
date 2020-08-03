@@ -1,40 +1,13 @@
-<div class="header">
-  <div class="headerinline">
-    <h1 class="header-title"><%= link_to 'ランチマップ', shops_path %></h1>
-    <div class="header-search">
-      <%= form_tag('/shops', method: 'get') do %>
-      <%= label_tag(:name_key, '店名:') %>
-      <%= text_field_tag(:name_key) %>
-      <%= submit_tag('Search') %> <%= link_to '検索終了', shops_path %>
-      <% end %>
-    </div>
-    <div class="header-list">
-      <div class="header-list-box">
-        <div class="header-list-box__user">
-          <% if user_signed_in? %>
-            <%= link_to '新規投稿', new_shop_path, class: "header__right--btn" %> 
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header__right--btn" %>
-          <% else %>
-            <%= link_to 'ログイン', new_user_session_path, class:"header__right--btn" %>
-            <%= link_to '新規登録', new_user_registration_path, class:"header__right--btn" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p>#タグ検索or#タグ表示</p>
-  <p id="notice"><%= notice %></p>
+<div class="main">
   <tbody>
     <% @shops.each do |shop| %>
-      <tr>
+      <tr> 
         <td><% link_to '詳細', shop %></td>
-        <td><% link_to '編集', edit_shop_path(shop) %></td> 
+        <td><% link_to '編集', edit_shop_path(shop) %></td>  
         <td><% link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      </tr> 
     <% end %>
   </tbody>
-</div>
-<div class="main">
   <div class="fv-section">
     <p>
       いつも同じ店になる

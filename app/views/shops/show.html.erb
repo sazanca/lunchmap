@@ -1,12 +1,4 @@
 <div class="spnew">
-  <div class="header">
-    <div class="headerinline">
-      <h1 class="header-title">ランチマップ</h1>
-      <div class="header-list-box"> 
-        ログアウト
-      </div>
-    </div>
-  </div>
   <div class="spnewMain">
     <div class="format_content">
     <h2 class="format-title">お店情報詳細</h2>
@@ -104,11 +96,17 @@
         </div>
       <% end %>
     </div>
+    <div class="back">
+      <div class="backBox">
+        <%= link_to '編集', edit_shop_path(@shop), class:"editBtn" %> |
+        <%= link_to '戻る', shops_path, class:"backBtn" %>
+      </div>  
+    </div>   
     <div class="commentBox">
       <% if current_user %>
         <%= form_with(model: [@shop, @comment], local: true) do |form| %>
           <%= form.label :コメントエリア %>
-          <%= form.text_area :text, placeholder:"（任意、1000文字まで)&#13;ランチに誘うのに使ってください",row:"10" %>
+          <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
           <%= form.submit 'コメントを送信する' %>
         <% end %>
       <% else %>
@@ -126,11 +124,5 @@
         <% end %>
       </div>
     </div>
-    <div class="back">
-      <div class="backBox">
-        <%= link_to '編集', edit_shop_path(@shop), class:"editBtn" %> |
-        <%= link_to '戻る', shops_path, class:"backBtn" %>
-      </div>  
-    </div>   
   </div>
 </div>

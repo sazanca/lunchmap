@@ -1,0 +1,30 @@
+<div class="header">
+  <div class="headerinline">
+    <h1 class="header-title"><%= link_to 'ランチマップ', shops_path %></h1>
+    <div class="header-search">
+      <%= form_tag('/shops', method: 'get') do %>
+      <%= label_tag(:name_key, '店名:') %>
+      <%= text_field_tag(:name_key) %>
+      <%= submit_tag('Search') %> <%= link_to '検索終了', shops_path %>
+      <% end %>
+    </div>
+    <div class="header-list">
+      <div class="header-list-box">
+        <div class="header-list-box__user">
+          <% if user_signed_in? %>
+            <%# <%= image_tag current_user.avatar_url  あとでアイコン追加 %>
+            <%= current_user.nickname %>
+            <%= link_to '新規投稿', new_shop_path, class: "header__right--btn" %> 
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header__right--btn" %>
+          <% else %>
+            <%= link_to 'ログイン', new_user_session_path, class:"header__right--btn" %>
+            <%= link_to '新規登録', new_user_registration_path, class:"header__right--btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>#タグ検索or#タグ表示</p>
+  <p id="notice"><%= notice %></p>
+  
+</div>

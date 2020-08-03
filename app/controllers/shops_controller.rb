@@ -32,7 +32,6 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = Shop.new(shop_params)
-
     respond_to do |format|
       if @shop.save
         format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
@@ -70,13 +69,13 @@ class ShopsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shop
-      @shop = Shop.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_shop
+    @shop = Shop.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def shop_params
-      params.require(:shop).permit(:name, :address, :arrivaltime, :ganre, :price)
-    end
+  # Only allow a list of trusted parameters through.
+  def shop_params
+    params.require(:shop).permit(:name, :address, :arrivaltime, :ganre, :price, :text).merge(user_id: current_user.id)
+  end
 end
