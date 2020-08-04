@@ -66,41 +66,35 @@
                       <%# <%= form.text_field :address, placeholder: "場所を選び直す？"%> 
                     </div>
                     <div class="spnewMain__content__form">
-                      <%= form.label :所要時間 %>
-                      <span class="form-require"></span>
-                      <select class="form-box">
-                        <option hidden>入力された片道時間を表示</option>
-                        <option value="0">5分</option>
-                        <option value="1">10分</option>
-                        <option value="２">15分</option>
-                        <option value="３">20分</option>
-                      </select>
+                      <tr>
+                        <th><%= form.label :所要時間 %></th>
+                        <td><%= Arrivaltime.find(@shop.arrivaltime).time %></td>分
+                      </tr>
                     </div>
                     <div class="spnewMain__content__form">
-                      <%= form.label :値段 %>
-                      <span class="form-require">必須</span>
-                      <select class="form-box">
-                        <option hidden>入力された価格を表示</option>
-                        <option value="0">500円</option>
-                        <option value="1">501円~800円</option>
-                        <option value="２">801円〜1080円</option>
-                        <option value="３">1081円〜1300円</option>
-                      </select>
-                      <br>#タグ、#コスパ良し、#ワンコイン
+                      <tr>
+                        <th><%= form.label :値段 %></th>
+                        <td><%= Price.find(@shop.price).value %></td>円
+                      </tr>  
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <br>#タグ、#コスパ良し、#ワンコイン
         </div>
       <% end %>
     </div>
     <div class="back">
-      <div class="backBox">
-        <%= link_to '編集', edit_shop_path(@shop), class:"editBtn" %> |
-        <%= link_to '戻る', shops_path, class:"backBtn" %>
-      </div>  
+      <% if user_signed_in? && current_user.id == @shop.user_id %>
+        <div class="backBox">
+          <%= link_to '編集', edit_shop_path(@shop), class:"editBtn" %> |
+          <%= link_to "削除", "/shops/#{@shop.id}", method: :delete %>
+        </div>
+        <% else %>
+          <%= link_to '戻る', shops_path, class:"backBtn" %>
+      <% end %>  
     </div>   
     <div class="commentBox">
       <% if current_user %>

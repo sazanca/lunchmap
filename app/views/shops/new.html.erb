@@ -69,7 +69,7 @@
                         <div class="spnewMain__content__form">
                           <%= form.label :所要時間 %>
                           <span class="form-require">必須</span>
-                          <%= form.select :arrivaltime,[['5分',0],['10分',1],['15分',2],['20分',3]],{prompt:'片道時間を選択'},{class:"form-box"}%>
+                          <%= form.collection_select :arrivaltime, Arrivaltime.all, :id, :time, prompt:'片道時間を選択',class:"form-box" %>
                             <%# <option hidden>片道時間を選択</option>
                             <%# <option value="0">5分</option>
                             <option value="1">10分</option>
