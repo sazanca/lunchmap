@@ -9,6 +9,9 @@ class ShopsController < ApplicationController
     else
       @shops = Shop.all
     end
+    if params[:tag_name]
+      @tags = Tag.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   # GET /shops/1
@@ -21,7 +24,9 @@ class ShopsController < ApplicationController
 
   # GET /shops/new
   def new
+    binding.pry
     @shop = Shop.new
+    @shop.tag.new
   end
 
   # GET /shops/1/edit
@@ -32,6 +37,7 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = Shop.new(shop_params)
+    @shop.tag.new(tag_params)
     respond_to do |format|
       if @shop.save
         format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
@@ -67,13 +73,18 @@ class ShopsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_shop
     @shop = Shop.find(params[:id])
   end
-
+  
+  def tag_params
+    params.require(:tag).permit(:name, :description, :tag_list)
+    #tag_list を追加
+  end
+  
   # Only allow a list of trusted parameters through.
   def shop_params
     params.require(:shop).permit(:name, :address, :arrivaltime, :ganre, :price, :text).merge(user_id: current_user.id)

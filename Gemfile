@@ -55,3 +55,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry-rails'
 gem 'active_hash'
 gem 'devise'
+gem 'acts-as-taggable-on', '6.5.0'

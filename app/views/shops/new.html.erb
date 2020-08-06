@@ -70,27 +70,19 @@
                           <%= form.label :所要時間 %>
                           <span class="form-require">必須</span>
                           <%= form.collection_select :arrivaltime, Arrivaltime.all, :id, :time, prompt:'片道時間を選択',class:"form-box" %>
-                            <%# <option hidden>片道時間を選択</option>
-                            <%# <option value="0">5分</option>
-                            <option value="1">10分</option>
-                            <option value="２">15分</option>
-                            <option value="３">20分</option> %>
-                          </select>
                         </div>
                         <div class="spnewMain__content__form">
                           <%= form.label :ジャンル %>
                           <span class="form-require">必須</span> 
                           <%= form.select :ganre,[['和食',1],['アジア料理',2],['ヨーロッパ料理',3],['肉料理',4],['カフェ・スイーツ',5],['ファミレス・ファーストフード',6],['ビュッフェ・バイキング',7],['その他',8]],{prompt:'何料理？'},{class:"form-box"} %>
                           <%# prompt以外の要素を調べる %>
-                          </select>
                         </div>
                         <div class="spnewMain__content__form">
                           <%= form.label :値段 %>
                           <span class="form-require">必須</span>
                           <%= form.collection_select :price, Price.all, :id, :value, class:"form-box" %>
-                          </select>
                         </div>
-                        #タグ要素、シーン(一人で軽く、コスパ良し、インスタ映え、ゆっくりできる)
+                        <%= link_to 'タグ付け',new_shop_tag_path(@tag) %>
                       </div>
                     </div>
                   </div>
@@ -107,5 +99,6 @@
         </div>  
       </div>  
     </div>
+    <%= render partial:'tags/form' %>
   </div>
 </div>
