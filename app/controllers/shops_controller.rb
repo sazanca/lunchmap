@@ -4,14 +4,15 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
+    # @tags = Shop.tag_counts_on(:tags).order('count DESC')
     if params[:name_key]
       @shops = Shop.where('name LIKE ?', "%#{params[:name_key]}%")
     else
       @shops = Shop.all
     end
-    if params[:tag_name]
-      @tags = Tag.tagged_with("#{params[:tag_name]}")
-    end
+    # if params[:tag_name]
+    #   @tags = Tag.tagged_with("#{params[:tag_name]}")
+    # end
   end
 
   # GET /shops/1
@@ -20,13 +21,12 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @comment = Comment.new
     @comments = @shop.comments.includes(:user)
+    # @tags = @shop.tags.includes(:shop)
   end
 
   # GET /shops/new
   def new
-    binding.pry
     @shop = Shop.new
-    @shop.tag.new
   end
 
   # GET /shops/1/edit
@@ -37,7 +37,6 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = Shop.new(shop_params)
-    @shop.tag.new(tag_params)
     respond_to do |format|
       if @shop.save
         format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
@@ -80,13 +79,13 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
   end
   
-  def tag_params
-    params.require(:tag).permit(:name, :description, :tag_list)
-    #tag_list を追加
-  end
+  # def tag_params
+  #   params.require(:shop).permit(:name, :tag_list)
+  #   #tag_list を追加
+  # end
   
   # Only allow a list of trusted parameters through.
   def shop_params
-    params.require(:shop).permit(:name, :address, :arrivaltime, :ganre, :price, :text).merge(user_id: current_user.id)
+    params.require(:shop).permit(:name, :address, :arrivaltime, :ganre, :price, :text, :tag_list).merge(user_id: current_user.id)
   end
 end

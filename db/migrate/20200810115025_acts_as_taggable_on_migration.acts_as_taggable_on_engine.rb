@@ -8,7 +8,6 @@ ActsAsTaggableOnMigration.class_eval do
   def self.up
     create_table :tags do |t|
       t.string :name
-      t.references :shop, foreign_key: true
     end
 
     create_table :taggings do |t|

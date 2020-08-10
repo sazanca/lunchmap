@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_145454) do
+ActiveRecord::Schema.define(version: 2020_08_10_115030) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2020_08_05_145454) do
     t.string "arrivaltime"
     t.string "ganre"
     t.string "price"
-    t.string "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
@@ -62,7 +61,6 @@ ActiveRecord::Schema.define(version: 2020_08_05_145454) do
 
   create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", collation: "utf8_bin"
-    t.integer "shop_id"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end

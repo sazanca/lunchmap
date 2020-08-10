@@ -32,21 +32,18 @@
       <% @shops.each do |shop| %>
         <div class='productLists'>
           <div class='productList'>
-          
-            <%# <a href="/products/3"> </a> %>
             <figure class='productList--img'>
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
             </figure>
             <div class='productList--body'>
               <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
               <h3 class='name'><%= shop.name %></h3>
-              <div class='details'>
-                <ul>
-                  <li>500円</li>
-                  <li><%= shop.address %></li>
-                  <li><i class="fa fa-star likeIcon"></i></li>☆                  
-                </ul> 
-              </div>
+                <div class='details'>
+                  <ul>
+                    <li><%= shop.price %>円</li>
+                    <li><i class="fa fa-star likeIcon"></i></li>☆                  
+                  </ul> 
+                </div>
             </div>
           </div>  
         </div>

@@ -1,7 +1,7 @@
 <div class="spnew">
   <div class="spnewMain">
     <div class="format_content">
-    <h2 class="format-title">お店情報詳細</h2>
+      <h2 class="format-title">お店情報詳細</h2>
       <%= form_with(model: @shop, local: true) do |form| %>
         <div class="spnewMain_contents">
           <div id='map'></div>
@@ -53,38 +53,50 @@
                     </div>
                     <div class="spnewMain__content__form">
                       <strong>店名:</strong>
-                      <%# <%= form.label :店名 %>
                       <span class="form-require"></span>
                       <%= @shop.name %>
-                      <%# <%= form.text_field :name, placeholder: "名前は？" %>
                     </div>
                     <div class="spnewMain__content__form">
                       <strong>場所:</strong>
-                      <%# <%= form.label :住所 %>
                       <span class="form-require"></span>
                       <%= @shop.address %>
-                      <%# <%= form.text_field :address, placeholder: "場所を選び直す？"%> 
                     </div>
                     <div class="spnewMain__content__form">
                       <tr>
-                        <th><%= form.label :所要時間 %></th>
-                        <td><%= Arrivaltime.find(@shop.arrivaltime).time %></td>分
+                        <td><%= form.label :所要時間 %></td>
+                        <th><%= Arrivaltime.find(@shop.arrivaltime).value %>分</th>
                       </tr>
                     </div>
                     <div class="spnewMain__content__form">
                       <tr>
-                        <th><%= form.label :値段 %></th>
-                        <td><%= Price.find(@shop.price).value %></td>円
+                        <td><%= form.label :値段 %></td>
+                        <th><%= Price.find(@shop.price).value %>円</th>
                       </tr>  
                     </div>
+                    <div class="tagbox">
+                      <% if tag %>
+                        <% @shop.tags.each do |tag| %>
+                          <div id="tag-#{tag.id}" >            
+                            <%= link_to "##{tag}","/tags/#{tag.name}" %>
+                            <%# <%= tag.created_at %>
+                            <%# <%= render 'shop/tag_list', tag_list: shop.tag_list %> 
+                            <%# <%= link_to '編集', edit_shop_tag_path(@shop.id), class: 'btn btn-primary mr-3' %> 
+                            <%# <%= link_to '削除', "/shops/#{@tag.id,shop_id}" , method: :delete, remote: true, data: {confirm: "タスク「#{tag.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete', id: "delete_link_#{tag.id}" %> 
+                          </div>
+                        <% end %>
+                      <% else %>
+                        <p>#タグ表示欄を追加</p>
+                        <%= link_to 'タグ追加', '#' %>
+                      <% end %>
+                    </div>      
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <br>#タグ、#コスパ良し、#ワンコイン
         </div>
       <% end %>
+      
     </div>
     <div class="back">
       <% if user_signed_in? && current_user.id == @shop.user_id %>

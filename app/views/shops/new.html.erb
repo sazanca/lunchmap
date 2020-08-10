@@ -69,7 +69,7 @@
                         <div class="spnewMain__content__form">
                           <%= form.label :所要時間 %>
                           <span class="form-require">必須</span>
-                          <%= form.collection_select :arrivaltime, Arrivaltime.all, :id, :time, prompt:'片道時間を選択',class:"form-box" %>
+                          <%= form.collection_select :arrivaltime, Arrivaltime.all, :id, :value, prompt:'片道時間を選択',class:"form-box" %>
                         </div>
                         <div class="spnewMain__content__form">
                           <%= form.label :ジャンル %>
@@ -80,10 +80,13 @@
                         <div class="spnewMain__content__form">
                           <%= form.label :値段 %>
                           <span class="form-require">必須</span>
-                          <%= form.collection_select :price, Price.all, :id, :value, class:"form-box" %>
+                          <%= form.collection_select :price, Price.all, :id, :value, include_blank: "平均価格", class:"form-box" %>
                         </div>
-                        <%= link_to 'タグ付け',new_shop_tag_path(@tag) %>
                       </div>
+                    <div class="form-contents__tag" >
+                      <%= form.label :タグリスト %>
+                      <span class="form-require">必須</span> 
+                      <%= form.text_field :tag_list, value: @shop.tag_list.join(","), class: "form-control", placeholder: '例）ワンコイン,並ばない' %>
                     </div>
                   </div>
                 </div>
@@ -96,9 +99,9 @@
                </div>     
             </div>
           <% end %>
-        </div>  
+        </div>
       </div>  
     </div>
-    <%= render partial:'tags/form' %>
+    <%# <%= render partial:'tags/form' %> %>
   </div>
 </div>

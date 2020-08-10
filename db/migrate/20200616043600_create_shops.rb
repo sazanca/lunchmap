@@ -6,7 +6,6 @@ class CreateShops < ActiveRecord::Migration[6.0]
       t.string :arrivaltime
       t.string :ganre
       t.string :price
-      t.text :tag
       t.timestamps
     end
   end

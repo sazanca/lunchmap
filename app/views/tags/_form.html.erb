@@ -1,24 +1,19 @@
-<%= form_with(model: @tag, local: true) do |f| %>
+<%# <%= form_with(model: @shop, local: true) do |f| %>
 
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control', id: 'tag_name' %>
   </div>
 
-  <div class="form-group">
+  <%# <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description, rows: 5, class: 'form-control', id: 'tag_description' %>
+    <%# <%= f.text_area :description, rows: 5, class: 'form-control', id: 'tag_description' %> %>
     <%# //タグ入力フォームを追加// %>
-  </div>
+  <%# </div> %> %>
 
-  <%# <div class="form-group" >
-    <%= f.label :tag_list %>
-    <%# <%= f.text_field :tag_list, value: @tag.tag_list.join(','), class: "form-control" %>
-  <%# </div> %> 
-
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image, class: 'form-control' %>
-  </div> 
+  <div class="form-group" >
+    <%# <%= f.label :tag_list %>
+    <%# <%= f.text_field :tag_list, value: @tag.tag_list.join(','), class: "form-control" %> %>
+  </div>  %>
   <%= f.submit nil, class: 'btn btn-primary' %>
-<% end %>
+<% end %> %>

@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root "shops#index"
   resources :shops do
     resources :comments, only: :create
-    resources :tag
   end
   
   resources :users, only: :show
