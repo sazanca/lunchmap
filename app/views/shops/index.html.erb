@@ -1,14 +1,16 @@
 <div class="main">
   <tbody>
-    <% @shops.each do |shop| %>
-      <tr> 
-        <td><% link_to '詳細', shop %></td>
-        <td><% link_to '編集', edit_shop_path(shop) %></td>  
-        <td><% link_to '削除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr> 
+    <p>タグリスト</p>
+    <% @tags.each do |tag| %>
+      <%= link_to tag.name, shops_path(:action => :tag, :tag => tag.name) %>
     <% end %>
   </tbody>
-  <div class="fv-section">
+    <div class="tag_saerch">
+      <% @shops.each do |tag_list| %>
+        <%= link_to tag, shops_path(@shop,tag_name: tag) %> %>
+      <% end %>
+    </div>
+  <div class="fv-sectio">
     <p>
       いつも同じ店になる
     </p>

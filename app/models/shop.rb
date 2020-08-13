@@ -4,7 +4,7 @@ class Shop < ApplicationRecord
   # belongs_to_active_hash :onetime
   
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :comments
   acts_as_taggable
   # acts_as_taggable_on :skills, :interests

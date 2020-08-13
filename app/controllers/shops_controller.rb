@@ -4,14 +4,17 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
-    # @tags = Shop.tag_counts_on(:tags).order('count DESC')
+    # @tag = params[:tag]
+    # @shops = Shop.tagged_with("#{params[:tag]}")
+    @shops = Shop.all.order('created_at DESC')
+    @tags = Shop.tag_counts_on(:tags)
     if params[:name_key]
       @shops = Shop.where('name LIKE ?', "%#{params[:name_key]}%")
     else
       @shops = Shop.all
     end
-    # if params[:tag_name]
-    #   @tags = Tag.tagged_with("#{params[:tag_name]}")
+    # if params[:tag_list]
+    #   @tags = Shop.tagged_with("#{params[:tag_list]}")
     # end
   end
 
@@ -21,7 +24,6 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @comment = Comment.new
     @comments = @shop.comments.includes(:user)
-    # @tags = @shop.tags.includes(:shop)
   end
 
   # GET /shops/new
@@ -78,11 +80,6 @@ class ShopsController < ApplicationController
   def set_shop
     @shop = Shop.find(params[:id])
   end
-  
-  # def tag_params
-  #   params.require(:shop).permit(:name, :tag_list)
-  #   #tag_list を追加
-  # end
   
   # Only allow a list of trusted parameters through.
   def shop_params
