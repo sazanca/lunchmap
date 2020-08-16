@@ -13,9 +13,10 @@ class ShopsController < ApplicationController
     else
       @shops = Shop.all
     end
-    # if params[:tag_list]
-    #   @tags = Shop.tagged_with("#{params[:tag_list]}")
-    # end
+    @shops = Shop.includes(:user,:tags)
+    if params[:tag_name]
+      @shops = Shop.tagged_with("##{params[:tag_name]}")
+    end
   end
 
   # GET /shops/1
@@ -33,6 +34,7 @@ class ShopsController < ApplicationController
 
   # GET /shops/1/edit
   def edit
+    @shop = Shop.find(params[:id])
   end
 
   # POST /shops

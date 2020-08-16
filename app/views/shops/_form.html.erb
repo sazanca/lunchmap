@@ -20,7 +20,12 @@
     <%= f.label :address %>
     <%= f.text_field :address %>
   </div>
- 
+
+  <div class="field">
+    <%= f.label :平均価格 %>
+    <%= f.text_field :price %>
+  </div>
+
   <div class="field"> 
     <%= f.label :所要時間 %>
     <select>
@@ -30,6 +35,7 @@
       <option value="３">20分</option>
     </select>
   </div>
+
 
   <div class="actions">
     <%= f.submit %>

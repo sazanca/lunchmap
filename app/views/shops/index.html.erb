@@ -6,9 +6,9 @@
     <% end %>
   </tbody>
     <div class="tag_saerch">
-      <% @shops.each do |tag_list| %>
-        <%= link_to tag, shops_path(@shop,tag_name: tag) %> %>
-      <% end %>
+      <%# <% @shops.each do |tag_list| %>
+        <%# <%= link_to tag, shops_path(@shop,tag_name: tag) %>
+      <%# <% end %>
     </div>
   <div class="fv-sectio">
     <p>
@@ -31,60 +31,26 @@
       <div class='producBoxt-Head'>
         <h2 class='title'>新規投稿</h2>
       </div>
-      <% @shops.each do |shop| %>
-        <div class='productLists'>
+      <div class='productLists'>
+        <% @shops.each do |shop| %>
           <div class='productList'>
             <figure class='productList--img'>
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
             </figure>
             <div class='productList--body'>
-              <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
               <h3 class='name'><%= shop.name %></h3>
-                <div class='details'>
-                  <ul>
-                    <li><%= shop.price %>円</li>
-                    <li><i class="fa fa-star likeIcon"></i></li>☆                  
-                  </ul> 
-                </div>
+              <div class='details'>
+                <ul>
+                  <li><%= shop.price%>円</li>
+                  <li><p>タグ</p></li>
+                  <li><%= render 'tags/tag_list' , {tag_list: shop.tag_list} %></li>
+                  <li><i class="fa fa-star likeIcon"></i></li>☆                  
+                </ul> 
+                <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
+              </div>
             </div>
           </div>  
-        </div>
-      <% end %>  
-        <div class='productList'>
-          <a href="/products/2">
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'></h3>
-              <div class='details'>
-                <ul>
-                  <li>20000円</li>
-                  <li></li>
-                  <li><i class="fa fa-star likeIcon"></i></li>☆
-                </ul>
-                <p>(税込)</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class='productList'>
-          <a href="/products/1">
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'>店名3</h3>
-              <div class='details'>
-                <ul>
-                  <li>10000円</li>
-                  <li><i class="fa fa-star likeIcon"></i></li>
-                </ul>
-                <p>(税込)</p>
-              </div>
-            </div>
-          </a>
-        </div>
+        <% end %>   
       </div>
     </div>  
   </section>
@@ -94,66 +60,26 @@
         <h2 class='title'>店までの距離</h2>
       </div>
       <div class='productLists'>
-        <div class='productList'>
-          <a href="/products/3">
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'>店名1</h3>
-              <div class='details'>
-                <ul>
-                  <li>15分</li>
-                  <li>900円</li>
-                  <li>
-                  <i class="fa fa-star likeIcon"></i>☆
-                  </li>
-                </ul>
-                <p>(税込)</p>
+        <% @shops.each do |shop| %>
+          <div class='productList'>
+            <a href="/products/3">
+              <figure class='productList--img'>
+                <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
+              </figure>
+              <div class='productList--body'>
+                <h3 class='name'><%= shop.name %></h3>
+                <div class='details'>
+                  <ul>
+                    <li><%= shop.arrivaltime %></li>
+                    <li><i class="fa fa-star likeIcon"></i>☆</li>
+                  </ul>
+                  <p>(税込)</p>
+                </div>
+                <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
               </div>
-            </div>
-          </a>
-        </div>
-        <div class='productList'>
-          <a href="/products/2">
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'>店名2</h3>
-              <div class='details'>
-                <ul>
-                  <li>10分</li>
-                  <li>750円</li>
-                  <li>
-                    <i class="fa fa-star likeIcon"></i>☆
-                  </li>
-                </ul>
-                <p>(税込)</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class='productList'>
-          <a href="/products/1">
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'>product1</h3>
-              <div class='details'>
-                <ul>
-                  <li>15分</li>
-                  <li>1000円</li>
-                  <li>
-                  <i class="fa fa-star likeIcon"></i>☆
-                  </li>
-                </ul>
-                <p>(税込)</p>
-              </div>
-            </div>
-          </a>
-        </div>
+            </a>
+          </div>
+        <% end %>
       </div>
     </div>
   </section>
@@ -163,63 +89,26 @@
         <h2 class='title'>値段</h2>
       </div>
       <div class='productLists'>
-        <div class='productList'>
-          <a href="/products/3">
+        <% @shops.each do |shop| %>
+          <div class='productList'>
             <figure class='productList--img'>
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
             </figure>
             <div class='productList--body'>
-              <h3 class='name'>店名1</h3>
+              <h3 class='name'>店名:<%= shop.name %></h3>
               <div class='details'>
                 <ul>
-                  <li>700円</li>
-                  <li>
+                  <li><%= shop.price %>円</li>
+                  <li><%= shop.arrivaltime %>分</li>
                   <i class="fa fa-star likeIcon"></i>☆
                   </li>
                 </ul>
                 <p>(税込)</p>
               </div>
+              <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
             </div>
-          </a>
-        </div>
-        <div class='productList'>
-          <a href="/products/2">
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'>店名２</h3>
-              <div class='details'>
-                <ul>
-                  <li>1000円</li>
-                  <li>
-                    <i class="fa fa-star likeIcon"></i>☆
-                  </li>
-                </ul>
-                <p>(税込)</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class='productList'>
-          <a href="/products/1">
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'>店名3</h3>
-              <div class='details'>
-                <ul>
-                  <li>1000円</li>
-                  <li>
-                  <i class="fa fa-star likeIcon"></i>☆
-                  </li>
-                </ul>
-                <p>(税込)</p>
-              </div>
-            </div>
-          </a>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </section>
@@ -229,72 +118,34 @@
         <h2 class='title'>オススメ</h2>
       </div>
       <div class='productLists'>
-        <div class='productList'>
-          <a href="/products/3">
+        <% @shops.each do |shop| %>
+          <div class='productList'>
             <figure class='productList--img'>
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
             </figure>
             <div class='productList--body'>
-              <h3 class='name'>店名1</h3>
+              <h3 class='name'><%= shop.name %></h3>
               <div class='details'>
                 <ul>
-                  <li>700円</li>
-                  <li>
-                  <i class="fa fa-star likeIcon"></i>☆
-                  </li>
-                </ul>
-                <p>(税込)</p>
+                  <li><%= shop.price%>円</li>
+                  <li><p>タグ</p></li>
+                  <li><%= render 'tags/tag_list' , {tag_list: shop.tag_list} %></li>
+                  <li><i class="fa fa-star likeIcon"></i></li>☆                  
+                </ul> 
+                <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
               </div>
             </div>
-          </a>
-        </div>
-        <div class='productList'>
-          <a href="/products/2">
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'>店名２</h3>
-              <div class='details'>
-                <ul>
-                  <li>1000円</li>
-                  <li>
-                    <i class="fa fa-star likeIcon"></i>☆
-                  </li>
-                </ul>
-                <p>(税込)</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class='productList'>
-          <a href="/products/1">
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'>店名3</h3>
-              <div class='details'>
-                <ul>
-                  <li>1000円</li>
-                  <li>
-                  <i class="fa fa-star likeIcon"></i>☆
-                  </li>
-                </ul>
-                <p>(税込)</p>
-              </div>
-            </div>
-          </a>
-        </div>
+          </div>  
+        <% end %>   
       </div>
     </div>
   </section>
 </div>
-<footer>
-  <div class="attention">
-    <%= link_to '利用規約', '#' %>
-  </div>
+<%= render "footer"%>
+  <%# <div class="attention">
+    <%= link_to '利用規約','/users/module/rule' %>
+  <%# </div>
   <div class="footer-log">
     <small>©︎ 2020 ASSE</small>
-  </div>
-</footer>
+  </div> %>
+
