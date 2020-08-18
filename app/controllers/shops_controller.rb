@@ -17,7 +17,12 @@ class ShopsController < ApplicationController
     if params[:tag_name]
       @shops = Shop.tagged_with("##{params[:tag_name]}")
     end
+    
+    def rule
+    end
   end
+
+  
 
   # GET /shops/1
   # GET /shops/1.json
