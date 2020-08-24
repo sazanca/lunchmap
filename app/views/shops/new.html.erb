@@ -3,86 +3,224 @@
     <div class="format">
       <div class="format_content">
         <h2 class="format-title">お店登録</h2>
-          <%= form_with(model: @shop, local: true) do |form| %>
-            <div class="spnewMain_contents">
-              <div id='map'></div>
-                <div class="spnewMain_contents__content">
-                  <div class="spnewMain_contents__content__head">
-                    <div class="spnewMain__content__file">
-                      <div class="spnewMain__content__file__up">
-                        <div class="h3.sell__main__content__file__up__head">
-                          地図から選ぶ
-                          <style>#map { height: 600px;width: 800px;}</style>
-                          <script>
-                            let map
-                            let geocoder
-                            const display = document.getElementById('display')
+        <%= form_with(model: @shop, local: true) do |form| %>
+          <div class="spnewMain_contents">
+            <div id='map'></div>
+            <div class="spnewMain_contents__content">
+              <div class="spnewMain_contents__content__head">
+                <div class="spnewMain__content__file">
+                  <div class="spnewMain__content__file__up">
+                    <div class="h3.sell__main__content__file__up__head">
+                      地図から選ぶ
+                      <script>
+                        let map
+                        let geocoder
+                        const display = document.getElementById('display')
 
-                            function initMap(){
-                              geocoder = new google.maps.Geocoder()
+                        function initMap(){
+                          geocoder = new google.maps.Geocoder()
 
-                              map = new google.maps.Map(document.getElementById('map'), {
-                                center: {lat: 35.681236, lng:139.767125},
-                                zoom: 18,
-                              });
+                          map = new google.maps.Map(document.getElementById('map'), {
+                            center: {lat: 35.681236, lng:139.767125},
+                            zoom: 18,
+                          });
 
-                              marker = new google.maps.Marker({
-                                position:  {lat: 35.681236, lng:139.767125},
-                                map: map
-                              });
+                          marker = new google.maps.Marker({
+                            position:  {lat: 35.681236, lng:139.767125},
+                            map: map
+                          });
+                        }
+                      </script>
+                      <div id="display"></div>
+                      <input id="address" type="textbox" placeholder="場所を入力してください">
+                      <input type="button" value="表示" onclick="codeAddress()">
+                      <table>
+                      <tr>
+                        <td>検索場所：</td><td><input type="text" id="addressInput" value=" ", placeholder="東京"  style="width: 200px"></td>
+                      </tr>
+                      <tr>
+                        <td>KeyWord：</td><td><input type="text" id="keywordInput" value=" ", placeholder="ラーメン" style="width: 200px"></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" style="padding: 10px">
+                          <input type="button" value="お店情報取得" onclick="getPlaces();">
+                        </td>
+                      </tr>
+                      </table>
+                      ★結果★<br />
+                      <div id="results" style="width: 100%; height: 200px; border: 1px dotted; padding: 10px; overflow-y: scroll; background: white;"></div>
+                      <script type="text/javascript">
+                        var placesList;
+
+                        /*
+                        お店情報取得
+                        */
+                        function getPlaces(){
+                          
+                          //結果表示クリア
+                          document.getElementById("results").innerHTML = "";
+                          //placesList配列を初期化
+                          placesList = new Array();
+                          
+                          //入力した検索場所を取得
+                          var addressInput = document.getElementById("addressInput").value;
+                          if (addressInput == "") {
+                            return;
+                          }
+                          
+                          //検索場所の位置情報を取得
+                          var geocoder = new google.maps.Geocoder();
+                          geocoder.geocode(
+                            {
+                              address: addressInput
+                            },
+                            function(results, status) {
+                              if (status == google.maps.GeocoderStatus.OK) {
+                                //取得した緯度・経度を使って周辺検索
+                                startNearbySearch(results[0].geometry.location);
+                              }
+                              else {
+                                alert(addressInput + "：位置情報が取得できませんでした。");
+                              }
+                            });
+                        }
+
+                        /*
+                        位置情報を使って周辺検索
+                          latLng : 位置座標（google.maps.LatLng）
+                        */
+                        function startNearbySearch(latLng){
+                          
+                          //読み込み中表示
+                          document.getElementById("results").innerHTML = "Now Loading...";
+                          
+                          //Mapインスタンス生成
+                          var map = new google.maps.Map(
+                            document.createElement("div")
+                          );
+                          
+                          //PlacesServiceインスタンス生成
+                          var service = new google.maps.places.PlacesService(map);
+                          
+                          //入力したKeywordを取得
+                          var keywordInput = document.getElementById("keywordInput").value;
+                          
+                          //周辺検索
+                          service.nearbySearch(
+                            {
+                              location: latLng,
+                              radius: 800,
+                              type: ['restaurant'],
+                              keyword: keywordInput,
+                              language: 'ja'
+                            },
+                            displayResults
+                          );
+                        }
+
+                        /*
+                        周辺検索の結果表示
+                        ※nearbySearchのコールバック関数
+                          results : 検索結果
+                          status ： 実行結果ステータス
+                          pagination : ページネーション
+                        */
+                        function displayResults(results, status, pagination) {
+                            
+                          if(status == google.maps.places.PlacesServiceStatus.OK) {
+                          
+                            //検索結果をplacesList配列に連結
+                            placesList = placesList.concat(results);
+                            
+                            //pagination.hasNextPage==trueの場合、
+                            //続きの検索結果あり
+                            if (pagination.hasNextPage) {
+                              
+                              //pagination.nextPageで次の検索結果を表示する
+                              //※連続実行すると取得に失敗するので、
+                              //1秒くらい間隔をおく
+                              setTimeout(pagination.nextPage(), 1000);
+                            
+                            //pagination.hasNextPage==falseになったら
+                            //全ての情報が取得できているので、
+                            //結果を表示する
+                            } else {
+                              
+                              //placesList配列をループして、
+                              //結果表示のHTMLタグを組み立てる
+                              var resultHTML = "<ol>";
+                              
+                              for (var i = 0; i < placesList.length; i++) {
+                                place = placesList[i];
+                                
+                                //ratingがないのものは「---」に表示変更
+                                var rating = place.rating;
+                                if(rating == undefined) rating = "---";
+                                
+                                //表示内容（評価＋名称）
+                                var content = "【" + rating + "】 " + place.name;
+                                
+                                resultHTML += "<li>";
+                                resultHTML += content;
+                                resultHTML += "</li>";
+                              }
+                              
+                              resultHTML += "</ol>";
+                              
+                              //結果表示
+                              document.getElementById("results").innerHTML = resultHTML;
+                            }
+                          
+                          } else {
+                            //エラー表示
+                            var results = document.getElementById("results");
+                            if(status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+                              results.innerHTML = "検索結果が0件です。";
+                            } else if(status == google.maps.places.PlacesServiceStatus.ERROR) {
+                              results.innerHTML = "サーバ接続に失敗しました。";
+                            } else if(status == google.maps.places.PlacesServiceStatus.INVALID_REQUEST) {
+                              results.innerHTML = "リクエストが無効でした。";
+                            } else if(status == google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
+                              results.innerHTML = "リクエストの利用制限回数を超えました。";
+                            } else if(status == google.maps.places.PlacesServiceStatus.REQUEST_DENIED) {
+                              results.innerHTML = "サービスが使えない状態でした。";
+                            } else if(status == google.maps.places.PlacesServiceStatus.UNKNOWN_ERROR) {
+                              results.innerHTML = "原因不明のエラーが発生しました。";
                             }
 
-                            function codeAddress(){
-                              let inputAddress = document.getElementById('address').value;
-
-                              geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-                                if (status == 'OK') {
-                                  map.setCenter(results[0].geometry.location);
-                                  let marker = new google.maps.Marker({
-                                      map: map,
-                                      position: results[0].geometry.location
-                                  });
-                                  display.textContent = "検索結果：" + results[ 0 ].geometry.location
-                                } else {
-                                  alert('該当する結果がありませんでした：' + status);
-                                }
-                              });   
-                            }
-                          </script>
-                          <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck&callback=initMap" async defer></script>
-                          <input id="address" type="textbox" placeholder="場所を入力してください">
-                          <input type="button" value="表示" onclick="codeAddress()">
-                          <div id="display"></div>
-                          <span class="form-require">
-                          </span>
-                        </div>
-                        <div class="spnewMain__content__form">
-                          <%= form.label :店名 %>
-                          <span class="form-require">必須</span>
-                          <%= form.text_field :name %>
-                        </div>
-                        <div class="spnewMain__content__form">
-                          <%= form.label :住所 %>
-                          <span class="form-require">必須</span>
-                          <%= form.text_field :address %>
-                        </div>
-                        <div class="spnewMain__content__form">
-                          <%= form.label :所要時間 %>
-                          <span class="form-require">必須</span>
-                          <%= form.collection_select :arrivaltime, Arrivaltime.all, :id, :value, prompt:'片道時間を選択',class:"form-box" %>
-                        </div>
-                        <div class="spnewMain__content__form">
-                          <%= form.label :ジャンル %>
-                          <span class="form-require">必須</span> 
-                          <%= form.select :ganre,[['和食',1],['アジア料理',2],['ヨーロッパ料理',3],['肉料理',4],['カフェ・スイーツ',5],['ファミレス・ファーストフード',6],['ビュッフェ・バイキング',7],['その他',8]],{prompt:'何料理？'},{class:"form-box"} %>
-                          <%# prompt以外の要素を調べる %>
-                        </div>
-                        <div class="spnewMain__content__form">
-                          <%= form.label :値段 %>
-                          <span class="form-require">必須</span>
-                          <%= form.collection_select :price, Price.all, :id, :value, include_blank: "平均価格", class:"form-box" %>
-                        </div>
-                      </div>
+                          }
+                        }
+                      </script>
+                      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck&callback=initMap&libraries=places&v=weekly"async defer"></script>
+                      <%# <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck&callback=initMap" async defer></script> %>
+                    </div>
+                    <div class="spnewMain__content__form">
+                      <%= form.label :店名 %>
+                      <span class="form-require">必須</span>
+                      <%= form.text_field :name %>
+                    </div>
+                    <div class="spnewMain__content__form">
+                      <%= form.label :住所 %>
+                      <span class="form-require">必須</span>
+                      <%= form.text_field :address %>
+                    </div>
+                    <div class="spnewMain__content__form">
+                      <%= form.label :所要時間 %>
+                      <span class="form-require">必須</span>
+                      <%= form.collection_select :arrivaltime, Arrivaltime.all, :id, :value, prompt:'片道時間を選択',class:"form-box" %>
+                    </div>
+                    <div class="spnewMain__content__form">
+                      <%= form.label :ジャンル %>
+                      <span class="form-require">必須</span> 
+                      <%= form.select :ganre,[['和食',1],['アジア料理',2],['ヨーロッパ料理',3],['肉料理',4],['カフェ・スイーツ',5],['ファミレス・ファーストフード',6],['ビュッフェ・バイキング',7],['その他',8]],{prompt:'何料理？'},{class:"form-box"} %>
+                      <%# prompt以外の要素を調べる %>
+                    </div>
+                    <div class="spnewMain__content__form">
+                      <%= form.label :値段 %>
+                      <span class="form-require">必須</span>
+                      <%= form.collection_select :price, Price.all, :id, :value, include_blank: "平均価格", class:"form-box" %>
+                    </div>
                     <div class="form-contents__tag" >
                       <%= form.label :タグリスト %>
                       <span class="form-require">必須</span> 
@@ -90,18 +228,17 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="actions">
-                <%= form.submit %>
-              </div>
-              <div class="back">
-                <%= link_to 'Topへ戻る', shops_path %>
-               </div>     
-            </div>
-          <% end %>
-        </div>
+                <div class="actions">
+                  <%= form.submit %>
+                </div>
+                <div class="back">
+                  <%= link_to 'Topへ戻る', shops_path %>
+                </div>
+              </div>     
+            </div>    
+          </div>
+        <% end %>
       </div>  
     </div>
-    <%# <%= render partial:'tags/form' %> %>
   </div>
 </div>

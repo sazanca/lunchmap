@@ -1,2 +1,3 @@
 class Map < ApplicationRecord
+  
 end

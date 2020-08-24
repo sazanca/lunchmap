@@ -12,7 +12,7 @@
                     <div class="h3.sell__main__content__file__up__head">
                       <style>#map { height: 300px; width: 600px;}</style>
                       <script>
-                        let map
+                        
                         let geocoder
                         const display = document.getElementById('display')
 
@@ -39,7 +39,7 @@
                               let marker = new google.maps.Marker({
                                   map: map,
                                   position: results[0].geometry.location
-                              });
+                              });let map
                               display.textContent = "検索結果：" + results[ 0 ].geometry.location
                             } else {
                               alert('該当する結果がありませんでした：' + status);
@@ -96,7 +96,6 @@
           </div>
         </div>
       <% end %>
-      
     </div>
     <div class="back">
       <% if user_signed_in? && current_user.id == @shop.user_id %>
