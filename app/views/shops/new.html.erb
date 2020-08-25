@@ -12,32 +12,11 @@
                   <div class="spnewMain__content__file__up">
                     <div class="h3.sell__main__content__file__up__head">
                       地図から選ぶ
-                      <%# <div id="mapArea" style="width:100%; height:300px;"></div> %>
-                      <%# <script>
-                        let map
-                        let geocoder
-                        const display = document.getElementById('display')
-                        //地図初期表示
-                        function initMap(){
-                          geocoder = new google.maps.Geocoder()
-
-                          map = new google.maps.Map(document.getElementById('map'), {
-                            center: {lat: 35.681236, lng:139.767125},
-                            zoom: 18,
-                          });
-
-                          marker = new google.maps.Marker({
-                            position:  {lat: 35.681236, lng:139.767125},
-                            map: map
-                          });
-                        }
-                      </script> %>
-                      <%# <div id="display"></div> %>
                       <input id="address" type="textbox" placeholder="場所を入力してください">
-                      <input type="button" value="表示" onclick="codeAddress()">
+                      <input type="button" value="Encode" onclick="codeAddress()">
                       <table>
                         <tr>
-                          <td>検索場所：</td><td><input type="text" id="addressInput" (value=" ") placeholder="入力例：神谷町" style="width: 200px"></td>
+                          <td>検索場所：</td><td><input  type="text" id="addressInput" (value=" ") placeholder="入力例：神谷町" style="width: 200px"></td>
                         </tr>
                         <tr>
                           <td>KeyWord：</td><td><input type="text" id="keywordInput" (value=" ") placeholder="入力例：ラーメン" style="width: 200px"></td>
