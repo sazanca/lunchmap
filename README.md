@@ -19,6 +19,7 @@
 
 [![Image from Gyazo](https://i.gyazo.com/2a824e2a7ab9f629d0609934d8d89ab3.png)](https://gyazo.com/2a824e2a7ab9f629d0609934d8d89ab3)
 
+[![Image from Gyazo](https://i.gyazo.com/c8ed3bbb669e62ab5ef5fa235e526346.gif)](https://gyazo.com/c8ed3bbb669e62ab5ef5fa235e526346)
 <dl>
   <dt>主な機能</dt>
   <dd>店舗情報登録</dd>
