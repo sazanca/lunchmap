@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     #   get 'rule'
     # end
   end
-
+  resources :maps, only:[:index, :create]
   resources :users, only: :show
   resources :categories
 end

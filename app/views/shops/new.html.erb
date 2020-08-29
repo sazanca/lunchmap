@@ -5,18 +5,25 @@
         <h2 class="format-title">お店登録</h2>
         <%= form_with(model: @shop, local: true) do |form| %>
           <div class="spnewMain_contents">
-            <div id='mapArea'></div>
             <div class="spnewMain_contents__content">
               <div class="spnewMain_contents__content__head">
                 <div class="spnewMain__content__file">
                   <div class="spnewMain__content__file__up">
                     <div class="h3.sell__main__content__file__up__head">
-                      地図から選ぶ
-                      <input id="address" type="textbox" placeholder="場所を入力してください">
-                      <input type="button" value="Encode" onclick="codeAddress()">
-                      <table>
+                      <div id='mapArea'></div>
+                      <div class="gmap">
+                        地図から選ぶ
+                        <%# <input id="address" type="textbox" value=" ">
+                        <input type="button" value="Encode" onclick="codeAddress();"> %>
+                        <!-- 地図情報を保存するフォーム -->
+                        <%= form_with(model: @map, local: true) do |form| %>
+                          <!-- 検索値を隠しデータとして送信-->
+                          <input type="hidden" name="map[address]" id="hidden_address">
+                          <%= form.submit "保存" %>
+                        <% end %>
+                        <table>
                         <tr>
-                          <td>検索場所：</td><td><input  type="text" id="addressInput" (value=" ") placeholder="入力例：神谷町" style="width: 200px"></td>
+                          <td>検索場所：</td><td><input  type="textbox" id="addressInput" (value=" ") placeholder="入力例：神谷町" style="width: 200px"></td>
                         </tr>
                         <tr>
                           <td>KeyWord：</td><td><input type="text" id="keywordInput" (value=" ") placeholder="入力例：ラーメン" style="width: 200px"></td>
@@ -36,30 +43,38 @@
                         </tr>
                         <tr>
                           <td colspan="2" style="padding: 10px">
+                            <%# buttonをクリックしたらgetPlacesを実行 %>
                             <input type="button" value="お店情報取得" onclick="getPlaces();">
                           </td>
                         </tr>
-                      </table>
-                      ★結果★<br />
-                      <div id="results" style="width: 100%; height: 200px; border: 1px dotted; padding: 10px; overflow-y: scroll; background: white;"></div>
+                        </table>
+                        ★結果★<br />
+                        <div id="results" style="width: 100%; height: 200px; border: 1px dotted; padding: 10px; overflow-y: scroll; background: white;"></div>
+                      </div>
                       <script type="text/javascript">
+                        let map
                         let placesList
+                        let geocoder
 
                         /*
                         地図の初期表示
                         */
                         function initMap() {
-                          map = new google.maps.Map(document.getElementById("mapArea"), {
-                            center: {lat: 35.681236, lng:139.767125},
-                            zoom: 18,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                          });
+                          geocoder = new google.maps.Geocoder()
+                          if(document.getElementById('map')){
+                            map = new google.maps.Map(document.getElementById("mapArea"), {
+                              center: {lat: 35.681236, lng:139.767125},
+                              zoom: 16,
+                              // mapTypeId: google.maps.MapTypeId.ROADMAP
+                            });
+                          }else{
+                            map = new google.maps.Map(document.getElementById("mapArea"), {
+                              center: {lat:35.681236, lng:139.767125},
+                              zoom: 16,
+                              // mapTypeId: google.maps.MapTypeId.ROADMAP
+                            });
+                          }
                           // geocoder = new google.maps.Geocoder()
-
-                          // map = new google.maps.Map(document.getElementById('map'), {
-                          //   center: {lat: 35.681236, lng:139.767125},
-                          //   zoom: 18,
-                          // });
 
                           marker = new google.maps.Marker({
                             position:  {lat: 35.681236, lng:139.767125},
@@ -84,7 +99,7 @@
                           }
                           
                           //検索場所の位置情報を取得
-                          let geocoder = new google.maps.Geocoder();
+                          geocoder = new google.maps.Geocoder();
                           geocoder.geocode(
                             {
                               address: addressInput
@@ -107,13 +122,13 @@
                         function startNearbySearch(latLng){
                           
                           //読み込み中表示
-                          document.getElementById("results").innerHTML = "Now Loading...";
+                          document.getElementById("results").innerHTML = "ただいま調べ中です";
                           
                           //Mapインスタンス生成
                           let map = new google.maps.Map(
                             document.getElementById("mapArea"),
                             {
-                              zoom: 18,
+                              zoom: 16,
                               center: latLng,
                               mapTypeId: google.maps.MapTypeId.ROADMAP
                             }
@@ -133,7 +148,7 @@
                             {
                               location: latLng,
                               radius: radiusInput,
-                              type: ['restaurant'],
+                              type: ['restaurant','cafe','bar','bakery'],
                               keyword: keywordInput,
                               language: 'ja'
                             },
@@ -250,6 +265,10 @@
                             }
 
                           }
+                          const index = placesList.indexOf(this);
+                          //何番目の要素がクリックされたかを、配列placesListから要素番号を取得
+                          //方法としてあっているか不明
+                          
                         }
 
                         /*
@@ -259,25 +278,20 @@
                           lat : 緯度
                           lng : 経度
                         */
-                        function createMarker(name, vicinity, lat, lng){
-                          
+                        function createMarker(name, vicinity, lat, lng, geometry){
                           //マーカー表示する位置のMap表示
                           let map = new google.maps.Map(document.getElementById("mapArea"), {
-                            zoom: 15,
+                            zoom: 18,
                             center: new google.maps.LatLng(lat, lng),
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                            // mapTypeId: google.maps.MapTypeId.ROADMAP
                           });
-                          
+                         
                           //マーカー表示
                           let marker = new google.maps.Marker({
                             map: map,
                             position: new google.maps.LatLng(lat, lng)
                           });
 
-                          // let shop_name = document.getElementById("shop_name"){
-                          //   shop_name = name
-                          // }
-                          
                           //情報窓の設定
                           let info = "<div style=\"min-width: 100px\">";
                           info += name + "<br />";
@@ -297,10 +311,12 @@
                           //マーカーのクリック時にも情報窓を表示する
                           marker.addListener("click", function(){
                             infoWindow.open(map, marker);
-                          });
-                        }
+                          }); 
+                          
+                          
+                          //mapテーブルにaddressを引き渡すor緯度、経度を保存したい
+                        }   
                       </script>
-                      <%# <input type="text" id="shop_name" value=" " > %>
                       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                       <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck&callback=initMap&libraries=places&v=weekly" async defer"></script>
                       <%# <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck&callback=initMap" async defer></script> %>
@@ -308,13 +324,13 @@
                     <div class="spnewMain__content__form">
                       <%= form.label :店名 %>
                       <span class="form-require">必須</span>
-                      <%= form.text_field :name %>
+                      <%= form.text_field :name, class:"shop_name"%>
                     </div>
-                    <div class="spnewMain__content__form">
+                    <%# <div class="spnewMain__content__form">
                       <%= form.label :住所 %>
-                      <span class="form-require">必須</span>
-                      <%= form.text_field :address %>
-                    </div>
+                      <%# <span class="form-require">必須</span>
+                      <%= form.text_field :address, class:"shop_address" %>
+                    <%# </div> %>
                     <div class="spnewMain__content__form">
                       <%= form.label :所要時間 %>
                       <span class="form-require">必須</span>

@@ -54,8 +54,8 @@
 ### Association
 - belongs_to :user
 - has_many :comments
-- has_many :shops_tags
-- has_many  :tags,  through:  :shops_tags
+- has_one :map
+
 
 ## tagsテーブル
 |Column|Type|Options|
@@ -65,24 +65,16 @@
 - has_many :shops_tags
 - has_many  :shops ,  through:  :shops_tags
 
-## shops_tagsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|shop_id|integer|null: false, foreign_key: true|
-|tag_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :post
-- belongs_to :tag
-
 ## mapsテーブル
 |Column|Type|Options|
 |------|----|-------|
+|address|text|-------|
 |latitude|float|-------|
 |longitude|float|-------|
 |shop_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :post
-- belongs_to :tag
+- belongs_to :shop
+
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -90,5 +82,5 @@
 |text|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :post
+- belongs_to :shop
 - belongs_to :user

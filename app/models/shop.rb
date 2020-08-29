@@ -1,6 +1,6 @@
 class Shop < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  # belongs_to :map
+  has_one :map
   # belongs_to_active_hash :onetime
   
 

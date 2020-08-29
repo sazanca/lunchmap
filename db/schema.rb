@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_115030) do
   end
 
   create_table "maps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "address"
     t.float "latitude"
     t.float "longitude"
     t.bigint "shop_id"
@@ -31,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_08_10_115030) do
 
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "address"
     t.string "arrivaltime"
     t.string "ganre"
     t.string "price"
