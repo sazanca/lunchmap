@@ -31,12 +31,17 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @comment = Comment.new
     @comments = @shop.comments.includes(:user)
+    @lat = @shop.map.latitude
+    @lng = @shop.map.longitude
+    gon.lat = @lat
+    gon.lng = @lng
   end
 
   # GET /shops/new
   def new
     @shop = Shop.new
-    @map = Map.new
+    # @map = Map.new
+    @shop.build_map
   end
 
   # GET /shops/1/edit
@@ -92,6 +97,6 @@ class ShopsController < ApplicationController
   
   # Only allow a list of trusted parameters through.
   def shop_params
-    params.require(:shop).permit(:name, :arrivaltime, :ganre, :price, :text, :tag_list).merge(user_id: current_user.id)
+    params.require(:shop).permit(:name, :arrivaltime, :ganre, :price, :text, :tag_list, map_attributes: [:address, :id]).merge(user_id: current_user.id)
   end
 end

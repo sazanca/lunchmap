@@ -5,11 +5,11 @@
       <%= link_to tag.name, shops_path(:action => :tag, :tag => tag.name) %>
     <% end %>
   </tbody>
-    <div class="tag_saerch">
-      <%# <% @shops.each do |tag_list| %>
-        <%# <%= link_to tag, shops_path(@shop,tag_name: tag) %>
-      <%# <% end %>
-    </div>
+  <div class="tag_saerch">
+    <%# <% @shops.each do |tag_list| %>
+      <%# <%= link_to tag, shops_path(@shop,tag_name: tag) %>
+    <%# <% end %>
+  </div>
   <div class="fv-sectio">
     <p>
       いつも同じ店になる
@@ -26,12 +26,11 @@
     <p class="main-copy">地図にランチ情報を埋めて会社オリジナルのランチマップを作りませんか？</p>
   </div>
   <section class='pickupContainer'>
-    <h2 class='head'></h2>
     <div class='productBox'>
-      <div class='producBoxt-Head'>
+      <div class='productBox-Head'>
         <h2 class='title'>新規投稿</h2>
       </div>
-      <div class='productLists'>
+      <div class='productBox-Lists'>
         <% @shops.each do |shop| %>
           <div class='productList'>
             <figure class='productList--img'>
@@ -56,28 +55,26 @@
   </section>
   <section class='pickupContainer'>
     <div class='productBox'>
-      <div class='productHead'>
+      <div class='productBox-Head'>
         <h2 class='title'>店までの距離</h2>
       </div>
-      <div class='productLists'>
+      <div class='productBox-Lists'>
         <% @shops.each do |shop| %>
           <div class='productList'>
-            <a href="/products/3">
-              <figure class='productList--img'>
-                <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
-              </figure>
-              <div class='productList--body'>
-                <h3 class='name'><%= shop.name %></h3>
-                <div class='details'>
-                  <ul>
-                    <li><%= shop.arrivaltime %></li>
-                    <li><i class="fa fa-star likeIcon"></i>☆</li>
-                  </ul>
-                  <p>(税込)</p>
-                </div>
-                <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
+            <figure class='productList--img'>
+              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
+            </figure>
+            <div class='productList--body'>
+              <h3 class='name'><%= shop.name %></h3>
+              <div class='details'>
+                <ul>
+                  <li><%= shop.arrivaltime %></li>
+                  <li><i class="fa fa-star likeIcon"></i>☆</li>
+                </ul>
+                <p>(税込)</p>
               </div>
-            </a>
+              <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -85,10 +82,10 @@
   </section>
   <section class='pickupContainer'>
     <div class='productBox'>
-      <div class='productHead'>
+      <div class='productBox-Head'>
         <h2 class='title'>値段</h2>
       </div>
-      <div class='productLists'>
+      <div class='productBox-Lists'>
         <% @shops.each do |shop| %>
           <div class='productList'>
             <figure class='productList--img'>
@@ -117,7 +114,7 @@
       <div class='productBox-Head'>
         <h2 class='title'>オススメ</h2>
       </div>
-      <div class='productLists'>
+      <div class='productBox-Lists'>
         <% @shops.each do |shop| %>
           <div class='productList'>
             <figure class='productList--img'>

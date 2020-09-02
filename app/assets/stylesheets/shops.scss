@@ -36,20 +36,22 @@ a {
   height: 100%;
 }
 
-.productBox {
-  display: flex;
+// .productBox {
+//   // height: 300px;
+// }
+
+.productBox-Head{
+  height: 32px;
 }
 
-.productHead{
-  text-align: center;
-}
 
 .title {
   text-align: center;
 }
 
-.productLists {
+.productBox-Lists {
   width: 880px;
+  height: 540px;
   margin: 26px auto;
   display: flex;
   justify-content: space-around;
@@ -176,4 +178,13 @@ select {
 #mapArea {
   height: 600px;
   width: 800px;
+}
+
+#results {
+  width: 90%; 
+  height: 200px; 
+  border: 1px dotted; 
+  padding: 10px; 
+  overflow-y: scroll;
+   background:white;
 }
