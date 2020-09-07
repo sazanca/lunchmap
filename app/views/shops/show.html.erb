@@ -1,60 +1,71 @@
 <div class="spnew">
   <div class="spnewMain">
-    <div class="format_content">
-      <h2 class="format-title">お店情報詳細</h2>
-      <%= form_with(model: @shop, local: true) do |form| %>
-        <div class="spnewMain_contents">
-          <div id='mapArea'></div>
+    <div class=spnewMain-format>
+      <div class="format_content">
+        <h2 class="format-title">お店情報詳細</h2>
+        <%= form_with(model: @shop, local: true) do |form| %>
+          <div class="spnewMain_contents">
+            <div id='mapArea'></div>
             <div class="spnewMain_contents__content">
               <div class="spnewMain_contents__content__head">
                 <div class="spnewMain__content__file">
                   <div class="spnewMain__content__file__up">
                     <div class="h3.sell__main__content__file__up__head">
                       <script>
-                        
+                        let map
                         let geocoder
-                        const display = document.getElementById('display')
-
-                        function initMap(){
+                        function initMap(){ //コールバック関数
                           geocoder = new google.maps.Geocoder()
-
-                          map = new google.maps.Map(document.getElementById('map'), {
-                            center: {lat: 35.681236, lng:139.767125},
-                            zoom: 15,
-                          });
-
-                          marker = new google.maps.Marker({
-                            position:  {lat: 35.681236, lng:139.767125},
-                            map: map
-                          pos = new google.maps.LatLng(
-                          <%= map.latitude %>, //latitude
-                          <%= map.longitude %> //longitude
-                          );
-                          default_marker = new google.maps.Marker({
-                          map: mapInstance,
-                          position: pos,
-                          icon: {
-                          url: ' https://maps.google.com/mapfiles/ms/icons/green-dot.png', //アイコンのURL
-                          scaledSize: new google.maps.Size(40, 40) //サイズ
+                          if(document.getElementById('map')){ //'map'というidを取得できたら実行
+                            map = new google.maps.Map(document.getElementById('map'), { //'map'というidを取得してマップを表示
+                              center: {lat: 35.681236, lng: 139.767125}, //最初に表示する場所（今回は「渋谷スクランブル交差点」が初期値）
+                              zoom: 15, //拡大率（1〜21まで設定可能）
+                            });
+                          }else{ //'map'というidが無かった場合
+                            map = new google.maps.Map(document.getElementById('mapArea'), { //'show_map'というidを取得してマップを表示
+                              center: {lat: gon.lat, lng: gon.lng}, //controllerで定義した変数を緯度・経度の値とする（値はDBに入っている）
+                              zoom: 18, //拡大率（1〜21まで設定可能）
+                            });
+                            marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
+                              position:  {lat: gon.lat, lng: gon.lng}, //マーカーを落とす位置を決める（値はDBに入っている）
+                              map: map //マーカーを落とすマップを指定
+                            });
                           }
-                          });
-                          <% end %>
+                        }
+                        function codeAddress(){ //コールバック関数
+                          let inputAddress = document.getElementById('address').value; //'address'というidの値（value）を取得
+
+                          geocoder.geocode( { 'address': inputAddress}, function(results, status) { //ジオコードしたい住所を引数として渡す
+                            if (status == 'OK') {
+                              let lat = results[0].geometry.location.lat(); //ジオコードした結果の緯度
+                              let lng = results[0].geometry.location.lng(); //ジオコードした結果の経度
+                              let mark = {
+                                  lat: lat, //緯度
+                                  lng: lng  //経度
+                              };
+                              map.setCenter(results[0].geometry.location); //最も近い、判読可能な住所を取得したい場所の緯度・経度
+                              let marker = new google.maps.Marker({
+                                  map: map, //マーカーを落とすマップを指定
+                                  position: results[0].geometry.location //マーカーを落とす位置を決める
+                              });
+                            } else {
+                              alert('該当する結果がありませんでした');
+                            }
+                          });   
                         }
                       </script>  
-                      <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck&callback=initMap" async defer></script>
-                      <span class="form-require">
-                      </span>
+                      <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" async defer"></script>
                     </div>
                     <div class="spnewMain__content__form">
                       <strong>店名:</strong>
                       <span class="form-require"></span>
                       <%= @shop.name %>
                     </div>
-                    <%# <div class="spnewMain__content__form">
+                    <div class="spnewMain__content__form">
                       <strong>場所:</strong>
                       <span class="form-require"></span>
-                      <%= @shop.address %>
-                    <%# </div> %>
+                      <%= @shop.map.address %>
+                    </div>
                     <div class="spnewMain__content__form">
                       <tr>
                         <td><%= form.label :所要時間 %></td>
@@ -88,19 +99,24 @@
               </div>
             </div>
           </div>
+        <% end %>
+      </div>
+      <div class="back">
+        <% if user_signed_in? && current_user.id == @shop.user_id %>
+          <div class="backBox">
+            <%= link_to '編集', edit_shop_path(@shop), class:"editBtn" %> |
+            <%= link_to "削除", "/shops/#{@shop.id}", method: :delete %>
+          </div>
+          <% else %>
+            <%= link_to '戻る', shops_path, class:"backBtn" %>
+        <% end %>  
+      </div>
+      <div class="spnewMain-ad">
+        <div class="spnewMain-ad-content">
+          飲食店社内用クーポン
         </div>
-      <% end %>
+      </div>
     </div>
-    <div class="back">
-      <% if user_signed_in? && current_user.id == @shop.user_id %>
-        <div class="backBox">
-          <%= link_to '編集', edit_shop_path(@shop), class:"editBtn" %> |
-          <%= link_to "削除", "/shops/#{@shop.id}", method: :delete %>
-        </div>
-        <% else %>
-          <%= link_to '戻る', shops_path, class:"backBtn" %>
-      <% end %>  
-    </div>   
     <div class="commentBox">
       <% if current_user %>
         <%= form_with(model: [@shop, @comment], local: true) do |form| %>

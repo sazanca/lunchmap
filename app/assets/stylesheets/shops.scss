@@ -96,11 +96,17 @@ a {
   text-align: center;
 }
 
-.spnewMain {
-  display: flex; 
+.spnew{
+  display: flex;
   justify-content: center;
 }
-
+.spnewMain {
+  position: relative;
+  
+}
+.spnewMain-format{
+  justify-content: center;
+}
 .format {
   filter:drop-shadow(3px 3px 3px rgba(100,100,100,0.6));   
 }

@@ -3,7 +3,7 @@
     <div class="format">
       <div class="format_content">
         <h2 class="format-title">お店登録</h2>
-        <%= form_with(model: @shop, local: true) do |form| %>
+        <%= form_with(model: @shop, local: true) do |f| %>
           <div class="spnewMain_contents">
             <div class="spnewMain_contents__content">
               <div class="spnewMain_contents__content__head">
@@ -38,13 +38,6 @@
                     <div class="h3.sell__main__content__file__up__head">
                       <div id='mapArea'></div>
                       
-                      <div class="gmap">
-                        <%# <input id="address" type="textbox" value=" ">
-                        <input type="button" value="Encode" onclick="codeAddress();"> %>
-                        <!-- 地図情報を保存するフォーム -->
-                        
-   
-                      </div>
                       <script type="text/javascript">
                         let map
                         let placesList
@@ -306,48 +299,46 @@
                       <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" async defer"></script>
                     </div>
                     <div class="spnewMain__content__form">
-                      <%= form.fields_for :map do |s| %>
-                        <!-- 検索値を隠しデータとして送信-->
-                        <%= s.label :address, class:"map_spot" %>
+                      <%= f.fields_for :map do |s| %>
+                        <%= s.label :住所, class:"map_spot" %>
                         <%= s.text_field :address, placeholder:"店舗住所入力", id:"address", class:"map_spot" %>
                       <% end %>  
-                      <%# <input type="button" value="登録" onclick="codeAddress()" > %>
                     </div>
                     <div class="spnewMain__content__form">
-                      <%= form.label :店名 %>
+                      <%= f.label :店名 %>
                       <span class="form-require">必須</span>
-                      <%= form.text_field :name, placeholder:"店名入力", id:"shopName",class:"shop_name"%>
+                      <%= f.text_field :name, placeholder:"店名入力", id:"shopName",class:"shop_name"%>
                     </div>
                     <%# <div class="spnewMain__content__form">
                       <%= form.label :住所 %>
                       <%# <span class="form-require">必須</span>
                       <%= form.text_field :address, class:"shop_address" %>
-                    <%# </div> %>
+                    <%# </div> %> 
                     <div class="spnewMain__content__form">
-                      <%= form.label :所要時間 %>
+                      <%= f.label :所要時間 %>
                       <span class="form-require">必須</span>
-                      <%= form.collection_select :arrivaltime, Arrivaltime.all, :id, :value, prompt:'片道時間を選択',class:"form-box" %>
+                      <%= f.collection_select :arrivaltime, Arrivaltime.all, :id, :value, prompt:'片道時間を選択',class:"form-box" %>
                     </div>
                     <div class="spnewMain__content__form">
-                      <%= form.label :ジャンル %>
+                      <%= f.label :ジャンル %>
                       <span class="form-require">必須</span> 
-                      <%= form.select :ganre,[['和食',1],['アジア料理',2],['ヨーロッパ料理',3],['肉料理',4],['カフェ・スイーツ',5],['ファミレス・ファーストフード',6],['ビュッフェ・バイキング',7],['その他',8]],{prompt:'何料理？'},{class:"form-box"} %>
+                      <%= f.select :ganre,[['和食',1],['アジア料理',2],['ヨーロッパ料理',3],['肉料理',4],['カフェ・スイーツ',5],['ファミレス・ファーストフード',6],['ビュッフェ・バイキング',7],['その他',8]],{prompt:'何料理？'},{class:"form-box"} %>
                       <%# prompt以外の要素を調べる %>
                     </div>
                     <div class="spnewMain__content__form">
-                      <%= form.label :値段 %>
+                      <%= f.label :値段 %>
                       <span class="form-require">必須</span>
-                      <%= form.collection_select :price, Price.all, :id, :value, include_blank: "平均価格", class:"form-box" %>
+                      <%= f.collection_select :price, Price.all, :id, :value, include_blank: "平均価格", class:"form-box" %>
                     </div>
                     <div class="form-contents__tag" >
-                      <%= form.label :タグリスト %>
+                      <%= f.label :タグリスト %>
                       <span class="form-require">必須</span> 
-                      <%= form.text_field :tag_list, value: @shop.tag_list.join(","), class: "form-control", placeholder: '例）ワンコイン,並ばない' %>
+                      <%= f.text_field :tag_list, value: @shop.tag_list.join(","), class: "form-control", placeholder: '例）ワンコイン,並ばない' %>
                     </div>
                   </div>
                 </div>
                 <div class="actions">
-                  <%= form.submit %>
+                  <%= f.submit %>
                 </div>
                 <div class="back">
                   <%= link_to 'Topへ戻る', shops_path %>

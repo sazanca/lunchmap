@@ -8,7 +8,8 @@ class ShopsController < ApplicationController
     # @shops = Shop.tagged_with("#{params[:tag]}")
     @shops = Shop.all.order('created_at DESC')
     @tags = Shop.tag_counts_on(:tags)
-    # @maps = Map.all
+    @maps = Map.all
+    gon.maps = Map.all
     if params[:name_key]
       @shops = Shop.where('name LIKE ?', "%#{params[:name_key]}%")
     else
@@ -23,7 +24,24 @@ class ShopsController < ApplicationController
     end
   end
 
-  
+  def new
+    @shop = Shop.new
+    # @map = Map.new
+    @shop.build_map
+  end
+
+  def create
+    @shop = Shop.new(shop_params)
+    respond_to do |format|
+      if @shop.save
+        format.html { redirect_to @shop, notice: '登録成功' }
+        format.json { render :show, status: :created, location: @shop }
+      else
+        format.html { render :new }
+        format.json { render json: @shop.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # GET /shops/1
   # GET /shops/1.json
@@ -31,37 +49,18 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @comment = Comment.new
     @comments = @shop.comments.includes(:user)
+    @map = Map.find(params[:id])
     @lat = @shop.map.latitude
     @lng = @shop.map.longitude
     gon.lat = @lat
     gon.lng = @lng
   end
 
-  # GET /shops/new
-  def new
-    @shop = Shop.new
-    # @map = Map.new
-    @shop.build_map
-  end
+  
 
   # GET /shops/1/edit
   def edit
     @shop = Shop.find(params[:id])
-  end
-
-  # POST /shops
-  # POST /shops.json
-  def create
-    @shop = Shop.new(shop_params)
-    respond_to do |format|
-      if @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
-        format.json { render :show, status: :created, location: @shop }
-      else
-        format.html { render :new }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /shops/1
@@ -97,6 +96,6 @@ class ShopsController < ApplicationController
   
   # Only allow a list of trusted parameters through.
   def shop_params
-    params.require(:shop).permit(:name, :arrivaltime, :ganre, :price, :text, :tag_list, map_attributes: [:address, :id]).merge(user_id: current_user.id)
+    params.require(:shop).permit(:name, :arrivaltime, :ganre, :price, :text, :tag_list, map_attributes: [:id, :address]).merge(user_id: current_user.id)
   end
 end

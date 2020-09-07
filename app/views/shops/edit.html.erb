@@ -5,7 +5,7 @@
       <%# 入力されたものを再選択させる %>
       <%= form_with(model: @shop, local: true) do |form| %>
         <div class="spnewMain_contents">
-          <div id='map'></div>
+          <div id='mapArea'></div>
             <div class="spnewMain_contents__content">
               <div class="spnewMain_contents__content__head">
                 <div class="spnewMain__content__file">
@@ -16,8 +16,7 @@
                       <script>
                         let map
                         let geocoder
-                        const display = document.getElementById('display')
-
+                        
                         function initMap(){
                           geocoder = new google.maps.Geocoder()
 
@@ -49,7 +48,7 @@
                           });   
                         }
                       </script>
-                      <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAD_hqgyKELzdJcgXRshABtsr5UZv3yKck&callback=initMap" async defer></script>
+                      <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" async defer"></script>
                       <div id="display">情報入力</div>
                       <div class="spnewMain__content__form">
                         <%= form.label :地図 %>
