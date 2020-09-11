@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     # end
   
     resources :comments, only: :create
+    # resources :coupons, only: [:create, :destroy]
     # collection do
     #   get 'rule'
     # end

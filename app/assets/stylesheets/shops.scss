@@ -25,7 +25,10 @@ a {
   padding: 30px 250px 0;
   position: relative;
 }
-
+.map-section{
+  display: flex;
+  justify-content: center;
+}
 .main-contents {
   margin: 0 auto;
 }
@@ -102,10 +105,13 @@ a {
 }
 .spnewMain {
   position: relative;
-  
 }
 .spnewMain-format{
   justify-content: center;
+}
+
+.spnewMain-ad{
+  float: left;
 }
 .format {
   filter:drop-shadow(3px 3px 3px rgba(100,100,100,0.6));   

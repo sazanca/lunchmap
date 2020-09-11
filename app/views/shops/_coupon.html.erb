@@ -1,0 +1,17 @@
+<div class="card col-3">
+  <%# <% if coupon.image? %>
+    <%# <%= image_tag coupon.image.url,height:130,class:'card-img-top',alt:"Card image cap"%>
+  <%# <% else %>
+    <%# <%= image_tag 'user_image.png',height:130,class:'card-img-top',alt:"Card image cap"%>
+  <%# <% end %>
+  <div class="card-body">
+    <span class="card-text"><%= coupon.discount %></span>
+    <p class="card-text" ><%= coupon.writing %> </p>
+    <p class="card-text" >有効期限</p>
+    <%= (coupon.created_at + coupon.limit.days).to_s(:datetime_jp) %> 
+      <%# <%= limit.to_s(:datetime_jp) %>
+    <%# <% end %> 
+    <%# <% if user_signed_in? && current_user.id == coupon.shop.id管理者のみクーポンを作成できるようにする %>
+      <%# <%=link_to "編集",edit_shop_coupon_path(current_user,coupon.id),class: "btn btn-warning  text-white" %>
+    <%# <% end %> 
+</div>

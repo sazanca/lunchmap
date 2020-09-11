@@ -32,7 +32,7 @@
       let marker = []; // マーカーを複数表示させたいので、配列化
       let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
       let markerData = gon.maps; // コントローラーで定義したインスタンス変数を変数に代入
-      let id = markerData[i]['id']
+      
 
       function initMap() {
         geocoder = new google.maps.Geocoder()
@@ -57,8 +57,7 @@
             lat: markerData[i]['latitude'],
             lng: markerData[i]['longitude']
           });
-
-          // 各地点のマーカーを作成
+           // 各地点のマーカーを作成
           marker[i] = new google.maps.Marker({
             position: markerLatLng,
             map: map
@@ -76,13 +75,12 @@
           markerEvent(i);
         }
       }
-
-      // マーカーをクリックしたら吹き出しを表示
+        // マーカーをクリックしたら吹き出しを表示
       function markerEvent(i){ 
         marker[i].addListener('click', function () {
           infoWindow[i].open(map, marker[i]);
-        });
-      }
+        });   
+      }     
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" async defer"></script>

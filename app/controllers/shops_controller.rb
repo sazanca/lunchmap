@@ -1,8 +1,6 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
 
-  # GET /shops
-  # GET /shops.json
   def index
     # @tag = params[:tag]
     # @shops = Shop.tagged_with("#{params[:tag]}")
@@ -11,7 +9,7 @@ class ShopsController < ApplicationController
     @maps = Map.all
     gon.maps = Map.all
     if params[:name_key]
-      @shops = Shop.where('name LIKE ?', "%#{params[:name_key]}%")
+      @shops = Shop.where('name LIKE ?', "%##{params[:name_key]}%")
     else
       @shops = Shop.all
     end
@@ -26,7 +24,6 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
-    # @map = Map.new
     @shop.build_map
   end
 
@@ -37,6 +34,7 @@ class ShopsController < ApplicationController
         format.html { redirect_to @shop, notice: '登録成功' }
         format.json { render :show, status: :created, location: @shop }
       else
+        flash.now[:error] ="登録出来ませんでした"
         format.html { render :new }
         format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
@@ -49,15 +47,15 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @comment = Comment.new
     @comments = @shop.comments.includes(:user)
+    @coupons = Coupon.where(shop_id: current_user.id, is_valid: '有効').limit(5).order("created_at DESC")
     @map = Map.find(params[:id])
     @lat = @shop.map.latitude
     @lng = @shop.map.longitude
     gon.lat = @lat
     gon.lng = @lng
   end
-
   
-
+  
   # GET /shops/1/edit
   def edit
     @shop = Shop.find(params[:id])

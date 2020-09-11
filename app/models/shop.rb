@@ -3,10 +3,9 @@ class Shop < ApplicationRecord
   belongs_to :user, optional: true
 
   has_one :map, dependent: :destroy
-  # belongs_to_active_hash :onetime
   accepts_nested_attributes_for :map
   has_many :comments
   acts_as_taggable
   # acts_as_taggable_on :skills, :interests
-  # validates :text, presence: true
+  # validates :text, presence: true  
 end

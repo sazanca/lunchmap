@@ -100,6 +100,7 @@
             </div>
           </div>
         <% end %>
+        <%= link_to '戻る', shops_path, class:"backBtn" %>
       </div>
       <div class="back">
         <% if user_signed_in? && current_user.id == @shop.user_id %>
@@ -110,11 +111,6 @@
           <% else %>
             <%= link_to '戻る', shops_path, class:"backBtn" %>
         <% end %>  
-      </div>
-      <div class="spnewMain-ad">
-        <div class="spnewMain-ad-content">
-          飲食店社内用クーポン
-        </div>
       </div>
     </div>
     <div class="commentBox">
@@ -138,6 +134,17 @@
           <% end %>
         <% end %>
       </div>
+    </div>
+  </div>
+  <div class="spnewMain-ad">
+    <div class="spnewMain-ad-content">
+      飲食店社内用クーポン
+    <h4 class="mt-2">期間限定クーポン一覧</h4>
+    <div class="card-group mt-2">
+      <% @coupons.each do |coupon| %>
+        <%= render partial: 'coupon', locals: { coupon:coupon } %>
+      <% end %>
+    </div>
     </div>
   </div>
 </div>

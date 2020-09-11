@@ -18,4 +18,5 @@ class User < ApplicationRecord
   
   has_many :shops       
   has_many :comments
+  has_many :coupons
 end
