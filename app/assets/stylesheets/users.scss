@@ -1,3 +1,47 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.mypage {
+  height: 700px;
+}
+.mypage_main{
+
+  padding-top: 64px;
+  width: 500px;
+  height: calc(100% - 5px);
+}
+ul.userpro {
+  list-style:none;
+  height: 500px;
+}
+ 
+li.title {
+  width: 540px;
+  border: 1px solid #ccc;
+  background-color: #eee8aa;
+}
+ 
+li.content-user{
+  width: 540px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background-color: #f5f5dc;
+}
+
+span.question {
+  float: left;
+  padding: 10px;
+}
+
+span.answer{
+  display: block;
+  margin-left: 176px;
+  padding: 10px;
+  border-left: 1px solid #ccc;
+}
+
+span.answer-1 {
+  display: block;
+  margin-left: 176px;
+  padding: 10px;
+  border-left: 1px solid #ccc;
+  background-color: #fffff0;
+}

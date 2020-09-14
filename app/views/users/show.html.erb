@@ -1,22 +1,38 @@
 <div class="mypage">
-  <div class="maypage_main">
-    よく行くお店や好きなジャンルを埋めてマイページを充実させましょう
-    <table>
-      <tr>
-        <th>プロフィール</th>
-      <tr>
-        <td>好きなジャンル</td>
-        <td>和食:ラーメン</td>
-      </tr>
-      <tr>
-        <td>よく行くお店</td>
-        <td>駅前の和食屋</td>
-      </tr>
-      <tr>
-        <td>おすすめの店</td>
-        <td>南インドカレー</td>
-      </tr>
-    </table>
-  </div> 
+  <%= @user.nickname %>さんのプロフィール
+  よく行くお店や好きなジャンルを埋めてマイページを充実させましょう
+  <div class="mypage_main">
+    <%# <%= form_with(model: [@user, @profile], local: true) do |form| %>
+    <%# <% if @profiles %>
+      <%# <% @user.profiles.each do |profile| %>
+    <ul class="userpro">
+      <li>プロフィール</li>
+      <%# <strong><%= link_to profile.user.nickname, "/users/#{profiles.user_id}"：</strong>  %>
+        <%# <%= profile.text %>
+          
+      <li class="title"><span class="question">質問項目</span>
+        <span class="answer">
+          回答
+        </span>
+      </li>
+      <li class="content-user"><span class="question">好きなジャンル</span>
+        <span class="answer-1">
+          <%= @profile.ganre %>
+        </span>
+      </li>
+      <li class="content-user"><span class="question">よく行くお店</span>
+        <span class="answer-1">
+          <%= @profile.name %>
+        </span>
+      </li>
+      <li class="content-user"><span class="question">マッチング機能利用</span>
+        <span class="answer-1">
+          使う・使わない
+        </span>
+      </li>
+    </ul>
+    <strong><p>※※※プロフィール入力にはログインが必要です ※※※</p></strong>
   </div>
 </div>
+
+

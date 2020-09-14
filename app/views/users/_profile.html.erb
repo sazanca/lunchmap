@@ -1,0 +1,25 @@
+<% @user.profiles.each do |profile| %>
+              <strong><%= link_to profile.user.nickname, "/users/#{profile.user_id}" %>：</strong>
+              <%= profile.text %>
+            </p>
+        <li class="title"><span class="question">質問項目</span><span class="answer">回答</span>
+          <%= form.label :コメントエリア %>
+          <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
+        </li>
+        <li class="content-user"><span class="question">好きなジャンル</span>
+          <span class="answer-1">
+            <%= @user.profile.ganre%>
+          </span>
+        </li>
+        <li class="content-user"><span class="question">よく行くお店</span>
+          <span class="answer-1">
+            <%= @user.profile.name %>
+          </span>
+        </li>
+        <li class="content-user"><span class="question">マッチング機能利用</span><span class="answer-1">使う・使わない</span></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <% end %>
+  <% else %>
+    <strong><p>※※※プロフィール入力にはログインが必要です ※※※</p></strong>

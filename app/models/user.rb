@@ -15,7 +15,7 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
-  
+  has_one :profile
   has_many :shops       
   has_many :comments
   has_many :coupons
