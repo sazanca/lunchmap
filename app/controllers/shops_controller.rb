@@ -1,24 +1,14 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
-
-  def index
-    # @shops = Shop.all.order('created_at DESC')
-    # @shops =Shop.all.order('updated_at DESC')
-    # @shops = Shop.all.order('created_at ASC').page(params[:page]).per(5)
   
-    @shops = Shop.page(params[:page]).per(5)
+  def index
+    @shops = Shop.all.order('created_at DESC')
     @shops = Shop.includes(:user,:tags)
+    # @shops = Shop.where('name LIKE (?)', "%##{params[:name_key]}%")
+    @shops = Shop.page(params[:page]).per(5)
     @tags = Shop.tag_counts_on(:tags)
     @maps = Map.all
-    gon.maps = Map.all
-    if params[:name_key]
-      @shops = Shop.where('name LIKE ?', "%##{params[:name_key]}%")
-      @shops = Shop.page(params[:page]).per(5)
-    else
-      @shops = Shop.all
-      @shops = Shop.page(params[:page]).per(5)
-    end
-    
+    gon.maps = Map.all    
     if params[:tag_name]
       @shops = Shop.tagged_with("##{params[:tag_name]}")
       @shops = Shop.page(params[:page]).per(5)

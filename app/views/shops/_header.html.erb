@@ -2,10 +2,9 @@
   <div class="headerinline">
     <h1 class="header-title"><%= link_to 'ランチマップ', shops_path %></h1>
     <div class="header-search">
-      <%= form_tag('/shops', method: 'get') do %>
-      <%= label_tag(:name_key, '店名:') %>
-      <%= text_field_tag(:name_key) %>
-      <%= submit_tag('Search') %> <%= link_to '検索終了', shops_path %>
+      <%= form_with(url: shops_searches_path, local: true, method: :get, class: "search-form") do |form| %>
+        <%= form.text_field :keyword %>
+        <%= form.submit'Search' %> <%= link_to '検索終了', shops_path %>
       <% end %>
     </div>
     <div class="header-list">

@@ -8,4 +8,5 @@ class Shop < ApplicationRecord
   acts_as_taggable
   # acts_as_taggable_on :skills, :interests
   # validates :text, presence: true  
+  
 end

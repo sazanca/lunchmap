@@ -1,0 +1,26 @@
+<div class="search-ansewr">
+  <p>検索結果</p>
+  <p id="notice"><%= notice %></p>
+  <div class="contents row">
+    <% @shops.each do |shop| %>
+      <div class='productList'>
+        <figure class='productList--img'>
+          <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
+        </figure>
+        <div class='productList--body'>
+          <h3 class='name'><%= shop.name %></h3>
+          <div class='details'>
+            <ul>
+              <li><%= shop.price%>円</li>
+              <li><p>タグ</p></li>
+              <li><%= render 'tags/tag_list' , {tag_list: shop.tag_list} %></li>
+              <li><i class="fa fa-star likeIcon"></i></li>☆                  
+            </ul> 
+            <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= link_to '検索終了', shops_path, class:"search-btn" %>
