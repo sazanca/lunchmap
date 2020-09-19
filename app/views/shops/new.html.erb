@@ -328,7 +328,7 @@
                     <div class="spnewMain__content__form">
                       <%= f.label :値段 %>
                       <span class="form-require">必須</span>
-                      <%= f.collection_select :price, Price.all, :id, :value, include_blank: "平均価格", class:"form-box" %>
+                      <%= f.text_field :price, placeholder:"平均価格", class:"form-box" %>円
                     </div>
                     <div class="form-contents__tag" >
                       <%= f.label :タグリスト %>

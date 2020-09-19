@@ -1,25 +1,43 @@
-<% @user.profiles.each do |profile| %>
-              <strong><%= link_to profile.user.nickname, "/users/#{profile.user_id}" %>：</strong>
-              <%= profile.text %>
-            </p>
-        <li class="title"><span class="question">質問項目</span><span class="answer">回答</span>
-          <%= form.label :コメントエリア %>
-          <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
-        </li>
+<div class="commentBox">
+  <% if current_user %>
+    <%= form_with(model: [@user, @profile], local: true) do |form| %>
+      <li class="title"><span class="question">質問項目</span><span class="answer">回答</span>
         <li class="content-user"><span class="question">好きなジャンル</span>
           <span class="answer-1">
-            <%= @user.profile.ganre%>
+            <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
           </span>
         </li>
         <li class="content-user"><span class="question">よく行くお店</span>
           <span class="answer-1">
-            <%= @user.profile.name %>
+            <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
           </span>
         </li>
         <li class="content-user"><span class="question">マッチング機能利用</span><span class="answer-1">使う・使わない</span></li>
-        <% end %>
-      <% end %>
-    </ul>
+        <%= form.submit 'プローフィール入力完了' %>
     <% end %>
   <% else %>
     <strong><p>※※※プロフィール入力にはログインが必要です ※※※</p></strong>
+  <% end %>
+  <div class="commentBox">
+    <% if current_user %>
+      <%= form_with(model: [@shop, @comment], local: true) do |form| %>
+        <%= form.label :コメントエリア %>
+        <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
+        <%= form.submit 'コメントを送信する' %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+    <div class="commentBox_area">
+      <h4>＜コメント一覧＞</h4>
+      <% if @profile %>
+        <% @user.profiles.each do |profile| %>
+          <p>
+            <strong><%= link_to profile.user.nickname, "/users/#{profile.user_id}" %>：</strong>
+            
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,15 +1,13 @@
 <div class="main">
-  <tbody>
+  <div class="tag_saerch">
     <p>タグリスト</p>
     <% @tags.each do |tag| %>
       <%= link_to tag.name, shops_path(:action => :tag, :tag => tag.name) %>
     <% end %>
-  </tbody>
-  <div class="tag_saerch">
-    <%# <% @shops.each do |tag_list| %>
-      <%# <%= link_to tag, shops_path(@shop,tag_name: tag) %>
-    <%# <% end %>
   </div>
+    <%# <% @shops.each do |tag_list| %>
+      <%# <%= link_to tag, shops_path(@shop,tag_name: tag) %> 
+    <%# <% end//タグ実装あとで修正// %>
   <div class="fv-section">
     <p>
       いつも同じ店になる
@@ -27,8 +25,8 @@
   </div>
   <div class="map-section">
     <div id='mapArea'></div>
-    <script type="text/javascript">
-      
+    <style>#map{ height: 200px; width: 100px;}</style>
+    <script>
       let marker = []; // マーカーを複数表示させたいので、配列化
       let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
       let markerData = gon.maps; // コントローラーで定義したインスタンス変数を変数に代入
@@ -39,7 +37,7 @@
 
         map = new google.maps.Map(document.getElementById("mapArea"), {
           center: {lat: 35.681236, lng:139.767125},
-          zoom: 16,
+          zoom: 15,
         });
 
        
@@ -93,7 +91,7 @@
       <div class='productBox-Lists'>
         <% @shops.each do |shop| %>
           <div class='productList'>
-            <p>'productList-1'</p>
+          <%= link_to shop_path(shop) do %>
             <figure class='productList--img'>
               <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
             </figure>
@@ -103,48 +101,12 @@
                 <ul>
                   <li><%= shop.price%>円</li>
                   <li><p>タグ</p></li>
-                  <li><%= render 'tags/tag_list' , {tag_list: shop.tag_list} %></li>
+                  <li><%= shop.tag_list %></li>
                   <li><i class="fa fa-star likeIcon"></i></li>☆                  
                 </ul> 
-                <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
               </div>
             </div>
-          </div>
-          <div class='productList'>
-             <p>'productList-2'</p>
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'><%= shop.name %></h3>
-              <div class='details'>
-                <ul>
-                  <li><%= shop.price%>円</li>
-                  <li><p>タグ</p></li>
-                  <li><%= render 'tags/tag_list' , {tag_list: shop.tag_list} %></li>
-                  <li><i class="fa fa-star likeIcon"></i></li>☆                  
-                </ul> 
-                <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
-              </div>
-            </div>
-          </div>
-          <div class='productList'>
-            <p>'productList-3'</p>
-            <figure class='productList--img'>
-              <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
-            </figure>
-            <div class='productList--body'>
-              <h3 class='name'><%= shop.name %></h3>
-              <div class='details'>
-                <ul>
-                  <li><%= shop.price%>円</li>
-                  <li><p>タグ</p></li>
-                  <li><%= render 'tags/tag_list' , {tag_list: shop.tag_list} %></li>
-                  <li><i class="fa fa-star likeIcon"></i></li>☆                  
-                </ul> 
-                <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
-              </div>
-            </div>
+          <% end %>
           </div>
         <% end %>   
       </div>

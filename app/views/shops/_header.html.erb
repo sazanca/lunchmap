@@ -23,14 +23,16 @@
             <%= link_to '新規投稿', new_shop_path, class: "header__right--btn" %>
           </div>  
         <% else %>
-          <div class="header-list">
+          <div class="header-list-box_unlog">
             <%= link_to 'ログイン', new_user_session_path, class:"header__right--btn" %>
             <%= link_to 'ユーザー登録', new_user_registration_path, class:"header__right--btn" %>
-          </div>  
+          </div> 
+          <div class="header-list-box_unlog_new">
+            <%= link_to '新規投稿', new_user_session_path, class: "header__right--btn" %>
+          </div>
         <% end %>
         </div>
       </div>
     </div>
   </div>
-  <p id="notice"><%= notice %></p>  
 </div>

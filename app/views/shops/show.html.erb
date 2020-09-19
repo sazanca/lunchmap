@@ -75,7 +75,7 @@
                     <div class="spnewMain__content__form">
                       <tr>
                         <td><%= form.label :値段 %></td>
-                        <th><%= Price.find(@shop.price).value %>円</th>
+                        <th><%= @shop.price %>円</th>
                       </tr>  
                     </div>
                     <div class="tagbox">
@@ -100,10 +100,10 @@
             </div>
           </div>
         <% end %>
-        <%= link_to '戻る', shops_path, class:"backBtn" %>
       </div>
       <div class="back">
         <% if user_signed_in? && current_user.id == @shop.user_id %>
+          <%= link_to '戻る', shops_path, class:"backBtn" %>
           <div class="backBox">
             <%= link_to '編集', edit_shop_path(@shop), class:"editBtn" %> |
             <%= link_to "削除", "/shops/#{@shop.id}", method: :delete %>

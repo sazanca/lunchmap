@@ -1,11 +1,9 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, except: [:index, :show, :search]
   
   def index
-    @shops = Shop.all.order('created_at DESC')
-    @shops = Shop.includes(:user,:tags)
-    # @shops = Shop.where('name LIKE (?)', "%##{params[:name_key]}%")
-    @shops = Shop.page(params[:page]).per(5)
+    @shops = Shop.includes(:user,:tags).order('created_at DESC').page(params[:page]).per(5)
     @tags = Shop.tag_counts_on(:tags)
     @maps = Map.all
     gon.maps = Map.all    
@@ -43,7 +41,7 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @comment = Comment.new
     @comments = @shop.comments.includes(:user)
-    @coupons = Coupon.where(shop_id: current_user.id, is_valid: '有効').limit(5).order("created_at DESC")
+    @coupons = Coupon.where(is_valid: '有効').limit(5).order("created_at DESC")
     @map = Map.find(params[:id])
     @lat = @shop.map.latitude
     @lng = @shop.map.longitude
@@ -86,6 +84,10 @@ class ShopsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_shop
     @shop = Shop.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
   end
   
   # Only allow a list of trusted parameters through.

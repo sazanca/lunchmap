@@ -2,6 +2,13 @@
   width: 100vw;
 }
 
+h2{
+  margin:50px;
+}
+.new_user{
+  
+  margin:50px;
+}
 a:hover {
   color: green($color: #000000);
 }
@@ -9,14 +16,13 @@ a:hover {
 a {
   text-decoration: none;
   color: salmon;
-  font-size: 24px;
   padding: 5px 12px;
 }
 
 .headerinline {
   display: flex;
   justify-content: space-between;
-  margin: 48px;
+  margin: 16px 32px;
   height: 90px;
   font-size: 18px;
 }
@@ -39,9 +45,6 @@ a {
   height: 100%;
 }
 
-// .productBox {
-//   // height: 300px;
-// }
 
 .productBox-Head{
   height: 32px;
@@ -53,17 +56,17 @@ a {
 }
 
 .productBox-Lists {
-  width: 880px;
-  height: 540px;
-  margin: 26px auto;
+  height: 480px;
+  margin: 32px auto;
   display: flex;
-  justify-content: space-around;
+  justify-content:  center;
 }
 
 .productList {
   list-style: none;
   width: 220px;
   display: inline-block;
+  margin-right: 64px;
 }
 
 .productList--img { 
@@ -191,8 +194,8 @@ select {
 }
 
 #mapArea {
-  height: 600px;
-  width: 800px;
+  height: 420px;
+  width: 640px;
 }
 
 #results {
