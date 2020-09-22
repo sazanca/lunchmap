@@ -9,79 +9,68 @@
       <%# <%= link_to tag, shops_path(@shop,tag_name: tag) %> 
     <%# <% end//タグ実装あとで修正// %>
   <div class="fv-section">
-    <p>
-      いつも同じ店になる
-    </p>
-    <p>
-      気になっているけど入りづらい
-    </p>
-    <p>
-      時間までに戻ってこれるか不安
-    </p>
-    <p>
-      一緒に行く人がいたらいいな
-    </p>
-    <p class="main-copy">地図にランチ情報を埋めて会社オリジナルのランチマップを作りませんか？</p>
-  </div>
-  <div class="map-section">
-    <div id='mapArea'></div>
-    <style>#map{ height: 200px; width: 100px;}</style>
-    <script>
-      let marker = []; // マーカーを複数表示させたいので、配列化
-      let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
-      let markerData = gon.maps; // コントローラーで定義したインスタンス変数を変数に代入
-      
+    <div class="eye-catch">
+      <p>いつも同じ店になる</p>
+      <p>気になっているけど入りづらい</p>
+      <p> 時間までに戻ってこれるか不安</p>
+      <p>一緒に行く人がいたらいいな</p>
+      <p class="main-copy">地図にランチ情報を埋めて会社オリジナルのランチマップを作りませんか？</p>
+    </div>  
+    <div class="map-section">
+      <div id='mapArea'></div>
+      <style>#map{ height: 200px; width: 100px;}</style>
+      <script>
+        let marker = []; // マーカーを複数表示させたいので、配列化
+        let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
+        let markerData = gon.maps; // コントローラーで定義したインスタンス変数を変数に代入
+        
+        function initMap() {
+          geocoder = new google.maps.Geocoder()
 
-      function initMap() {
-        geocoder = new google.maps.Geocoder()
-
-        map = new google.maps.Map(document.getElementById("mapArea"), {
-          center: {lat: 35.681236, lng:139.767125},
-          zoom: 15,
-        });
-
-       
-        marker = new google.maps.Marker({
-          position:  {lat: 35.681236, lng:139.767125},
-          map: map
-        });
-
-        // 繰り返し処理でマーカーと吹き出しを複数表示させる
-        for (var i = 0; i < markerData.length; i++) {
-          let id = markerData[i]['id']
-
-          // 各地点の緯度経度を算出
-          markerLatLng = new google.maps.LatLng({
-            lat: markerData[i]['latitude'],
-            lng: markerData[i]['longitude']
+          map = new google.maps.Map(document.getElementById("mapArea"), {
+            center: {lat: 35.681236, lng:139.767125},
+            zoom: 15,
           });
-           // 各地点のマーカーを作成
-          marker[i] = new google.maps.Marker({
-            position: markerLatLng,
+          marker = new google.maps.Marker({
+            position:  {lat: 35.681236, lng:139.767125},
             map: map
           });
-         
 
+          // 繰り返し処理でマーカーと吹き出しを複数表示させる
+          for (var i = 0; i < markerData.length; i++) {
+            let id = markerData[i]['id']
 
-          // 各地点の吹き出しを作成
-          infoWindow[i] = new google.maps.InfoWindow({
-            // <a>タグでリンクを作成
-            content: `<a href='/shops/${ id }'>${ markerData[i]['address'] }</a>`
-          });
+            // 各地点の緯度経度を算出
+            markerLatLng = new google.maps.LatLng({
+              lat: markerData[i]['latitude'],
+              lng: markerData[i]['longitude']
+            });
+            // 各地点のマーカーを作成
+            marker[i] = new google.maps.Marker({
+              position: markerLatLng,
+              map: map
+            });
           
-          // マーカーにクリックイベントを追加
-          markerEvent(i);
+            // 各地点の吹き出しを作成
+            infoWindow[i] = new google.maps.InfoWindow({
+              // <a>タグでリンクを作成
+              content: `<a href='/shops/${ id }'>${ markerData[i]['address'] }</a>`
+            });
+            
+            // マーカーにクリックイベントを追加
+            markerEvent(i);
+          }
         }
-      }
-        // マーカーをクリックしたら吹き出しを表示
-      function markerEvent(i){ 
-        marker[i].addListener('click', function () {
-          infoWindow[i].open(map, marker[i]);
-        });   
-      }     
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" async defer"></script>
+          // マーカーをクリックしたら吹き出しを表示
+        function markerEvent(i){ 
+          marker[i].addListener('click', function () {
+            infoWindow[i].open(map, marker[i]);
+          });   
+        }     
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" async defer"></script>
+    </div>
   </div>
   <section class='pickupContainer'>
     <div class='productBox'>
@@ -100,8 +89,7 @@
               <div class='details'>
                 <ul>
                   <li><%= shop.price%>円</li>
-                  <li><p>タグ</p></li>
-                  <li><%= shop.tag_list %></li>
+                  <li><%= "♯#{shop.tag_list}" %></li>
                   <li><i class="fa fa-star likeIcon"></i></li>☆                  
                 </ul> 
               </div>

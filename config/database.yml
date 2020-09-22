@@ -25,4 +25,5 @@ test:
 
 production:
   <<: *default
+  
   database: lunchmap_production

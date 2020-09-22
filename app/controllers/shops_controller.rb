@@ -8,7 +8,7 @@ class ShopsController < ApplicationController
     @maps = Map.all
     gon.maps = Map.all    
     if params[:tag_name]
-      @shops = Shop.tagged_with("##{params[:tag_name]}")
+      @shops = Shop.tagged_with("♯#{params[:tag_name]}")
       @shops = Shop.page(params[:page]).per(5)
     end
     
