@@ -25,5 +25,5 @@ test:
 
 production:
   <<: *default
-  
-  database: lunchmap_production
+   url: <%= ENV['DATABASE_URL'] %>
+  #database: lunchmap_production
