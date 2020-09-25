@@ -18,6 +18,7 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
+    @shop.tag_list.add
     @shop.build_map
   end
 

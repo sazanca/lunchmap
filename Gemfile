@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :production do
-  gem 'rails_12factor'
+  gem 'rails_12factor' 
 end
 
 group :development, :test do
@@ -59,9 +59,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry-rails'
 gem 'active_hash'
 gem 'devise'
-gem 'acts-as-taggable-on', '6.5.0'
+gem 'acts-as-taggable-on','~> 6.0'
 gem 'dotenv-rails'
 gem 'geocoder'
 gem 'gon'
 gem 'kaminari'
-gem 'puma', '~> 4.1'
