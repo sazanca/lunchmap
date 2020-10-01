@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 // require("turbolinks").start() 一時的に削除
 require("@rails/activestorage").start()
 require("channels")
-// require('jquery')
+require('jquery')
 
 // import "packs/map.js"
 

@@ -34,6 +34,7 @@
   <dd>マッチング機能</dd>
   <dd>slackで共有</dd>
   <dd>お気に入り登録</dd>
+  <dd>レコメンド機能</dd>
 </dl>
 
 
@@ -84,6 +85,16 @@
 |------|----|-------|
 |text|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :shop
+- belongs_to :user
+
+## favoritesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|shop_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :shop
 - belongs_to :user

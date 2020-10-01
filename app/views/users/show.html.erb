@@ -1,46 +1,52 @@
 <div class="mypage">
   <%= @user.nickname %>さんのプロフィール
   よく行くお店や好きなジャンルを埋めてマイページを充実させましょう
-      <%# <p><strong><%= link_to profile.user.nickname, "/users/#{profile.user_id}" %>：</strong></p> %>
+      <%# <p><strong><%= link_to profile.user.nickname, "/users/#{profile.user_id}" %>：</strong></p> 
   <div class="mypage_main">
       <%# <%= form_with(model: [@user, @profile], local: true) do |form| %>
       <%# <% if @profiles %>
         <%# <% @user.profiles.each do |profile| %>
     <%# <% if @profile %> %>
-      <ul class="userpro">
-          <li>プロフィール</li>
-           <%# <%= render "プロフィール入力" ,partial:"profile" %> %>
-          <%# <strong><%= link_to profile.user.nickname, "/users/#{profiles.user_id}"：</strong>  %>
-            <%# <%= profile.text %>
-        <%# <% @user.profiles.each do |profile| %>
-          <li class="title"><span class="question">質問項目</span>
-            <span class="answer">
-              回答
-            </span>
-          </li>
-          <li class="content-user"><span class="question">好きなジャンル</span>
-            <span class="answer-1">
-              <%# <%= @profile.ganre %> %>
-            </span>
-          </li>
-          <li class="content-user"><span class="question">よく行くお店</span>
-            <span class="answer-1">
-              <%# <%= @profile.name %> %>
-            </span>
-          </li>
-          <li class="content-user"><span class="question">マッチング機能利用</span>
-            <span class="answer-1">
-              使う・使わない
-            </span>
-          </li>
-        <%# <% end %> %>
-      </ul>
-    <%# <% end %> %>
+    <ul class="userpro">
+        <li>プロフィール</li>
+          <%# <%= render "プロフィール入力" ,partial:"profile" %> %>
+        <%# <strong><%= link_to profile.user.nickname, "/users/#{profiles.user_id}"：</strong>  %>
+          <%# <%= profile.text %>
+      <%# <% @user.profiles.each do |profile| %>
+        <li class="title"><span class="question">質問項目</span>
+          <span class="answer">
+            回答
+          </span>
+        </li>
+        <li class="content-user"><span class="question">好きなジャンル</span>
+          <span class="answer-1">
+            ラーメン
+          </span>
+        </li>
+        <li class="content-user"><span class="question">よく行くお店</span>
+          <span class="answer-1">
+            <%# <%= @profile.name %> %>
+          </span>
+        </li>
+        <li class="content-user"><span class="question">マッチング機能利用</span>
+          <span class="answer-1">
+            <div class="mid">
+              <label class="rocker">
+                <input type="checkbox" checked>
+                <span class="switch-left">On</span>
+                <span class="switch-right">Off</span>
+              </label>
+            </div>
+          </span>
+        </li>
+      <%# <% end %>
+    </ul>
+    <%# <% end %>
       <strong><p>※※※プロフィールを入力するとマッチング機能が利用できます※※※</p></strong>
-    </div>
+    <%# </div> %>
     <%# <div class="userpro">
       <% if current_user %>
-        <%# <%= form_with(model: @profile, local: true) do |form| %> %>
+        <%# <%= form_with(model: @profile, local: true) do |form| %>
           <%# <li class="title"><span class="question">質問項目</span><span class="answer">回答</span> %>
             <%# <li class="content-user"><span class="question">好きなジャンル</span>
               <span class="answer-1">
@@ -49,13 +55,13 @@
             <%# </li> %>
             <%# <li class="content-user"><span class="question">よく行くお店</span> %>
               <%# <span class="answer-1"> %>
-                <%# <%= form.text_area :ganre, placeholder:"エビそば" %> %>
-              <%# </span> %> %>
+                <%# <%= form.text_area :ganre, placeholder:"エビそば" %>
+              <%# </span> %>
             </li>
             <%# <li class="content-user"><span class="question">マッチング機能利用</span><span class="answer-1">使う・使わない</span></li>
             <%= form.submit 'プローフィール入力完了' %>
-        <%# <% end %> %>
-      <%# <% else %> %>
+        <%# <% end %> 
+      <%# <% else %> 
       <%# <% end %> 
       <div class="commentBox_area">
         <% if @profile %>
@@ -66,7 +72,7 @@
           <%# <% end %> %>
         <% end %>
       </div>
-    </div> %>
+    </div>
   </div>
 </div>
 

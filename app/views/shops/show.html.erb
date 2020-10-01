@@ -1,16 +1,16 @@
 <div class="spnew">
   <div class="spnewMain">
-    <div class=spnewMain-format>
+    <div class="format">
       <div class="format_content">
         <h2 class="format-title">お店情報詳細</h2>
         <%= form_with(model: @shop, local: true) do |form| %>
           <div class="spnewMain_contents">
-            <div id='mapArea'></div>
             <div class="spnewMain_contents__content">
               <div class="spnewMain_contents__content__head">
                 <div class="spnewMain__content__file">
                   <div class="spnewMain__content__file__up">
                     <div class="h3.sell__main__content__file__up__head">
+                      <div id='mapArea'></div>
                       <script>
                         let map
                         let geocoder
@@ -93,7 +93,10 @@
                         <p>#タグ表示欄を追加</p>
                         <%= link_to 'タグ追加', '#' %>
                       <% end %>
-                    </div>      
+                    </div>
+                    <div class="option">
+                      <%= render partial: 'likes/like', locals: { shop:@shop } %>  
+                    </div>   
                   </div>
                 </div>
               </div>
@@ -136,15 +139,15 @@
       </div>
     </div>
   </div>
-  <div class="spnewMain-ad">
+  <div class="qupon-ad">
     <div class="spnewMain-ad-content">
       飲食店社内用クーポン
-    <h4 class="mt-2">期間限定クーポン一覧</h4>
-    <div class="card-group mt-2">
-      <% @coupons.each do |coupon| %>
-        <%= render partial: 'coupon', locals: { coupon:coupon } %>
-      <% end %>
-    </div>
+      <h4 class="mt-2">期間限定クーポン一覧</h4>
+      <div class="card-group mt-2">
+        <% @coupons.each do |coupon| %>
+          <%= render partial: 'coupon', locals: { coupon:coupon } %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

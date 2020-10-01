@@ -19,4 +19,6 @@ class User < ApplicationRecord
   has_many :shops       
   has_many :comments
   has_many :coupons
+  has_many :likes, dependent: :destroy
+  has_many :like_shops, through: :likes, source: :shop
 end
