@@ -94,7 +94,7 @@
                         <%= link_to 'タグ追加', '#' %>
                       <% end %>
                     </div>
-                    <div class="option">
+                    <div class="option" ><% {:id=> "like-link-#{@shop.id}"} %> 
                       <%= render partial: 'likes/like', locals: { shop:@shop } %>  
                     </div>   
                   </div>

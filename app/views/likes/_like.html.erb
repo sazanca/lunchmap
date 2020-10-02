@@ -1,6 +1,6 @@
-<div class="option__like"><% {:id=> "like-link-#{@shop.id}"} %> 
+<div class="option__like" id="like-link-<%= @shop.id %>">
   <% if current_user.likes.find_by(shop_id: shop.id) %>
-    <%= link_to unlike_shop_path(@shop.id, @shop.id), method: :delete, remote: true, class:"option__like-on" do %>
+    <%= link_to unlike_path(shop.id), method: :delete, remote: true, class:"option__like-on" do %>
       <i class="fa fa-star likeIcon" aria-hidden="true"></i>
       <div class="option__like-on__text">
         いいね！
@@ -10,7 +10,7 @@
       </div>
     <% end %>
   <% else %>
-    <%= link_to  like_shop_path(@shop.id, @shop.id), method: :post, remote: true, class:"option__like-off" do %>
+    <%= link_to  like_path(shop.id), method: :post, remote: true, class:"option__like-off" do %>
       <i class="far fa-star" aria-hidden="true"></i>
       <div class="option__like-on__text">いいね！</div>
       <div class="option__like-on__count">

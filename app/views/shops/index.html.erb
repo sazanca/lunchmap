@@ -116,7 +116,7 @@
               <div class='details'>
                 <ul>
                   <li><%= shop.arrivaltime %></li>
-                  <li><i class="fa fa-star likeIcon"></i>☆</li>
+                  <li><%= render partial: 'likes/like',collection: @shop, as: :shop %></li>
                 </ul>
                 <p>(税込)</p>
               </div>
