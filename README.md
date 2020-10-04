@@ -29,11 +29,11 @@
   <dd>クーポン利用</dd>
   <dd>コメント機能</dd>
   <dd>タグ検索</dd>
+  <dd>いいね登録</dd>
   <dt>今後追加したい機能<dd> 
   <dd>管理者画面</dd> 
   <dd>マッチング機能</dd>
   <dd>slackで共有</dd>
-  <dd>お気に入り登録</dd>
   <dd>レコメンド機能</dd>
 </dl>
 
@@ -89,7 +89,7 @@
 - belongs_to :shop
 - belongs_to :user
 
-## favoritesテーブル
+## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
