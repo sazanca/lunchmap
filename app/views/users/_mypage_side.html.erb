@@ -1,0 +1,88 @@
+<div class="left-content">
+  <div class="left-content__bar">
+    <ul>
+      <li>
+        <%= link_to "マイページ", '#'%><br>/
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "お知らせ", '#' %>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "やることリスト", '#' %>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "いいね！一覧", 'likes_users_path' %>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "ニュース一覧", '#' %>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "評価一覧", '#'%>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "ガイド一覧", '#'%>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "お問い合わせ", '#' %>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="left-content__bar">
+  <h4> 売上・ポイント
+    <ul style="marginT-8px">
+      <li>
+        <%= link_to "売上申請", '#'%>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "ポイント", '#'%>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+    </ul>
+  </h4>
+</div>
+<div class="left-content__bar">
+  <h4> 設定
+    <ul class="marginT-8px">
+      <li>
+        <%# <%= link_to "プロフィール", "/users/profiles" method: :get%>
+        <%= link_to "プロフィール", partial: "profile" %>
+        <%# <%= link_to '詳細', "/shops/#{shop.id}", method: :get %> %>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "住所変更", '#'%>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "支払方法", '#' %>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "メール/パスワード", '#' %> 
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "本人情報", '#' %>
+         <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "電話番号の確認", '#' %>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+      <li>
+        <%= link_to "ログアウト", '#'  %>
+        <i class="fa fa-chevron-right"></i>
+      </li>
+    </ul>
+  </h4>
+</div>

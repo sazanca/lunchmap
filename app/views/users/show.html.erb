@@ -3,10 +3,7 @@
   よく行くお店や好きなジャンルを埋めてマイページを充実させましょう
       <%# <p><strong><%= link_to profile.user.nickname, "/users/#{profile.user_id}" %>：</strong></p> 
   <div class="mypage_main">
-      <%# <%= form_with(model: [@user, @profile], local: true) do |form| %>
-      <%# <% if @profiles %>
-        <%# <% @user.profiles.each do |profile| %>
-    <%# <% if @profile %> %>
+    <%= render "mypage_side" %>
     <ul class="userpro">
         <li>プロフィール</li>
           <%# <%= render "プロフィール入力" ,partial:"profile" %> %>
@@ -42,7 +39,9 @@
       <%# <% end %>
     </ul>
     <%# <% end %>
-      <strong><p>※※※プロフィールを入力するとマッチング機能が利用できます※※※</p></strong>
+    <h3>いいねしている投稿</h3>
+    <%= link_to "いいねしたお店", likes_users_path %>
+    <strong><p>※※※プロフィールを入力するとマッチング機能が利用できます※※※</p></strong>
     <%# </div> %>
     <%# <div class="userpro">
       <% if current_user %>
@@ -62,7 +61,8 @@
             <%= form.submit 'プローフィール入力完了' %>
         <%# <% end %> 
       <%# <% else %> 
-      <%# <% end %> 
+      <%# <% end %>
+      
       <div class="commentBox_area">
         <% if @profile %>
           <%# <% @user.profile.each do |profile| %> %>

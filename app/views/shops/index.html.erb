@@ -116,7 +116,7 @@
               <div class='details'>
                 <ul>
                   <li><%= shop.arrivaltime %></li>
-                  <li><%= render partial: 'likes/like',collection: @shop, as: :shop %></li>
+                  <li><%= render 'tags/tag_list' , {tag_list: shop.tag_list} %></li>
                 </ul>
                 <p>(税込)</p>
               </div>
