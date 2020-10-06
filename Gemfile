@@ -7,25 +7,25 @@ ruby '2.6.3'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
-# gem 'puma'
+gem 'puma'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5' 一時的に無効にする
+gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
+# Use Active Model has_secure_passwords
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '<= 1.1.0', require: false
 
 group :production do
   gem 'rails_12factor'
