@@ -145,8 +145,6 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.6)
-    puma (4.3.6)
-      nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -187,7 +185,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    regexp_parser (1.8.0)
+    regexp_parser (1.8.1)
     request_store (1.5.0)
       rack (>= 1.4)
     responders (3.0.1)
@@ -264,7 +262,6 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   pg
   pry-rails
-  puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.1)
   rails_12factor
   sass-rails (>= 6)
@@ -277,7 +274,7 @@ DEPENDENCIES
   webpacker (~> 4.0)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.3p62
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
