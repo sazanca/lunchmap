@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
 
-  def index
-    
-  end
   def show
     @user = User.find(params[:id])
     @shops = @user.shops
-    @profile = Profile.new(id: current_user.id)
-    @profile = @user.profile
-    # @profile = Profile.find(params[:id])
-    # @profile = @user.profile.includes(:user)
+    # @profile = Profile.new(id: current_user.id)
+    # @profile = @user.profile
+    # # @profile = Profile.find(params[:id])
+    # # @profile = @user.profile.includes(:user)
   end
 
   def create
