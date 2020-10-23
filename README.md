@@ -47,6 +47,15 @@
 - has_many :shops
 - has_many :comments
 
+## profilesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|favoriteshop|text|null: false|
+||string|null: false|
+### Association
+- belongs_to :user
+- belongs_to :shop
+
 ## shopsテーブル
 |Column|Type|Options|
 |------|----|-------|

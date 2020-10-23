@@ -1,0 +1,50 @@
+<div class="profile_main">
+  <div class="profile_list">
+    <% if current_user %>
+    <%# <%= form_with(model: [@user, @profile], local: true) do |form| %>
+      <%= form_with(model: @profile, local: true) do |form| %>
+        <ul class="userpro">
+          <li>プロフィール</li>
+          <li class="title"><span class="question">質問項目</span>
+            <span class="answer">
+              回答
+            </span>
+          </li>
+          <li class="content-user"><span class="question">好きなジャンル</span>
+            <span class="answer-1">
+              <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
+            </span>
+          </li>
+          <li class="content-user"><span class="question">よく行くお店</span>
+            <span class="answer-1">
+              <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
+            </span>
+          </li>
+          <li class="content-user"><span class="question">マッチング機能利用</span>
+            <span class="answer-1">
+              <span class="answer-1">
+                <div class="mid">
+                  <label class="rocker">
+                    <input type="checkbox" checked>
+                    <span class="switch-left">On</span>
+                    <span class="switch-right">Off</span>
+                  </label>
+                </div>
+              </span>
+            </span>
+          </li>
+          <%= form.submit 'プローフィール入力完了' %>
+        </ul>
+      <% end %>
+    <% else %>
+      <strong><p>※※※プロフィール入力にはログインが必要です ※※※</p></strong>
+    <% end %>
+    <% if @profile %>
+      <% @user.profiles.each do |profile| %>
+        <p>
+          <strong><%= link_to profile.user.nickname, "/users/#{profile.user_id}" %>：</strong>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

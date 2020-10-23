@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'rule' => 'shops#rule'
   root "shops#index"
+  # get 'profile' => 'users#profiles'
   # post   '/like/:shop_id' => 'likes#like',   as: 'like'
   # delete '/like/:shop_id' => 'likes#unlike', as: 'unlike'
   namespace :shops do
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: :show do
+    resource :profile, only: [:create, :show, :edit, :update]
+    # get 'profile', to: 'users#show'
     collection do
       get :likes
     end

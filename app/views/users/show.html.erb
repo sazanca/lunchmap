@@ -4,76 +4,7 @@
     <%# <p><strong><%= link_to profile.user.nickname, "/users/#{profile.user_id}" %>：</strong></p> 
   <div class="mypage_main">
     <%= render "mypage_side" %>
-    <ul class="userpro">
-        <li>プロフィール</li>
-          <%# <%= render "プロフィール入力" ,partial:"profile" %> %>
-        <%# <strong><%= link_to profile.user.nickname, "/users/#{profiles.user_id}"：</strong>  %>
-          <%# <%= profile.text %>
-      <%# <% @user.profiles.each do |profile| %>
-        <li class="title"><span class="question">質問項目</span>
-          <span class="answer">
-            回答
-          </span>
-        </li>
-        <li class="content-user"><span class="question">好きなジャンル</span>
-          <span class="answer-1">
-            ラーメン
-          </span>
-        </li>
-        <li class="content-user"><span class="question">よく行くお店</span>
-          <span class="answer-1">
-            <%# <%= @profile.name %> %>
-          </span>
-        </li>
-        <li class="content-user"><span class="question">マッチング機能利用</span>
-          <span class="answer-1">
-            <div class="mid">
-              <label class="rocker">
-                <input type="checkbox" checked>
-                <span class="switch-left">On</span>
-                <span class="switch-right">Off</span>
-              </label>
-            </div>
-          </span>
-        </li>
-      <%# <% end %>
-    </ul>
-    <%# <% end %>
-    <h3>いいねしている投稿</h3>
-    <%= link_to "いいねしたお店", likes_users_path %>
-    <strong><p>※※※プロフィールを入力するとマッチング機能が利用できます※※※</p></strong>
-    <%# </div> %>
-    <%# <div class="userpro">
-      <% if current_user %>
-        <%# <%= form_with(model: @profile, local: true) do |form| %>
-          <%# <li class="title"><span class="question">質問項目</span><span class="answer">回答</span> %>
-            <%# <li class="content-user"><span class="question">好きなジャンル</span>
-              <span class="answer-1">
-                <%= form.text_area :name, placeholder:"ラーメン" %>
-              <%# </span> %>
-            <%# </li> %>
-            <%# <li class="content-user"><span class="question">よく行くお店</span> %>
-              <%# <span class="answer-1"> %>
-                <%# <%= form.text_area :ganre, placeholder:"エビそば" %>
-              <%# </span> %>
-            </li>
-            <%# <li class="content-user"><span class="question">マッチング機能利用</span><span class="answer-1">使う・使わない</span></li>
-            <%= form.submit 'プローフィール入力完了' %>
-        <%# <% end %> 
-      <%# <% else %> 
-      <%# <% end %>
-      
-      <div class="commentBox_area">
-        <% if @profile %>
-          <%# <% @user.profile.each do |profile| %> %>
-            <p>
-              <%# <strong><%= link_to user.nickname, "/users/#{profile.user_id}" %>：</strong> %>
-            </p>
-          <%# <% end %> %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  </div>     
 </div>
 
 
