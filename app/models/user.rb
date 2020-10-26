@@ -15,10 +15,11 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
-  has_one :profile
-  has_many :shops       
+  has_one  :profile
+  has_many :shops
   has_many :comments
   has_many :coupons
   has_many :likes, dependent: :destroy
   has_many :like_shops, through: :likes, source: :shop
+  validates :nickname, presence: true, uniqueness: true
 end

@@ -114,6 +114,7 @@ a {
 }
 .spnewMain {
   position: relative;
+  padding-top: 32px;
 }
 .spnewMain-format{
   justify-content: center;
@@ -123,6 +124,7 @@ a {
   float: left;
 }
 .format {
+  width: 700px;
   filter:drop-shadow(3px 3px 3px rgba(100,100,100,0.6));   
 }
 
@@ -135,10 +137,14 @@ a {
   background-color: wheat;
   border-radius: 25px 25px;
   font-size: 18px;
+  display: flow-root;
+}
+.spnewMain_contents{
+  // background-color: cadetblue;
 }
 
 .spnewMain_contents__content {
-  display: flex;
+  // background-color: brown;
 }
 
 .spnewMain_contents__content__head {
@@ -196,6 +202,34 @@ select {
   display: flex;
 }
 
+.qupon-ad{
+  padding-top: 32px;
+}
+.spnewMain-ad-content{
+  background-color: cornflowerblue;
+}
+.card-body{
+  border: solid 3px #000;    	/* 内側の線になる5pxの線をひく */
+	margin: 2px;            	/* 外側の線の場所を確保する */
+	position: relative;        	/* 外側の線の場所を調整する時の基準点になるようにする    */
+	border-radius: 8px; 
+}
+.card-body::before{
+  content: '';            		/* 擬似要素に実体を持たせる */
+  width: calc(100% + 12px);    	/* 外側の線になる要素の幅を指定する */
+  height: calc(100% + 12px);		/* 外側の線になる要素の高さを指定する */
+  border: solid 3px;        		/* 外側の線になる一本線の枠線をひく*/
+  position: absolute;        		/* 外側の線の位置を自由に動かせるようにする */
+  top: -8px;            			/* 外側の線の位置を、内側の線から上に7pxずらす */
+  left: -9px;            			/* 外側の線の位置を、内側の線から左に7pxずらす */
+  border-radius: 8px;        	/* 要素の角を丸くする */
+}
+.card-text{
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: 1px 1px 2px silver;
+  color: #ffb340;
+}
 #mapArea {
   height: 420px;
   width: 640px;

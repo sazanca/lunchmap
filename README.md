@@ -37,6 +37,22 @@
   <dd>レコメンド機能</dd>
 </dl>
 
+<dl>
+  <dt>現時点での課題</dt>
+  <dd>検索結果該当なしの場合結果が表示されない</dd>
+  <dt>対策・原因</dt>
+  <dd>該当なしのみmodelでコメント表示させる・７つのアクションでの実行を変える</dd>
+  <dd>タグからリスト一覧に飛ぶ<dd>
+  <dt>対策・原因</dt>
+  <dd>タグの使い方のおさらい。gemで導入して使い方の理解不足</dd>
+  <dd>プロフィールの取得がユーザー別ではなく全取得になる</dd>
+  <dt>対策・原因</dt>
+  <dd>usersテーブルとの親子関係がコントローラーによって定義出来ていない</dd>
+  <dd>テストコード</dd>
+  <dd>対策・原因</dd>
+  <dd>機能開発を優先し機能実装と同時にテストを実行しなかった.</dd>
+</dl>  
+
 
 ## usersテーブル
 |Column|Type|Options|
@@ -46,6 +62,7 @@
 ### Association
 - has_many :shops
 - has_many :comments
+- has_one :profile
 
 ## profilesテーブル
 |Column|Type|Options|
@@ -54,7 +71,6 @@
 ||string|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :shop
 
 ## shopsテーブル
 |Column|Type|Options|
@@ -107,3 +123,7 @@
 ### Association
 - belongs_to :shop
 - belongs_to :user
+
+## matchsテーブル
+|Column|Type|Options|
+|------|----|-------|

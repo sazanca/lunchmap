@@ -3,8 +3,8 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
     create_table :profiles do |t|
       t.text :name
       t.text :ganre
-      t.integer :user_id
-      t.boolean :is_valid, default: true#クーポン有効性の真偽
+      t.references :user, foreign_key: true
+      t.boolean :is_valid, default: true
       t.timestamps
     end
   end

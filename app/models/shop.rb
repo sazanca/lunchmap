@@ -1,7 +1,6 @@
 class Shop < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user, optional: true
-
   has_one :map, dependent: :destroy
   accepts_nested_attributes_for :map
   has_many :comments
@@ -12,4 +11,6 @@ class Shop < ApplicationRecord
   def like_user(user_id)
     likes.find_by(user_id: user_id)
   end
+
+  validates :name, presence: true, uniqueness: true
 end

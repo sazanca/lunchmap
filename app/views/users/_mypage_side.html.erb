@@ -55,7 +55,7 @@
     <ul class="marginT-8px">
       <li>
         <%# <%= link_to "プロフィール", user_profile_path %>
-        <%= link_to "プロフィール", user_profile_path(@user.id) %>
+        <%= link_to "プロフィール", user_profile_path(:user_id) %>
         <%# <%= link_to "プロフィール", "/profiles/#{user_id: user.id}" %>
         <%# <%= link_to "プロフィール", "/profiles/#{@user.id}", method: :get %> 
         <%# <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
