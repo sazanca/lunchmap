@@ -16,6 +16,10 @@ class ShopsController < ApplicationController
     end
   end
 
+  def search
+    @shops = Shop.search(params[:keyword])
+  end
+
   def new
     @shop = Shop.new
     @shop.tag_list.add

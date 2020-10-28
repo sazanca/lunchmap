@@ -2,9 +2,9 @@
   <div class="headerinline">
     <h1 class="header-title"><%= link_to 'ランチマップ', shops_path %></h1>
     <div class="header-search">
-      <%= form_with(url: shops_searches_path, local: true, method: :get, class: "search-form") do |form| %>
-        <%= form.text_field :keyword %>
-        <%= form.submit'Search' %> <%= link_to '検索終了', shops_path %>
+      <%= form_with(url: search_shops_path, local: true, method: :get, class: "search-form") do |form| %>
+        <%= form.text_field :keyword, placeholder:"店名 ジャンル" %>
+        <%= form.submit'お店検索', :name => nil,class:"search-btn" %><%= link_to '検索終了', shops_path %>
       <% end %>
     </div>
     <div class="header-list">
@@ -12,7 +12,7 @@
         <% if user_signed_in? %>
           <div class="header-list-box__user">
               <%= current_user.nickname %>さん
-              <%# <%= link_to current_user.nickname, user_path(current_user) %>
+              <%= link_to current_user.nickname, user_path(current_user) %>
               <ul class="user__info">
                 <li>
                   <%= link_to "マイページ", user_path(current_user.id) %>

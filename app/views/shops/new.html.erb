@@ -4,6 +4,16 @@
       <div class="format_content">
         <h2 class="format-title">お店登録</h2>
         <%= form_with(model: @shop, local: true) do |f| %>
+          <% if @shop.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+              <ul>
+                <% @shop.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
           <div class="spnewMain_contents">
             <div class="spnewMain_contents__content">
               <div class="spnewMain_contents__content__head">

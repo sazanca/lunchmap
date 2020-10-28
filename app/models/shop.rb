@@ -12,5 +12,17 @@ class Shop < ApplicationRecord
     likes.find_by(user_id: user_id)
   end
 
+  def self.search(search)
+    if search
+      Shop.where('name LIKE(?)', "_" "%#{search}%")
+      # cont = Shop.where('name LIKE(?)', "_" "%#{search}%").count
+      # text ="該当件数#{cont}です。"
+    else
+      Shop.all
+    end
+  end
+
+
+
   validates :name, presence: true, uniqueness: true
 end

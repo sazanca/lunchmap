@@ -1,0 +1,28 @@
+<form action=<%= "search" %> method="get" id="keyword" class="number-display-form">
+  <div class='productBox-Lists'>
+    <p>検索結果</p>
+    <div class="search-result">
+      <p><%= "該当#{@shops.count}件" %></p>
+    </div>
+    <% @shops.each do |shop| %>
+      <div class='productList'>
+      <%= link_to shop_path(shop) do %>
+        <figure class='productList--img'>
+          <img src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" />
+        </figure>
+        <div class='productList--body'>
+          <h3 class='name'><%= shop.name %></h3>
+          <div class='details'>
+            <ul>
+              <li><%= shop.price%>円</li>
+              <li><%= "♯#{shop.tag_list}" %></li>
+              <li><i class="fa fa-star likeIcon"></i></li>☆                  
+            </ul> 
+          </div>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+</form>   
+<%= link_to '検索終了', shops_path, class:"search-btn" %>
