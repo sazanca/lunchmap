@@ -14,11 +14,11 @@ class Shop < ApplicationRecord
 
   def self.search(search)
     if search
-      Shop.where('name LIKE(?)', "_" "%#{search}%")
+      Shop.where('name LIKE(?)', "_" "%#{search}%") {order('created_at DESC').page(params[:page]).per(5)}
       # cont = Shop.where('name LIKE(?)', "_" "%#{search}%").count
       # text ="該当件数#{cont}です。"
     else
-      Shop.all
+      Shop.all {order('created_at DESC').page(params[:page]).per(5)}
     end
   end
 

@@ -1,8 +1,10 @@
 <form action=<%= "search" %> method="get" id="keyword" class="number-display-form">
   <div class='productBox-Lists'>
-    <p>検索結果</p>
-    <div class="search-result">
-      <p><%= "該当#{@shops.count}件" %></p>
+    <div class="search-result"> 
+      <ul>
+        <li><%= "検索ワード:#{params[:keyword]}" %></li>
+        <li><%= "検索結果:#{@shops.count}件" %></li>
+      </ul>
     </div>
     <% @shops.each do |shop| %>
       <div class='productList'>

@@ -28,6 +28,9 @@ a {
   font-size: 18px;
 }
 
+.number-display-form{
+  display: block;
+}
 .fv-section {
   padding: 50px 50px 0px 50px;
   display: flex;
@@ -69,7 +72,7 @@ a {
   list-style: none;
   width: 220px;
   display: inline-block;
-  margin-right: 64px;
+  margin-right: 8px;
 }
 
 .productList--img { 
@@ -140,11 +143,11 @@ a {
   display: flow-root;
 }
 .spnewMain_contents{
-  // background-color: cadetblue;
+  background-color: cadetblue;
 }
 
 .spnewMain_contents__content {
-  // background-color: brown;
+  background-color: brown;
 }
 
 .spnewMain_contents__content__head {

@@ -49,12 +49,13 @@
             marker[i] = new google.maps.Marker({
               position: markerLatLng,
               map: map
+
             });
           
             // 各地点の吹き出しを作成
-            infoWindow[i] = new google.maps.InfoWindow({
+            infoWindow[i] = new google.maps.InfoWindow({              
               // <a>タグでリンクを作成
-              content: `<a href='/shops/${ id }'>${ markerData[i]['address'] }</a>`
+              content: `<a href='/shops/${ id }'>${ markerData[i]['address']}</a>`
             });
             
             // マーカーにクリックイベントを追加
@@ -63,10 +64,10 @@
         }
           // マーカーをクリックしたら吹き出しを表示
         function markerEvent(i){ 
-          marker[i].addListener('click', function () {
+          // marker[i].addListener('click', function () {} //見やすさを考慮し最初から表示させておく
             infoWindow[i].open(map, marker[i]);
-          });   
-        }     
+             
+        };     
       </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" async defer"></script>
