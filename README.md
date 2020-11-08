@@ -16,21 +16,21 @@
   <dd>お店情報登録</dd>
 </dl>
 
-[![Image from Gyazo](https://i.gyazo.com/7eac64ec33c141b7b6fbbbd793199d6e.png)](https://gyazo.com/7eac64ec33c141b7b6fbbbd793199d6e)
+[![Image from Gyazo](https://i.gyazo.com/7298b5140423b59959f98f5b683b62d7.png)](https://gyazo.com/7298b5140423b59959f98f5b683b62d7)
 
 [![Image from Gyazo](https://i.gyazo.com/2a824e2a7ab9f629d0609934d8d89ab3.png)](https://gyazo.com/2a824e2a7ab9f629d0609934d8d89ab3)
 
-[![Image from Gyazo](https://i.gyazo.com/c8ed3bbb669e62ab5ef5fa235e526346.gif)](https://gyazo.com/c8ed3bbb669e62ab5ef5fa235e526346)
+[![Image from Gyazo](https://i.gyazo.com/1aaee94bf929010c655d95e0ce76600f.gif)](https://gyazo.com/1aaee94bf929010c655d95e0ce76600f)
 <dl>
   <dt>主な機能</dt>
   <dd>店舗情報登録</dd>
+  <dd>社員番号ログイン</dd>
   <dd>googlemapsに店舗情報を登録</dd>
-  <dd>クーポン利用</dd>
+  <dd>クーポン表示</dd>
   <dd>コメント機能</dd>
   <dd>タグ検索</dd>
   <dd>いいね登録</dd>
   <dt>今後追加したい機能<dd>
-  <dd>社員番号でログイン</dd>
   <dd>管理者画面</dd> 
   <dd>マッチング機能</dd>
   <dd>slackで共有</dd>

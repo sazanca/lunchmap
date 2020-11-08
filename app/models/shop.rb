@@ -23,5 +23,5 @@ class Shop < ApplicationRecord
   validates :name, presence: true,  length: {manimum: 1, maximum: 210}
   validates :arrivaltime, presence: true
   validates :ganre, presence: true
-  validates :price, presence: true, inclusion: 300..5999
+  validates :price, presence: true
 end

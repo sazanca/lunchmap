@@ -5,8 +5,8 @@
     <%# <%= image_tag 'user_image.png',height:130,class:'card-img-top',alt:"Card image cap"%>
   <%# <% end %>
   <div class="card-body">
-    <span class="card-text"><%= coupon.discount %></span>
-    <p class="card-text" ><%= coupon.writing %> </p>
+    <span class="card-text">割引内容:<%= coupon.discount %></span>
+    <p class="card-text" >条件:<%= coupon.writing %> </p>
     <p class="card-text" >有効期限</p>
     <%= (coupon.created_at + coupon.limit.days).to_s(:datetime_jp) %> 
       <%# <%= limit.to_s(:datetime_jp) %>
