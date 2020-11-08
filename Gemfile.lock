@@ -92,12 +92,18 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.4.4)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.9.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.13.1)
     geocoder (1.6.3)
     globalid (0.4.2)
@@ -123,6 +129,8 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -201,6 +209,23 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rspec-core (3.10.0)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-rails (4.0.1)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.9)
+      rspec-expectations (~> 3.9)
+      rspec-mocks (~> 3.9)
+      rspec-support (~> 3.9)
+    rspec-support (3.10.0)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -268,10 +293,12 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise
   dotenv-rails
+  factory_bot_rails
   geocoder
   gon
   jbuilder (~> 2.7)
   kaminari
+  launchy (~> 2.4.3)
   listen (~> 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)
   pg
@@ -279,6 +306,7 @@ DEPENDENCIES
   puma
   rails (~> 6.0.3, >= 6.0.3.1)
   rails_12factor
+  rspec-rails (~> 4.0.1)
   sass-rails (>= 6)
   selenium-webdriver
   spring

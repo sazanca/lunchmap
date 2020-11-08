@@ -11,8 +11,7 @@
       <div class="header-list-box">
         <% if user_signed_in? %>
           <div class="header-list-box__user">
-              <%= current_user.nickname %>さん
-              <%= link_to current_user.nickname, user_path(current_user) %>
+              <%= link_to current_user.nickname, user_path(current_user) %>さん
               <ul class="user__info">
                 <li>
                   <%= link_to "マイページ", user_path(current_user.id) %>

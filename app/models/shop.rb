@@ -15,14 +15,13 @@ class Shop < ApplicationRecord
   def self.search(search)
     if search
       Shop.where('name LIKE(?)', "_" "%#{search}%") {order('created_at DESC').page(params[:page]).per(5)}
-      # cont = Shop.where('name LIKE(?)', "_" "%#{search}%").count
-      # text ="該当件数#{cont}です。"
     else
       Shop.all {order('created_at DESC').page(params[:page]).per(5)}
     end
   end
 
-
-
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true,  length: {manimum: 1, maximum: 210}
+  validates :arrivaltime, presence: true
+  validates :ganre, presence: true
+  validates :price, presence: true, inclusion: 300..5999
 end

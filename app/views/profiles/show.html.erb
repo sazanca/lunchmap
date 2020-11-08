@@ -4,6 +4,7 @@
   </div>
   <div class="profile_list">
     <% if current_user %>
+      <%# <% Profile = user.profile.find_by(user_id: current_user.id) %> %>
       <%# <%= form_with(model: [@user, @profile], local: true) do |form| %> %>
       <%= form_with(model: @profile, local: true) do |form| %>
         <ul class="userpro">
@@ -41,7 +42,7 @@
           <%= form.submit "プローフィール入力完了", class: "form__submit" %>
         </div>
       <% end %>
-    <% else %>
+      <% else %>
       <strong><p>※※※プロフィール入力にはログインが必要です ※※※</p></strong>
     <% end %>
     <ul class="userpro">
@@ -80,4 +81,7 @@
       <% end %>
     </ul>
   </div>
+  <%# <% if user_signed_in? && current_user.id == @profile.user_id %>
+    <%= link_to '編集', edit_user_profile_path, class:"editBtn" %>
+  <%# <% end %>
 </div>

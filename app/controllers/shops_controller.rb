@@ -3,6 +3,7 @@ class ShopsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :search]
   
   def index
+    # @shop = Shop.find(params[:id])
     @shops = Shop.includes(:user,:tags).order('created_at DESC').page(params[:page]).per(5)
     @tags = Shop.tag_counts_on(:tags)
     @maps = Map.all

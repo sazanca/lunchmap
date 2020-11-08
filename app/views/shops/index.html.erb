@@ -90,9 +90,11 @@
               <div class='details'>
                 <ul>
                   <li><%= shop.price%>円</li>
-                  <li><%= "♯#{shop.tag_list}" %></li>
-                  <li><i class="fa fa-star likeIcon"></i></li>☆                  
-                </ul> 
+                  <li>(税込)</li>
+                  <%# <li><i class="fa fa-star likeIcon"></i><%= "#{shop.likes.count}" %></li> %>
+                </ul>
+                <p class="tag_list"><%= "♯#{shop.tag_list}" %></p>
+                <p><i class="fa fa-star likeIcon"></i><%= "#{shop.likes.count}" %></p>
               </div>
             </div>
           <% end %>
@@ -116,10 +118,10 @@
               <h3 class='name'><%= shop.name %></h3>
               <div class='details'>
                 <ul>
-                  <li><%= shop.arrivaltime %></li>
-                  <li><%= render partial: 'likes/like',collection: @shop, as: :shop %></li>
+                  <li><%= "#{shop.arrivaltime}分" %></li>
                 </ul>
-                <p>(税込)</p>
+                <p class="tag_list"><%= "♯#{shop.tag_list}" %></p>
+                <p><i class="fa fa-star likeIcon"></i><%= "#{shop.likes.count}" %></p>
               </div>
               <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
             </div>
@@ -143,12 +145,13 @@
               <h3 class='name'>店名:<%= shop.name %></h3>
               <div class='details'>
                 <ul>
-                  <li><%= shop.price %>円</li>
+                  <li><%= "#{shop.price}円" %></li>
                   <li><%= shop.arrivaltime %>分</li>
-                  <i class="fa fa-star likeIcon"></i>☆
+                  <li><i class="fa fa-star likeIcon"></i><%= "#{shop.likes.count}" %></li>
                   </li>
                 </ul>
                 <p>(税込)</p>
+                <p class="tag_list"><%= "♯#{shop.tag_list}" %></p>
               </div>
               <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
             </div>
@@ -173,10 +176,9 @@
               <div class='details'>
                 <ul>
                   <li><%= shop.price%>円</li>
-                  <li><p>タグ</p></li>
-                  <li><%= render 'tags/tag_list' , {tag_list: shop.tag_list} %></li>
-                  <li><i class="fa fa-star likeIcon"></i></li>☆                  
+                  <li><i class="fa fa-star likeIcon"></i><%= "#{shop.likes.count}" %></li>
                 </ul> 
+                <p class="tag_list"><%= "♯#{shop.tag_list}" %></p>
                 <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
               </div>
             </div>

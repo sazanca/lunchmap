@@ -5,7 +5,13 @@
 
   <div class="field">
     <%= f.label :ニックネーム %><br />
-    <%= f.text_field :nickname, autofocus: true %>
+    <%= f.text_field :nickname, placeholder:"例:ラーメン太郎", autofocus: true, manimum: 2, maximum: 20 %>
+  </div>
+
+  
+  <div class="field">
+    <%= f.label :社員番号 %><br />
+    <%= f.text_field :employee_id, autofocus: true, maxlength: 6%>
   </div>
 
   <div class="field">
@@ -13,12 +19,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" ,placeholder:"英数字６文字以上"%>
+    <%= f.password_field :password, autocomplete: "new-password" ,placeholder:"英数字7文字以上"%>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation,placeholder:"再度確認のため", autocomplete: "new-password" %>
   </div>
 
   <div class="actions">

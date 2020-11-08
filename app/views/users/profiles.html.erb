@@ -1,6 +1,6 @@
 <div class="profile_main">
   <div class="profile_list">
-    <% if current_user %>
+    <% if current_user&& user_id %>
     <%# <%= form_with(model: [@user, @profile], local: true) do |form| %>
       <%= form_with(model: @profile, local: true) do |form| %>
         <ul class="userpro">

@@ -9,8 +9,15 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :employee_id])
+
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:nickname])
   end
+
+  # # ログイン後にマイページに遷移する(今はしない)
+  # def after_sign_in_path_for(resource)
+  #   user_path(current_user) # 指定ページのパスを記述
+  # end 
 
   private
 

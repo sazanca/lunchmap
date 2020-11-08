@@ -1,0 +1,44 @@
+<div class="profile_main">
+  <div class="like_main">
+    <%# <%= render "/users/mypage_side" %>
+  </div>
+  <div class="profile_list">
+    <%= form_with(model: [@user, @profile], local: true) do |form| %>
+    <%# <%= form_with(model: @profile, local: true) do |form| %> %>
+      <ul class="userpro">
+        <li>プロフィール</li>
+        <li class="title"><span class="question">質問項目</span>
+          <span class="answer">
+            回答
+          </span>
+        </li>
+        <li class="content-user"><span class="question">よく行くお店</span>
+          <span class="answer-1">
+            <%= form.text_field :name, :id, :value, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
+          </span>
+        </li>
+        <li class="content-user"><span class="question">好きなジャンル</span>
+          <span class="answer-1">
+            <%= form.text_field :ganre, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
+          </span>
+        </li>
+        <li class="content-user"><span class="question">マッチング機能利用</span>
+          <span class="answer-1">
+            <span class="answer-1">
+              <div class="mid">
+                <label class="rocker">
+                  <input type="checkbox" checked>
+                  <span class="switch-left">On</span>
+                  <span class="switch-right">Off</span>
+                </label>
+              </div>
+            </span>
+          </span>
+        </li>
+      </ul>
+      <div class="actions">
+        <%= form.submit "プローフィール入力完了", class: "form__submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>

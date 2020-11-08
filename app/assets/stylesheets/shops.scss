@@ -142,13 +142,6 @@ a {
   font-size: 18px;
   display: flow-root;
 }
-.spnewMain_contents{
-  background-color: cadetblue;
-}
-
-.spnewMain_contents__content {
-  background-color: brown;
-}
 
 .spnewMain_contents__content__head {
   margin: 30px;
@@ -168,6 +161,12 @@ a {
 
 input {
   height: 30px;
+}
+
+span.form-require{
+  border: solid 1px black;
+  background-color: rgb(9, 223, 223);
+  color: #f5f5f5;
 }
 
 .commentBox {
@@ -208,9 +207,7 @@ select {
 .qupon-ad{
   padding-top: 32px;
 }
-.spnewMain-ad-content{
-  background-color: cornflowerblue;
-}
+
 .card-body{
   border: solid 3px #000;    	/* 内側の線になる5pxの線をひく */
 	margin: 2px;            	/* 外側の線の場所を確保する */

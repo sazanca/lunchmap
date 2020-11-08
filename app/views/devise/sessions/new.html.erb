@@ -2,13 +2,19 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname, autofocus: true %>
+    <%= f.label :ニックネーム %><br />
+    <%= f.text_field :nickname,placeholder:"例:ラーメン太郎", autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :社員番号 %><br />
+    <%= f.text_field :employee_id, autofocus: true %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <p><i>7〜１２文字</i></p>
+    <%= f.password_field :password, placeholder:"7〜１２文字",autocomplete: "current-password" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
