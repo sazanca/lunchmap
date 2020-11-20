@@ -1,8 +1,10 @@
 class ProfilesController < ApplicationController
+  # before_action :set_profile, only: [:show, :edit, :update, :destroy]
+
 
   def show
-    # @profile = Profile.new
     # @profile = @user.profile
+    # @user = User.find(params[:id])
     @profiles = Profile.includes(:user)
   end
 
@@ -12,11 +14,16 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find(params[:id])
+    @profiles = Profile.find(params[:id])
   end
-
+  
   private
+
+  # def set_profile
+  #   @profile = Profile.find(params[:id])
+  # end
+
   def profile_params
-    params.permit(:name, :ganre).merge(user_id: current_user.id)
+    params.require(:profile).permit(:name,:ganre).merge(user_id: current_user.id)
   end
 end

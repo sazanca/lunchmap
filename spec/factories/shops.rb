@@ -5,6 +5,7 @@ FactoryBot.define do
     arrivaltime             {5}
     ganre                   {2}
     price                   {1000}
-    user                    { create(:user) }
+    user                    
+    created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
   end
 end

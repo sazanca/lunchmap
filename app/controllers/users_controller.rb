@@ -2,11 +2,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @shops = @user.shops
-    @profile = Profile.new#(id: current_user.id)
+    # @profile = Profile.new#(id: current_user.id)
     @profile = @user.profile
     # @profile = Profile.find(params[:id])
-    # @profile = @user.profile.includes(:user_id)
   end
 
   def create
@@ -21,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def profile_params
-    params.require(:profile).permit(:name,:ganre).merge(user_id: current_user.id)
-  end
+  # def profile_params
+  #   params.require(:profile).permit(:name,:ganre).merge(user_id: current_user.id)
+  # end
 end

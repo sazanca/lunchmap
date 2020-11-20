@@ -1,19 +1,19 @@
 .mypage {
   height: 700px;
 }
-.mypage_main{
 
+.mypage_main{
   padding-top: 64px;
   width: 500px;
   height: calc(100% - 5px);
 }
 ul.userpro {
   list-style:none;
-  height: 500px;
+  // height: 500px;
 }
  
 li.title {
-  width: 540px;
+  width: 508px;
   border: 1px solid #ccc;
   background-color: #eee8aa;
 }
@@ -41,7 +41,7 @@ span.answer-1 {
   display: block;
   margin-left: 176px;
   padding: 10px;
-  border-left: 1px solid #ccc;
+  // border-left: 1px solid #ccc;
   background-color: #fffff0;
 }
 

@@ -3,7 +3,7 @@
     <%# <%= render "/users/mypage_side" %>
   </div>
   <div class="profile_list">
-    <% if current_user %>
+    <% if user_signed_in? && current_user.id %>
       <%# <% Profile = user.profile.find_by(user_id: current_user.id) %> %>
       <%# <%= form_with(model: [@user, @profile], local: true) do |form| %> %>
       <%= form_with(model: @profile, local: true) do |form| %>
@@ -42,46 +42,49 @@
           <%= form.submit "プローフィール入力完了", class: "form__submit" %>
         </div>
       <% end %>
-      <% else %>
+    <% else %>
       <strong><p>※※※プロフィール入力にはログインが必要です ※※※</p></strong>
     <% end %>
     <ul class="userpro">
       <% if @profiles %>
         <li>プロフィール</li>
-        <% @profiles.each do |profile| %>
-        <li class="title"><span class="question">質問項目</span>
-          <span class="answer">
-            回答
-          </span>
-        </li>
-        <li class="content-user"><span class="question">よく行くお店</span>
-          <span class="answer-1">
-            <%= profile.name %>
-          </span>
-        </li>
-        <li class="content-user"><span class="question">好きなジャンル</span>
-          <span class="answer-1">
-            <%= profile.ganre %>
-          </span>
-        </li>
-        <li class="content-user"><span class="question">マッチング機能利用</span>
-          <span class="answer-1">
-            <span class="answer-1">
-              <div class="mid">
-                <label class="rocker">
-                  <input type="checkbox" checked>
-                  <span class="switch-left">On</span>
-                  <span class="switch-right">Off</span>
-                </label>
-              </div>
-            </span>
-          </span>
-        </li>
-        <% end %>
+        <%# <% @Profile = user.profile.find_by(user_id: current_user.id) %> %>
+        <%# <% if user_signed_in? && current_user.id == @profile.user_id %> %>
+          <% @profiles.each do |profile| %>
+            <li class="title"><span class="question">質問項目</span>
+              <span class="answer">
+                回答
+              </span>
+            </li>
+            <li class="content-user"><span class="question">よく行くお店</span>
+              <span class="answer-1">
+                <%= profile.name %>
+              </span>
+            </li>
+            <li class="content-user"><span class="question">好きなジャンル</span>
+              <span class="answer-1">
+                <%= profile.ganre %>
+              </span>
+            </li>
+            <li class="content-user"><span class="question">マッチング機能利用</span>
+              <span class="answer-1">
+                <span class="answer-1">
+                  <div class="mid">
+                    <label class="rocker">
+                      <input type="checkbox" checked>
+                      <span class="switch-left">On</span>
+                      <span class="switch-right">Off</span>
+                    </label>
+                  </div>
+                </span>
+              </span>
+            </li>
+          <% end %>
+        <%# <% end %>   %>
       <% end %>
     </ul>
   </div>
   <%# <% if user_signed_in? && current_user.id == @profile.user_id %>
-    <%= link_to '編集', edit_user_profile_path, class:"editBtn" %>
+    <%= link_to '編集', edit_user_profiles_path, class:"editBtn" %>
   <%# <% end %>
 </div>

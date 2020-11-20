@@ -37,7 +37,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'mysql2', '>= 0.4.4', '< 0.6.0'
   gem 'rspec-rails','~> 4.0.1'
+  gem 'rails-controller-testing'
   gem 'factory_bot_rails'
+  gem 'faker', "~> 2.8"
+
 end
 
 group :development do

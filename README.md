@@ -18,8 +18,6 @@
 
 [![Image from Gyazo](https://i.gyazo.com/7298b5140423b59959f98f5b683b62d7.png)](https://gyazo.com/7298b5140423b59959f98f5b683b62d7)
 
-[![Image from Gyazo](https://i.gyazo.com/2a824e2a7ab9f629d0609934d8d89ab3.png)](https://gyazo.com/2a824e2a7ab9f629d0609934d8d89ab3)
-
 [![Image from Gyazo](https://i.gyazo.com/1aaee94bf929010c655d95e0ce76600f.gif)](https://gyazo.com/1aaee94bf929010c655d95e0ce76600f)
 <dl>
   <dt>主な機能</dt>

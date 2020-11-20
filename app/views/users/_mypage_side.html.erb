@@ -10,23 +10,11 @@
         <i class="fa fa-chevron-right"></i>
       </li>
       <li>
-        <%= link_to "やることリスト", '#' %>
-        <i class="fa fa-chevron-right"></i>
-      </li>
-      <li>
         <%= link_to "いいね！一覧", likes_users_path %>
         <i class="fa fa-chevron-right"></i>
       </li>
       <li>
         <%= link_to "ニュース一覧", '#' %>
-        <i class="fa fa-chevron-right"></i>
-      </li>
-      <li>
-        <%= link_to "評価一覧", '#'%>
-        <i class="fa fa-chevron-right"></i>
-      </li>
-      <li>
-        <%= link_to "ガイド一覧", '#'%>
         <i class="fa fa-chevron-right"></i>
       </li>
       <li>
@@ -37,48 +25,15 @@
   </div>
 </div>
 <div class="left-content__bar">
-  <h4> 売上・ポイント
-    <ul style="marginT-8px">
-      <li>
-        <%= link_to "売上申請", '#'%>
-        <i class="fa fa-chevron-right"></i>
-      </li>
-      <li>
-        <%= link_to "ポイント", '#'%>
-        <i class="fa fa-chevron-right"></i>
-      </li>
-    </ul>
-  </h4>
-</div>
-<div class="left-content__bar">
   <h4> 設定
     <ul class="marginT-8px">
       <li>
-        <%# <%= link_to "プロフィール", user_profile_path %>
-        <%= link_to "プロフィール", user_profile_path(:user_id) %>
-        <%# <%= link_to "プロフィール", "/profiles/#{user_id: user.id}" %>
-        <%# <%= link_to "プロフィール", "/profiles/#{@user.id}", method: :get %> 
-        <%# <%= link_to '詳細', "/shops/#{shop.id}", method: :get %>
+        <%= link_to "プロフィール", user_profiles_path(current_user) %>
+        <%# <%= link_to "プロフィール", user_profiles_path(profile.user) %> %>
+        <%# <%= link_to "プロフィール", "/profiles/#{@user.id}", method: :show %> %>
         <i class="fa fa-chevron-right"></i>
       </li>
-      <li>
-        <%= link_to "住所変更", '#'%>
-        <i class="fa fa-chevron-right"></i>
-      </li>
-      <li>
-        <%= link_to "支払方法", '#' %>
-        <i class="fa fa-chevron-right"></i>
-      </li>
-      <li>
-        <%= link_to "メール/パスワード", '#' %> 
-        <i class="fa fa-chevron-right"></i>
-      </li>
-      <li>
-        <%= link_to "本人情報", '#' %>
-         <i class="fa fa-chevron-right"></i>
-      </li>
-      <li>
-        <%= link_to "電話番号の確認", '#' %>
+        <%= link_to "パスワード", '#' %> 
         <i class="fa fa-chevron-right"></i>
       </li>
       <li>

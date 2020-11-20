@@ -57,24 +57,26 @@
                       <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" async defer"></script>
                     </div>
                     <div class="spnewMain__content__form">
-                      <strong>店名:</strong>
-                      <span class="form-require"></span>
-                      <%= @shop.name %>
-                    </div>
-                    <div class="spnewMain__content__form">
-                      <strong>場所:</strong>
-                      <span class="form-require"></span>
-                      <%= @shop.map.address %>
+                      <tr>
+                        <td><strong>店名:</strong></td>
+                        <th><%= @shop.name %></th>
+                      </tr>
                     </div>
                     <div class="spnewMain__content__form">
                       <tr>
-                        <td><%= form.label :所要時間 %></td>
+                        <td><strong>場所:</strong></td>
+                        <th><%= @shop.map.address %></th>
+                      </tr>
+                    </div>
+                    <div class="spnewMain__content__form">
+                      <tr>
+                        <td><strong><%= form.label :所要時間 %>:</strong></td>
                         <th><%= Arrivaltime.find(@shop.arrivaltime).value %>分</th>
                       </tr>
                     </div>
                     <div class="spnewMain__content__form">
                       <tr>
-                        <td><%= form.label :値段 %></td>
+                        <td><strong><%= form.label :値段 %>:</strong></td>
                         <th><%= @shop.price %>円</th>
                       </tr>  
                     </div>
@@ -119,9 +121,9 @@
     <div class="commentBox">
       <% if current_user %>
         <%= form_with(model: [@shop, @comment], local: true) do |form| %>
-          <%= form.label :コメントエリア %>
-          <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50" %>
-          <%= form.submit 'コメントを送信する' %>
+          <%= form.label :コメントエリア, class:"comment_ae" %>
+          <%= form.text_area :text, placeholder:"\n\n（任意、1000文字まで)\nランチに誘うのに使ってください", rows: "10", cols:"50", class:"comment_text" %>
+          <%= form.submit 'コメントを送信する', class:"comment_sb" %>
         <% end %>
       <% else %>
         <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>

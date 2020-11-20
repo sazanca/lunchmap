@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: :show do
-    resource :profile, only: [:create, :show, :edit, :update]
+    resource :profiles, only: [:create, :show, :edit, :update]
     # get 'profile', to: 'users#show'
     collection do
       get :likes
